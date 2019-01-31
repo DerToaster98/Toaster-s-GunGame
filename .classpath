@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Gungame Minispiel/src"/>
+	<classpathentry kind="lib" path="D:/Programmierung/Libraries/ProtocolLib Build#414.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://ci.dmulloy2.net/job/ProtocolLib/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Programmierung/Libraries/Item-NBT-API (2).jar"/>
+	<classpathentry kind="lib" path="D:/Programmierung/Libraries/spigot/spigot-1.13.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://hub.spigotmc.org/javadocs/spigot/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Programmierung/Libraries/spigot/spigot-1.13.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://hub.spigotmc.org/javadocs/spigot/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Programmierung/Libraries/spigot/spigot-1.12.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/D:/Programmierung/Libraries/javadocs/spigot-api-1.12.2-R0.1-20180712.012057-156-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Programmierung/Libraries/BKCommonLib-1.13.1-v1.jar"/>
+	<classpathentry kind="lib" path="D:/Programmierung/Libraries/spigot/spigot-1.13.2.jar"/>
+	<classpathentry kind="lib" path="D:/Programmierung/Libraries/spigot/spigot-1.12.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://hub.spigotmc.org/javadocs/spigot/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Programmierung/Libraries/TTA-4.3.jar"/>
+	<classpathentry kind="lib" path="D:/Programmierung/Libraries/Multiverse-Core-2.6.0.jar"/>
+	<classpathentry kind="output" path="Gungame Minispiel/bin"/>
+</classpath>

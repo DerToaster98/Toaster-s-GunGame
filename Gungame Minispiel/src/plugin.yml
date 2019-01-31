@@ -1,0 +1,34 @@
+name: Gungame
+author: MrBaumeister98
+authors: [Game - MrBaumeister98, AdvancementAPI - Chazmondo, WorldRestoreAPI - Arceus02]
+version: 1.8.1.2
+api-version: 1.13
+main: de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin
+depend: [ItemNBTAPI]
+softdepend: [BKCommonLib, ProtocolLib, TTA]
+loadafter: [BKCommonLib, ProtocolLib, ItemNBTAPI, TTA]
+load: POSTWORLD
+permissions:
+  gungame.user:
+    default: true
+  gungame.admin:
+    default: OP
+  gungame.bypasscmdrestriction:
+    default: false
+  gungame.customgame:
+    default: OP
+  gunengine.cmd:
+    default: OP
+  gunengine.shoot:
+    default: true
+  gunengine.admin:
+    default: false
+commands:
+  gg:
+    description: Main Command of GunGame
+    usage: /gg args
+    aliases: [gunGame, gg, ggame, gung, gga]
+  ge:
+    description: Main Command of GunGame's Gun Engine
+    usage: /ge args
+    aliases: [gunengine, gunEngine, gune, gunE, gengine, gEngine]

@@ -1,0 +1,224 @@
+WARNING: DO NOT CHANGE THIS FILE UNLESS YOU REALLY KNOW WHAT YOU ARE DOING!!!
+ForceUpdateOnNextStart: false
+Names:
+  - GunGame-TASK-IMPOSSIBLE-1
+  - FirstTime-TASK-PLAYGAME-1
+  - GettingUsed-TASK-PLAYGAME-10
+  - Addicted-TASK-PLAYGAME-100
+  - YouHaveNoLife-GOAL-PLAYGAME-1000
+  - Killer-TASK-KILL-10
+  - Gladiator-TASK-KILL-50
+  - MassMurder-GOAL-KILL-100
+  - TripleSeries-TASK-KILLSTREAK-3
+  - FiveSeries-TASK-KILLSTREAK-5
+  - TenSeries-TASK-KILLSTREAK-10
+  - TwentySeries-GOAL-KILLSTREAK-20
+  - Lockpicker-TASK-LOCKPICK-10
+  - LockExpert-TASK-LOCKPICK-50
+  - Thief-TASK-LOCKPICK-250
+  - Villain-GOAL-LOCKPICK-1000
+  - Victor-TASK-WIN-1
+  - SeriesVictor-GOAL-WIN-10
+  - Lucker-TASK-WIN_SERIES-5
+  - Unstoppable-TASK-WIN_SERIES-20
+  - God-GOAL-WIN_NO_DAM-1
+  - Loser-TASK-LOSE-1
+  - UnableToWin-TASK-LOSE_SERIES-5
+  - InfiniteLoser-GOAL-LOSE_SERIES-100
+  - HeadShot-TASK-HEADSHOT-1
+  - Sniper-TASK-HEADSHOT-5
+  - SniperKing-GOAL-HEADSHOT-50
+  - Shield-TASK-TAKE_DAMAGE-1000
+  - Tank-GOAL-TAKE_DAMAGE_NO_DIE-100
+  - YunoFuchingGasai-CHALLENGE-KILLS_ONE_ROUND-38-true
+Icons:
+  GunGame: TNT
+  FirstTime: WOODEN_SWORD
+  GettingUsed: STONE_SWORD
+  Addicted: GOLDEN_SWORD
+  YouHaveNoLife: DIAMOND_SWORD
+  Killer: IRON_SWORD
+  Gladiator: IRON_AXE
+  MassMurder: DIAMOND_AXE
+  TripleSeries: SKELETON_SKULL
+  FiveSeries: SKELETON_SKULL
+  TenSeries: SKELETON_SKULL
+  TwentySeries: SKELETON_SKULL
+  Lockpicker: SPRUCE_DOOR
+  LockExpert: IRON_DOOR
+  Thief: IRON_TRAPDOOR
+  Villain: DIAMOND_HOE
+  Victor: GOLD_NUGGET
+  SeriesVictor: GOLD_INGOT
+  Lucker: DIAMOND
+  Unstoppable: NETHER_STAR
+  God: TOTEM_OF_UNDYING
+  Loser: BRICKS
+  UnableToWin: DIRT
+  InfiniteLoser: DEAD_BUSH
+  HeadShot: ARROW
+  Sniper: SPECTRAL_ARROW
+  SniperKing: BOW
+  Shield: SHIELD
+  Tank: DIAMOND_CHESTPLATE
+  YunoFuchingGasai: IRON_AXE
+Parents:
+  GunGame: NULL
+  FirstTime: GunGame
+  GettingUsed: FirstTime
+  Addicted: GettingUsed
+  YouHaveNoLife: Addicted
+  Killer: GunGame
+  Gladiator: Killer
+  MassMurder: Gladiator
+  TripleSeries: Killer
+  FiveSeries: TripleSeries
+  TenSeries: FiveSeries
+  TwentySeries: TenSeries
+  Lockpicker: GunGame
+  LockExpert: Lockpicker
+  Thief: LockExpert
+  Villain: Thief
+  Victor: Killer
+  SeriesVictor: Victor
+  Lucker: GunGame
+  Unstoppable: Lucker
+  God: Unstoppable
+  Loser: Victor
+  UnableToWin: Loser
+  InfiniteLoser: UnableToWin
+  HeadShot: Killer
+  Sniper: HeadShot
+  SniperKing: Sniper
+  Shield: GunGame
+  Tank: Shield
+  YunoFuchingGasai: MassMurder
+Language:
+  GunGame:
+    Name: "&4&lGunGame"
+    Desc:
+      - "&aGunGame - by DerToaster"
+  FirstTime: 
+    Name: "&eFirst time"
+    Desc:
+      - "&aPlay your first game"
+  GettingUsed:
+    Name: "&eGetting used"
+    Desc: 
+      - "&aPlay 10 games"
+  Addicted:
+    Name: "&cAddicted"
+    Desc: 
+      - "&aPlay 100 games"
+  YouHaveNoLife:
+    Name: "&4&l&nYOU HAVE NO LIFE"
+    Desc: 
+      - "&cGo out, "
+      - "&cshutdown your computer, "
+      - "&cand have a talk with"
+      - "&cyour family!"
+  Killer:
+    Name: "&eKiller"
+    Desc: 
+      - "&aEnd 10 lives"
+  Gladiator:
+    Name: "&eGladiator"
+    Desc: 
+      - "&aEnd 50 lives"
+  MassMurder:
+    Name: "&cMassmurder"
+    Desc:
+      - "&aEnd 100 lives"
+  TripleSeries:
+    Name: "&dThree!"
+    Desc:
+      - "&aReach a killstreak of 3"
+  FiveSeries:
+    Name: "&eFive"
+    Desc:
+      - "&aReach a killstreak of 5"
+  TenSeries:
+    Name: "&eTen"
+    Desc:
+      - "&aReach a killstreak of 10"
+  TwentySeries:
+    Name: "&4Pro Gamer"
+    Desc:
+      - "&aReach a killstreak of 20"
+  Lockpicker:
+    Name: "&eLockpicker"
+    Desc:
+      - "&aOpen 10 doors with the crowbar"
+  LockExpert:
+    Name: "&eLockpicker level 2"
+    Desc:
+      - "&aOpen 50 doors with the crowbar"
+  Thief:
+    Name: "&eRobber"
+    Desc:
+      - "&aOpen 250 doors with the crowbar"
+  Villain:
+    Name: "&cLock expert"
+    Desc:
+      - "&aOpen 1000 doors with the crowbar"
+  Victor:
+    Name: "&eWinner"
+    Desc:
+      - "&aWin a game"
+  SeriesVictor:
+    Name: "&eLucky one"
+    Desc:
+      - "&aWin 10 games"
+  Lucker:
+    Name: "&eLucker"
+    Desc:
+      - "&aWin 5 games one after another"
+  Unstoppable:
+    Name: "&cUnstoppable"
+    Desc:
+      - "&aWin 20 games one after another"
+  God:
+    Name: "&4&l&k--&r&4&lGod&4&l&k--"
+    Desc:
+      - "&aWin a game, without:"
+      - "&e  - Dying"
+      - "&e  - Taking damage"
+      - "&e  - Cheating"
+  Loser:
+    Name: "&eLoser"
+    Desc:
+      - "&aSometimes you must loose"
+      - "&aLoose a game"
+  UnableToWin:
+    Name: "&eUnfair!"
+    Desc:
+      - "&aLoose 5 games in order"
+  InfiniteLoser:
+    Name: "&cEternal loser"
+    Desc:
+      - "&aLoose 100 games in order"
+  HeadShot:
+    Name: "&eHeadshot!"
+    Desc:
+      - "&aScore a headshot"
+  Sniper:
+    Name: "&eSniper"
+    Desc:
+      - "&aScore 5 headshots"
+  SniperKing:
+    Name: "&cCamper!"
+    Desc:
+      - "&aScore 50 headshots"
+  Shield:
+    Name: "&eLiving shield"
+    Desc:
+      - "&aTake 1000 points of damge"
+  Tank:
+    Name: "&cTank"
+    Desc:
+      - "&aTake 100 points of damage, "
+      - "&aWithout dying"
+  YunoFuchingGasai:
+    Name: "&cYuno Fucking Gasai"
+    Desc:
+      - "&aThe only way to protect you is to kill you"

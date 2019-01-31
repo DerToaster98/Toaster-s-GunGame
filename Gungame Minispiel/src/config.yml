@@ -1,0 +1,112 @@
+Version: 1.8.1.2
+Config:
+  Language: EN
+  GrantAchievementsAfterMeetingCondition: false
+  UseDebuggerWindow: false
+  Achievements:
+    Installed: false
+  GunEngine:
+    LaserHelperIterations: 200
+    LaserMeltConfig:
+      - COBBLESTONE-MAGMA_BLOCK-true
+      - MAGMA_BLOCK-LAVA-true
+      - ICE-WATER-false
+      - PACKED_ICE-ICE-true
+  Mechanics:
+    C4:
+      ChanceToExplodeOnBreak: 40
+      MinWiresToDefuse: 1
+      MaxWiresToDefuse: 4
+  StartCountDown: 30
+  LobbyCountDown: 30
+  PreparingPhaseDuration: 30
+  VotePhaseDuration: 60
+  CoinsPerKill: 15
+  GlobalLobby:
+  DefaultResourcepack: "http://www.mediafire.com/file/6zd7649if4txtt1/1.12_Default_Resource_Pack.zip"
+  AllowedCommands:
+    - lag
+    - leave
+    - r
+    - mail
+    - l
+    - msg
+    - tell
+    - help
+    - list
+    - rules
+  SeparatedChat: true
+  ShopBlocks:
+    - ENCHANTING_TABLE
+  BlockChangeList:
+    - GLASS;AIR
+    - GLASS_PANE;AIR
+    - ICE;AIR
+    - FROSTED_ICE;AIR
+    - BLACK_STAINED_GLASS;AIR
+    - BLUE_STAINED_GLASS;AIR
+    - BROWN_STAINED_GLASS;AIR
+    - CYAN_STAINED_GLASS;AIR
+    - GRAY_STAINED_GLASS;AIR
+    - GREEN_STAINED_GLASS;AIR
+    - LIGHT_BLUE_STAINED_GLASS;AIR
+    - LIGHT_GRAY_STAINED_GLASS;AIR
+    - LIME_STAINED_GLASS;AIR
+    - MAGENTA_STAINED_GLASS;AIR
+    - ORANGE_STAINED_GLASS;AIR
+    - PINK_STAINED_GLASS;AIR
+    - PURPLE_STAINED_GLASS;AIR
+    - RED_STAINED_GLASS;AIR
+    - WHITE_STAINED_GLASS;AIR
+    - YELLOW_STAINED_GLASS;AIR
+    - BLACK_STAINED_GLASS_PANE;AIR
+    - BLUE_STAINED_GLASS_PANE;AIR
+    - BROWN_STAINED_GLASS_PANE;AIR
+    - CYAN_STAINED_GLASS_PANE;AIR
+    - GRAY_STAINED_GLASS_PANE;AIR
+    - GREEN_STAINED_GLASS_PANE;AIR
+    - LIGHT_BLUE_STAINED_GLASS_PANE;AIR
+    - LIGHT_GRAY_STAINED_GLASS_PANE;AIR
+    - LIME_STAINED_GLASS_PANE;AIR
+    - MAGENTA_STAINED_GLASS_PANE;AIR
+    - ORANGE_STAINED_GLASS_PANE;AIR
+    - PINK_STAINED_GLASS_PANE;AIR
+    - PURPLE_STAINED_GLASS_PANE;AIR
+    - RED_STAINED_GLASS_PANE;AIR
+    - WHITE_STAINED_GLASS_PANE;AIR
+    - YELLOW_STAINED_GLASS_PANE;AIR
+    - ANDESITE;COBBLESTONE
+    - STONE;ANDESITE
+    - MOSSY_STONE_BRICKS;COBBLESTONE
+    - CHISELED_STONE_BRICKS;CRACKED_STONE_BRICKS
+    - STONE_BRICKS;CRACKED_STONE_BRICKS
+    - CRACKED_STONE_BRICKS;COBBLESTONE
+    - COBBLESTONE;GRAVEL
+    - GRAVEL;AIR
+    - GRASS_BLOCK;DIRT
+    - DIRT;AIR
+    - GLOWSTONE;AIR
+    - REDSTONE_LAMP;AIR
+    - SNOW;AIR
+    - SNOW_BLOCK;AIR
+    - SEA_LANTERN;AIR
+    - MAGMA_BLOCK;LAVA
+    - OBSIDIAN;COAL_BLOCK
+    - COAL_BLOCK;STONE
+  Items:
+    TrackPad:
+      Uses: 3
+    C4:
+      Power: 3
+      Fire: false
+      Fuse: 1
+    SuicideVest:
+      Power: 10
+      Fire: false
+      Fuse: 2
+      Sound: "ENTITY_ENDER_DRAGON_GROWL"
+    FlareGun:
+      GlowingDuration: 400
+      Item:
+        Material: "GOLDEN_SHOVEL" 
+        Damage: 18

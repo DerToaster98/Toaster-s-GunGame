@@ -1,0 +1,548 @@
+lang:
+  Errors:
+    notEnoughPlayers: "&cEs sind zu wenig Spieler da, um das Spiel zu starten! Es werden mindestens &e%minp% Spieler &cben\u00f6tigt, um das Spiel zu starten!"
+    arenaIsFull: "&cTut mir leid, aber die Arena %arena% ist bereits voll!"
+    arenaDoesNotExist: "&cDie Arena %arena% existiert nicht!"
+    worldDoesNotExist: "&cDie Arenenwelt %arenaworld% existiert nicht!"
+    noPermission: "&cDu hast leider nicht die Rechte hierfuer!"
+    arenaInvalid: "&cTut mir leid, aber die Arena %arena% ist ung\u00fcltig oder unfertig!"
+    arenaNameInUse: "&cTut mir leid, aber der Name %arena% ist bereits vergeben. Bitte w\u00e4hle einen anderen!"
+    arenaNotEnabled: "&cTut mir leid, aber die Arena %arena% ist momentan nicht verf\u00fcgbar!"
+    noSuchArenaName: "&cTut mir leid, aber die Arena %arena% existiert nicht! Verf\u00fcgbare Arenen: /gg list"
+    arenaInProgress: "&cTut mir leid, aber die Arena %arena% l\u00e4uft gerade!"
+    notInArena: "&cTut mir leid, aber dazu musst du in einer Arena sein!"
+    cmdNotAllowedInArena: "&cDer Befehl &e%command% &ckann leider nur auserhalb einer Arena verwendet werden!"
+  Help:
+    Commands:
+      Join: "&e/gg join a<ARENA_NAME>"
+      Arena:
+        addArena: "&e/gg &carena&e add &a<NAME> &9<MINIMALE_SPIELER_ANZAHL> <MAXIMALE_SPIELER_ANZAHL> &1<KILLS_ZUM_GEWINNEN>"
+        setLobby: "&e/gg &carena&e setlobby &a<NAME>"
+        enable: "&e/gg &carena&e enable &a<NAME> &4[true|false]"
+        disable: "&e/gg &carena&e enable &a<NAME> &4[true|false]"
+      World:
+        addWorld: "&e/gg &aworld&e add &9<NAME>"
+        setWorld: "&e/gg &aworld&e set &9<NAME> &1<WELTEN_NAME>"
+        saveWorld: "&e/gg &aworld&e save &9<NAME>"
+        addSpawn: "&e/gg &aworld&e addspawn &9<NAME>"
+        listSpawns: "&e/gg &aworld&e listspawns &9<NAME>"
+        tpSpawn: "&e/gg &aworld&e tpspawn &9<NAME> &1<SPAWN_ID>"
+        setSpawn: "&e/gg &aworld&e setspawn &9<NAME> &1<SPAWN_ID>"
+        resetSpawns: "&e/gg &aworld&e resetspawns &9<NAME>"
+        deleteSpawn: "&e/gg &aworld&e deleteSpawn &9<NAME> &1<SPAWN_ID>"
+        addTankSpawn: "&e/gg &aworld&e addtankspawn &9<NAME>"
+        listTankSpawns: "&e/gg &aworld&e listtankspawns &9<NAME>"
+        tpTankSpawn: "&e/gg &aworld&e tptankspawn &9<NAME> &1<SPAWN_ID>"
+        setTankSpawn: "&e/gg &aworld&e settankspawn &9<NAME> &1<SPAWN_ID>"
+        resetTankSpawns: "&e/gg &aworld&e resettankspawns &9<NAME>"
+        deleteTankSpawn: "&e/gg &aworld&e deleteTankSpawn &9<NAME> &1<SPAWN_ID>"
+        addTurretSpawn: "&e/gg &aworld&e addturretspawn &9<NAME>"
+        listTurretSpawns: "&e/gg &aworld&e listturretspawns &9<NAME>"
+        tpTurretSpawn: "&e/gg &aworld&e tpturretspawn &9<NAME> &1<SPAWN_ID>"
+        setTurretSpawn: "&e/gg &aworld&e setturretspawn &9<NAME> &1<SPAWN_ID>"
+        resetTurretSpawns: "&e/gg &aworld&e resetturretspawns &9<NAME>"
+        deleteTurretSpawn: "&e/gg &aworld&e deleteTurretSpawn &9<NAME> &1<SPAWN_ID>"
+        addBuilder: "&e/gg &aworld&e addBuilder &9<NAME> &l<BUILDER_NAME>"
+        removeBuilder: "&e/gg &aworld&e remBuilder &9<NAME> &l<BUILDER_NAME>"
+        resetBuilders: "&e/gg &aworld&e resetBuilders &9<NAME>"
+        listBuilders: "&e/gg &aworld&e listBuilders &9<NAME>"
+        addResourcepack: "&e/gg &aworld&e addResourcepack &9<DIRECT_LINK_TO_FILE>"
+      Items:
+        Give: "&e/gg &aitems&e give &1<ITEM_NAME>"
+  Commands:
+    Help:
+      - "&cSpieler Befehle:"
+      - "&a - &e/gg list: &aZeigt alle Arenen an"
+      - "&a - &e/gg join <ARENA_NAME>: &aZum betreten einer Arena"
+      - "&a - &e/gg leave: &aZum verlassen einer Arena"
+      - "&a - &e/gg info: &aZeigt Information \u00fcber das Plugin"
+      - " "
+    HelpAdmin:
+      - "&cAdmin Befehle:"
+      - "&a - &e/gg world: &aZeigt die Hilfeseite der Arenen Welten Befehle an"
+      - "&a - &e/gg arena: &aZeigt die Hilfeseite der Arenen Befehle an"
+      - "&a - &e/gg items: &aZeigt die Hilfeseite der Item Befehle an"
+      - " "
+    ItemList:
+      - "&cItems:"
+    ItemsHelp:
+      - "&cItem Befehle:"
+      - "&a - &e/gg items list: &aZeigt alle Items" 
+      - "&a - &e/gg items give <ITEM>: &aGibt dir ein Item"
+      - "&a - &e/gg items help: &aZeigt diese Seite an"
+    HelpArena:
+      - "&cArena Befehle:"
+      - "&a - &e/gg arena help: &a Zeigt diese Seite an"
+      - "&a - &e/gg arena list: &aZeigt alle Arenen an"
+      - "&a - &e/gg arena add: &aZum erstellen einer Arena"
+      - "&a - &e/gg arena enable: &aAktiviert/Deaktiviert eine Arena"
+      - "&a - &e/gg arena setlobby: &a setzt die Lobby einer Arena"
+    HelpWorld:
+      - "&cArenawelt Befehle:"
+      - "&a - &e/gg world help: &a Zeigt diese Seite an"
+      - "&a - &e/gg world add: &aZum erstellen einer Arenawelt"
+      - "&a - &e/gg world set: &aZum setzen der Welt"
+      - "&a - &e/gg world save: &aZum erstellen der Kopie der Minecraft Karte"
+      - "&a - &e/gg world addspawn: &aZum erstellen eines Spawnpunktes"
+      - "&a - &e/gg world addresourcepack: &aZum setzen des Resourcepacks"
+      - "&a - &e/gg world listspawns: &aZeigt alle Spawnpunkte an"
+      - "&a - &e/gg world tpspawn: &aTeleportieren zu einem Spawnpunkt"
+      - "&a - &e/gg world setspawn: &aZum aendern eines Spawnpunktes"
+      - "&a - &e/gg world resetspawns: &aZum zur\u00fccksetzen aller Spawnpunkte"
+      - "&a - &e/gg world deletespawn: &aZum l\u00f6schen eines Spawnpunktes"
+      - "&a - &e/gg world addbuilder: &aZum hinzuf\u00fcgen eines Erbauers der Karte"
+      - "&a - &e/gg world rembuilder: &aZum entfernen eines Erbauers der Karte"
+      - "&a - &e/gg world resetbuilders: &aZum zur\u00fccksetzen der Erbauerliste"
+      - "&a - &e/gg world listbuilders: &aZeigt alle Erbauer der Karte"
+      - "&a - &eF\u00fcr Panzer und Turret Spawns: Selbe Nutzung wie bei normalen Spawns!"
+    World:
+      worldSet: "&eDie Welt der Arenenwelt &c%arenaworld%&e ist nun: &a"
+      savedWorld: "&eEs wurde erfolgreich ein Backup der Arenenwelt &c%arenaworld%&e erstellt!"
+      added: "&eDie Arenenwelt &c%arenaworld%&e wurde erfolgreich erstellt!"
+      list:
+      addedSpawn: "&eDer Arenenwelt &c%arenaworld%&e wurde ein Spawn bei &d%location% &ehinzugef\u00fcgt!"
+      spawnSet: "&eDer Spawn &a#%index%&e wurde auf &d%location%&e gesetzt!"
+      deletedSpawn: "&eDer Spawn &a#%index%&e wurde entfernt!"
+      tpToSpawn: "&eDu wurdest zu Spawn &a#%index%&e bei &d%location%&e teleportiert!"
+      resetedSpawns: "&eDie Spawns der Arenenwelt &c%arenaworld%&e wurden gel\u00f6scht!"
+      addedTankSpawn: "&eDer Arenenwelt &c%arenaworld%&e wurde ein PanzerSpawn bei &d%location% &ehinzugef\u00fcgt!"
+      tankSpawnSet: "&eDer PanzerSpawn &a#%index%&e wurde auf &d%location%&e gesetzt!"
+      deletedTankSpawn: "&ePanzerspawn &a#%index%&e wurde entfernt!"
+      tpToTankSpawn: "&eDu wurdest zu PanzerSpawn &a#%index%&e bei &d%location%&e teleportiert!"
+      resetedTankSpawns: "&eAlle PanzerSpawns von &c%arenaworld%&e wurden gel\u00f6scht!"
+      addedTurretSpawn: "&eDer Arenenwelt &c%arenaworld%&e wurde ein TurretSpawn bei &d%location% &ehinzugef\u00fcgt!"
+      turretSpawnSet: "&eDer TurretSpawn &a#%index%&e wurde auf &d%location%&e gesetzt!"
+      deletedTurretSpawn: "&eTurretSpawn &a#%index%&e wurde entfernt!"
+      tpToTurretSpawn: "&eDu wurdest zu TurretSpawn &a#%index%&e bei &d%location%&e teleportiert!"
+      resetedTurretSpawns: "&eAlle TurretSpawns von &c%arenaworld%&e wurden gel\u00f6scht!"
+      addedBuilder: "&eBuilder wurde der Arenenwelt &c%arenaworld%&e hinzugef\u00fcgt!"
+      removedBuilder: "&eBuilder wurde von Arenenwelt &c%arenaworld%&e entfernt!"
+      resettedBuilders: "&eBuilder von Arenenwelt &c%arenaworld%&e zur\u00fcckgesetzt!"
+      setResourcepack: "&eResourcenpaket von Arenenwelt &c%arenaworld%&e wurde gesetzt!"
+    Arena:
+      added: "&eDie Arena &c%arena%&e wurde erfolgreich erstellt! Minimale Spieler: &a%MINP%&e, Maximale Spieler: &a%MAXP%&e!"
+      lobbyset: "&eDie Lobby der Arena &c%arena%&e wurde auf &d%location%&e gesetzt!"
+      enabled: "&eDie Arena &c%arena%&e wurde &aaktiviert&e!"
+      disabled: "&eDie Arena &c%arena%&e wurde &4deaktiviert&e!"     
+      list:
+    GunEngine:
+      Help:
+        All:
+          - "&c[GunEngine] Befehle:"
+          - "&a - &e/ge &chelp&e: Zeigt diese Hilfeseite"
+          - "&a - &e/ge &clist: &eZeigt alle Waffen"
+          - "&a - &e/ge &clist guns&e: Zeigt alle Schusswaffen"
+          - "&a - &e/ge &clist ammo&e: Zeigt alle Munitionen"
+          - "&a - &e/ge &clist grenades&e: Zeigt alle Granaten"
+          - "&a - &e/ge &clist turrets&e: Zeigt alle Gesch\u00fctze"
+          - "&a - &e/ge &clist airstrikes&e: Zeigt alle Airstrikes"
+          - "&a - &e/ge &clist landmines&e: Zeigt alle Landminen"
+          - "&a - &e/ge &clist tanks&e: Zeigt alle Panzer"
+        Player:
+          - "&c[GunEngine] Befehle:"
+          - "&a - &e/ge &chelp&e: Zeigt diese Hilfeseite"
+          - "&a - &e/ge &clist: &eZeigt alle Waffen"
+          - "&a - &e/ge &clist guns&e: Zeigt alle Schusswaffen"
+          - "&a - &e/ge &clist ammo&e: Zeigt alle Munitionen"
+          - "&a - &e/ge &clist grenades&e: Zeigt alle Granaten"
+          - "&a - &e/ge &clist turrets&e: Zeigt alle Gesch\u00fctze"
+          - "&a - &e/ge &clist airstrikes&e: Zeigt alle Airstrikes"
+          - "&a - &e/ge &clist landmines&e: Zeigt alle Landminen"
+          - "&a - &e/ge &clist tanks&e: Zeigt alle Panzer"
+          - "&a - &e/ge &cmenu&e: \u00d6ffnet den Waffenladen &cNUR FUER SPIELER!"
+      List:
+        Heading: "&c[GunEngine] Waffen:"
+        Guns: "&c > Schusswaffen:"
+        Grenades: "&c > Granaten:"
+        Ammo: "&c > Munition:"
+        Landmines: "&c > Landminen:"
+        Airstrikes: "&c > Airstrikes:"
+        Turrets: "&c > Gesch\u00fctze"
+        Tanks: "&c > Panzer"
+      Visuals:
+        OutOfAmmo: "&cOut Of Ammo!"
+        MissingAmmo: "&cMunition %ammo% ist nicht vorhanden!"
+        MissingGrenades: "&cGranaten sind nicht vorhanden!"
+        Reloading: "&4Lade nach..."
+        RemainingShots: "&eAmmo:   %shots%"
+        TurretStatus: "&eAmmo:   %shots%     &eTemperatur:    %heat%"
+        TankStatus: "&eAmmo:    %shots%    &eHP:    %hp%        %speed%"
+        WeaponLore:
+          Gun:
+            - "&eName: &a%name%"
+            - "&eWaffentyp: &a%type%"
+            - "&eSchaden: &a%damage%"
+            - "&eMagazin: &a%magazine%"
+            - "&eSpray: &a%spray%"
+            - "&eMunition: &a%ammo%"
+            - "&eProjektilanzahl: &a%shotcount%"
+            - "&aWert: &a%worth%"
+          Grenade:
+            - "&eName: &a%name%"
+            - "&eGranatentyp: &a%type%"
+            - "&eExplosionsradius: &a%radius%"
+            - "&eSchaden: &a%damage%"
+            - "&aWert: &a%worth%"
+          Ammo:
+            - "&eName: &a%name%"
+            - "&eSch\u00fcsse pro Item: &a%shotsperitem%"
+            - "&aWert: &a%worth%"
+          Landmine:
+            - "&eName: &a%name%"
+            - "&eMinentyp: &a%type%"
+            - "&eExplosionsradius: &a%radius%"
+            - "&eSchaden: &a%damage%"
+            - "&aWert: &a%worth%"
+          Airstrike:
+            - "&eName: &a%name%"
+            - "&eBombenanzahl: &a%bomblets%"
+            - "&eRadius: &a%radius%"
+            - "&eSchaden: &a%damage%"
+            - "&aWert: &a%worth%"
+          Turret:
+            - "&eName: &a%name%"
+            - "&eProjektiltyp: &a%type%"
+            - "&eSchaden: &a%damage%"
+            - "&eMagazin: &a%magazine%"
+            - "&eSpray: &a%spray%"
+            - "&eMunition: &a%ammo%"
+            - "&eHP: &a%health%"
+            - "&aWert: &a%worth%"
+          Tank:
+            - "&eName: &a%name%"
+            - "&eSchaden: &a%damage%"
+            - "&eHP: &a%health%"
+            - "&aWert: &a%worth%"
+  Info:
+    arenaValid: "&aDie Arena %arena% ist g\u00fcltig und spielbar!"
+    starting: "&e%arena%: &aStart in: &c%timer%&a Sekunden!"
+    endOfVotePhase: "&cDie Votingphase der Arena &a%arena%&c ist zu Ende!"
+    preparingPhase: "&cDie Schutzphase endet in &4%timer%&c Sekunden!"
+    votedMap: "&cDie Karte ist: &e%arenaworld%&c!"
+    startingGame: "&cDie Arena %arena% startet jetzt! Map: &c%arenaworld%"
+    joined: "&aDu bist der Arena &e%arena%&a beigetreten!"
+    playerJoined: "&e%player%&a ist der Arena beigetreten!"
+    playerLeft: "&e%player%&a hat die Arena verlassen!"
+    leftArena: "&aDu hast die Arena &e%arena%&a verlassen!"
+    setGlobalLobby: "&aDie Globale Lobby wurde auf &d%location%&a gesetzt!"
+    countingDown: "&c%timer% &eSekunden verbleibend..."
+    killMessage: "&eDu hast &c%victim%&e get\u00d6tet! &aKills: &c%kills%&a, Killstreak: &c%killstreak%"
+    deathMessage: "&eDu wurdest von &c%killer%&a get\u00d6tet!"
+    victoryMessage:
+      - ""
+      - "&aDie Runde ist zu Ende!"
+      - ""
+      - "&cGewinner: &e%victor% &c!"
+      - "&cDein Platz: &e%place%&c, Kills: &e%kills%"
+      - ""
+      - "&aVielen Dank f\u00fcrs spielen!"
+      - ""
+      - ""
+  Game:
+    Prefix: "&c[GunGame] "
+    Error: "&c[&4FEHLER&c] "
+    Mode:
+      ALL_VS_ALL: "Alle gegen Alle"
+      TEAM_DEATHMATCH: "Team Deathmatch"
+      LAST_MAN_STANDING: "Battle Royal"
+  GUI:
+    VoteMenu: "&cSpielbare Maps"
+    RadarMenu: "&cVerf\u00fcgbare Ziele"
+    Scoreboard:
+      Title: "&cO----&4GunGame&c----O"
+      Arena:  "&eArena: &c%arena%"
+      Map: "&eKarte: &c%map%"
+      Mode: "&eSpielmodus: &c%mode%"
+      Players: "&eSpieler: &c%currentPlayers%/%minPlayers%/%maxPlayers%"
+    GameConfigurator:
+      Title: "&4<<<&cEinstellungen&4>>>"
+      Contents:
+        ExplosionsBreakBlocks:
+          Item: TNT
+          Name: "&eExplosionsblockschaden"
+        FireSpread:
+          Item: FIRE_CHARGE
+          Name: "&eFeuerblockschaden"
+        ProtectWaterBodies:
+          Item: WATER_BUCKET
+          Name: "&eWassernahe Bl\u00d6cke unzerst\u00d6rbar"
+        RegenerateHealth:
+          Item: GOLDEN_APPLE
+          Name: "&eGesundheit regenerieren"
+        PhysicsEnabled:
+          Item: ANVIL
+          Name: "&ePhysicsEngine"
+    GameModeSelector:
+      Title: "&4<<<&cSpielmodus&4>>>"
+      Contents:
+        ALL_VS_ALL:
+          Item: STONE_SWORD
+          Damage: 0
+          Name: "&a<All vs All>"
+        LAST_MAN_STANDING:
+          Item: CRAFTING_TABLE
+          Damage: 0
+          Name: "&e<Last Man Standing>"
+        TEAM_DEATHMATCH:
+          Item: SHIELD
+          Damage: 0
+          Name: "&c<Team Deathmatch>"
+    TeamSelector:
+      Name: "&4<<<&cTeam Auswahl&4>>>"
+      TeamIcon:
+        Membercount: "&eSpieler: &a%count%"
+        RandomTeam:
+          Item: COMMAND_BLOCK
+          Damage: 0
+          Name: "&4<&eZufall&4>"
+      Colors:
+        WHITE: "weiß"
+        BLACK: "schwarz"
+        YELLOW: "gelb"
+        GREEN: "gr\u00fcn"
+        RED: "rot"
+        BLUE: "blau"
+        CYAN: "t\u00fcrkis"
+        GRAY: "grau"
+        LIGHT_BLUE: "hellblau"
+        LIGHT_GRAY: "hellgrau"
+        LIME: "hellgr\u00fcn"
+        MAGENTA: "magenta"
+        ORANGE: "orange"
+        PINK: "pink"
+        PURPLE: "lila"
+    JoinGUI:
+      ArenaIcon:
+        Name: "&a%name%"
+        Status: "&eStatus: &c%state%"
+        Players: "&eSpieler: &4%currentPlayers%&c/%maxPlayers%"
+        Map: "&eKarte: &c%map%"
+      Menu:
+        Name: "&eJoin Menü"
+        QuickJoin: "&cQuick join"
+        RandomJoin: "&cRandom Game"
+        All: "&cStandard"
+    GunEngine:
+      GriefSettingsGUI:
+        Title: "&cGunEngine - Griefing"
+        Icons:
+          Explosions:
+            Item: TNT
+            Title: "&eExplosionsblockschaden"
+          Physics:
+            Item: ANVIL
+            Title: "&ePhysik-Engine"
+          BreakGlass:
+            Item: GLASS
+            Title: "&eProjektile brechen Glas"
+          IgniteTNT:
+            Item: FLINT_AND_STEEL
+            Title: "&eProjektile zünden TNT"
+          ProtectWaterBodies:
+            Item: WATER_BUCKET
+            Title: "&eWassernahe Bl\u00d6cke unzerst\u00d6rbar"           
+      SelectionMenu: "&eW\u00e4hle die Kategorie"
+      GunMenu: "&cO--&4Waffen&c--O"
+      GrenadeMenu: "&cO--&4Granaten&c--O"
+      AmmoMenu: "&cO--&4Munition&c--O"
+      AirstrikeMenu: "&cO--&4Luftschl\u00e4ge&c--O"
+      LandmineMenu: "&cO--&4Landminen&c--O"
+      ChangePage: "&eSeite wechseln"
+      ItemsMenu:
+        Grenade:
+          Item: FIREWORK_STAR
+          Name: "&c-&4Granaten&c-"
+          Lore: ""
+        Gun:
+          Item: BOW
+          Name: "&c-&4Waffen&c-"
+          Lore: ""
+        Ammo: 
+          Item: WHEAT_SEEDS
+          Name: "&c-&4Munition&c-"
+          Lore: ""
+        Airstrikes:
+          Item: REDSTONE_TORCH
+          Name: "&c-&4Airstrikes&c-"
+          Lore: ""
+        Landmine:
+          Item: HEAVY_WEIGHTED_PRESSURE_PLATE
+          Name: "&c-&4Landminen&c-"
+          Lore: ""
+      Shop:
+        Messages:
+          ShoppingSuccessful: "&aEinkauf erfolgreich! &cKosten: &l%cost% &r&cItem: &l%item% %count%"
+          NotEnoughMoney: "&cDir fehlt %missingmoney% Geld"
+          InventoryFull: "&cDein Inventar ist voll!"
+          NotBuyable: "&cDieses Item steht nicht zum Verkauf!"
+          NoPermission: "&cDiese Waffe kannst du nicht verwenden!"
+        NavItems:
+          BackItem:
+            Item: ARROW
+            Damage: 0
+            Name: "&cZurück"
+            Lore: ""
+          ChangePageItem:
+            Item: STRUCTURE_VOID
+            Damage: 0
+            Name: "&eSeite wechseln"
+            Lore:
+            - "&cRechtsklick: &aZurück"
+            - "&cLinksklick: &aWeiter"
+        GunMenu: "&cO--&4Waffen&c--O"
+        GrenadeMenu: "&cO--&4Granaten&c--O"
+        AmmoMenu: "&cO--&4Munition&c--O"
+        AirstrikeMenu: "&cO--&4Luftschl\u00e4ge&c--O"
+        LandmineMenu: "&cO--&4Landminen&c--O"
+        TurretMenu: "&cO--&4Gesch\u00fctze&c--O"
+        MiscItemsMenu: "&cO--&4Diverses&c--O"
+        TankMenu: "&cO--&4Panzer&c--O"
+        ChangePage: "&eSeite wechseln"
+        MiscItemsPrice: "&aWert: &a%worth%"
+        MainMenu:
+          Title: "&c-&4Shop&c-"
+          Icons:
+            Grenade:
+              Item: FIREWORK_STAR
+              Damage: 0
+              Name: "&c-&4Granaten&c-"
+              Lore: ""
+            Gun:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Waffen&c-"
+              Lore: ""
+            Ammo: 
+              Item: WHEAT_SEEDS
+              Damage: 0
+              Name: "&c-&4Munition&c-"
+              Lore: ""
+            MiscItems: 
+              Item: CRAFTING_TABLE
+              Damage: 0
+              Name: "&c-&4Diverses&c-"
+              Lore: ""
+            Airstrike:
+              Item: REDSTONE_TORCH
+              Damage: 0
+              Name: "&c-&4Airstrikes&c-"
+              Lore: ""
+            Landmine:
+              Item: HEAVY_WEIGHTED_PRESSURE_PLATE
+              Damage: 0
+              Name: "&c-&4Landminen&c-"
+              Lore: ""
+            Turret:
+              Item: BREWING_STAND
+              Damage: 0
+              Name: "&c-&4Gesch\u00fctze&c-"
+              Lore: ""
+            Tank:
+              Item: MINECART
+              Damage: 0
+              Name: "&c-&4Panzer&c-"
+              Lore: ""
+        GunMenuInv:
+          Icons:
+            Standard:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Standardwaffen&c-"
+              Lore: ""
+            Assault:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Automatikwaffen&c-"
+              Lore: ""
+            AssaultPlasma:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Automatik-Laserwaffen&c-"
+              Lore: ""
+            Minigun:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Miniguns&c-"
+              Lore: ""
+            MinigunPlasma:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Laser-Miniguns&c-"
+              Lore: ""
+            Plasma:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Laserwaffen&c-"
+              Lore: ""
+            Rocketlauncher:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Raketenwerfer&c-"
+              Lore: ""
+            Grenadethrower:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Granatenwerfer&c-"
+              Lore: ""
+  State:
+  Items:
+    LobbyItems:
+      LeaveItem:
+        Name: "&cSpiel verlassen"
+        ConfirmQuit: "&cBitte best\u00e4tige mit einem weiteren Klick, dass du die Arena %arena% verlassen willst, du hast &e%timer% Sekunden&c Zeit"
+      VotePaper:
+        Name: "&eStimmzettel"
+      StatItem:
+        Name: "&eStatistik"
+      InfoItem:
+        Name: "&eInfo"
+    Crowbar:
+      Name: "&eBrecheisen"
+      Lore:
+        - "&9Kann diese Dinge aufbrechen: "
+        - "  &9- Eisent\u00fcr"
+        - "  &9- Eisenfallt\u00fcr"
+        - "&9Zum aufbrechen: &1Rechtsklick&9 auf die T\u00fcr"
+    Radar:
+      Name: "&eRadar"
+      Lore:
+        - "&9Trackt Spieler"
+        - "&9Rechtsklick um den Spieler auszuw\u00e4hlen"
+        - "&9Linksklick um den Spieler erneut zu erfassen"
+      NowTracking: "&c[Radar] &eNeues Ziel: "
+    Trackpad:
+      Name: "&eTrackpad"
+      Lore:
+        - "&9Radarbild, auf welchem die Umgebung abgebildet ist"
+        - "&9Zeigt alle Spieler in einem Radius von 64 Metern"
+        - "&9Rechtsklick, um zu aktualisieren"
+      Charges: "&cLadungen übrig: &e%charges%"
+    C4:
+      Name: "&7C4"
+      Lore:
+        - "&9Rechtsklick zum werfen"
+      Remote:
+        Name: "&eC4 Fernz\u00fcnder"
+        Lore:
+          - "&9Rechtsklick l\u00f6st alle platzierten Bomben aus"
+    SuicideVest:
+      Vest:
+        Name: "&cBombenweste"
+        Lore:
+          - "&9Jage dich und deine Umgebung in die Luft!"
+          - "&9Zum z\u00fcnden: Z\u00fcnder mit Rechtsklick bet\u00e4tigen"
+      Remote:
+        Name: "&eZ\u00fcnder"
+        Lore:
+          - "&9Z\u00fcndet die Bombenweste"
+          - "&9Rechtsklick zum ausl\u00f6sen"
+    FlareGun:
+      Name: "&cLeuchtpistole"
+      Lore: 
+        - "&eFeuert einen Schuss ab"
+        - "&eDer getroffene Spieler ist f\u00fcr %timer% Sekunden"
+        - "&eF\u00fcr alle Spieler sichtbar"
+    GameConfigurator:
+      Name: "&cEinstellungen"
+      Lore:
+        - "&eErlaubt das einstellen von diversen Dingen"

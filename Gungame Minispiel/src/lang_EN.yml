@@ -1,0 +1,548 @@
+lang:
+  Errors:
+    notEnoughPlayers: "&cSorry, but there aren't enough players to start the game! It needs at least &e%minp% &cplayers to start!"
+    arenaIsFull: "&cSorry, but %arena% is already full!"
+    arenaDoesNotExist: "&cSorry, %arena% doesn't exist!"
+    worldDoesNotExist: "&cSorry, %arenaworld% doesn't exist!"
+    noPermission: "&cYou don't have the permission to do that!"
+    arenaInvalid: "&cSorry, but %arena% is not valid or disabled!"
+    arenaNameInUse: "&cSorry, but the name %arena% is already given. Please choose another one!"
+    arenaNotEnabled: "&cSorry, but %arena% is not available at the moment!"
+    noSuchArenaName: "&cSorry, but %arena% doesn't exist! Available arenas: /gg list"
+    arenaInProgress: "&cSorry, but %arena% is already running!"
+    notInArena: "&cYou have to be in an arena to do that!"
+    cmdNotAllowedInArena: "&cThe command &e%command% &ccan't be executed inside an arena!"
+  Help:
+    Commands:
+      Join: "&e/gg join a<ARENA_NAME>"
+      Arena:
+        addArena: "&e/gg &carena&e add &a<NAME> &9<MIN_PLAYERS> <MAX_PLAYERS> &1<KILLS_TO_WIN>"
+        setLobby: "&e/gg &carena&e setlobby &a<NAME>"
+        enable: "&e/gg &carena&e enable &a<NAME> &4[true|false]"
+        disable: "&e/gg &carena&e enable &a<NAME> &4[true|false]"
+      World:
+        addWorld: "&e/gg &aworld&e add &9<NAME>"
+        setWorld: "&e/gg &aworld&e set &9<NAME> &1<WORLD_NAME>"
+        saveWorld: "&e/gg &aworld&e save &9<NAME>"
+        addSpawn: "&e/gg &aworld&e addspawn &9<NAME>"
+        listSpawns: "&e/gg &aworld&e listspawns &9<NAME>"
+        tpSpawn: "&e/gg &aworld&e tpspawn &9<NAME> &1<SPAWN_ID>"
+        setSpawn: "&e/gg &aworld&e setspawn &9<NAME> &1<SPAWN_ID>"
+        resetSpawns: "&e/gg &aworld&e resetspawns &9<NAME>"
+        deleteSpawn: "&e/gg &aworld&e deleteSpawn &9<NAME> &1<SPAWN_ID>"
+        addTankSpawn: "&e/gg &aworld&e addtankspawn &9<NAME>"
+        listTankSpawns: "&e/gg &aworld&e listtankspawns &9<NAME>"
+        tpTankSpawn: "&e/gg &aworld&e tptankspawn &9<NAME> &1<SPAWN_ID>"
+        setTankSpawn: "&e/gg &aworld&e settankspawn &9<NAME> &1<SPAWN_ID>"
+        resetTankSpawns: "&e/gg &aworld&e resettankspawns &9<NAME>"
+        deleteTankSpawn: "&e/gg &aworld&e deleteTankSpawn &9<NAME> &1<SPAWN_ID>"
+        addTurretSpawn: "&e/gg &aworld&e addturretspawn &9<NAME>"
+        listTurretSpawns: "&e/gg &aworld&e listturretspawns &9<NAME>"
+        tpTurretSpawn: "&e/gg &aworld&e tpturretspawn &9<NAME> &1<SPAWN_ID>"
+        setTurretSpawn: "&e/gg &aworld&e setturretspawn &9<NAME> &1<SPAWN_ID>"
+        resetTurretSpawns: "&e/gg &aworld&e resetturretspawns &9<NAME>"
+        deleteTurretSpawn: "&e/gg &aworld&e deleteTurretSpawn &9<NAME> &1<SPAWN_ID>"
+        addBuilder: "&e/gg &aworld&e addBuilder &9<NAME> &l<BUILDER_NAME>"
+        removeBuilder: "&e/gg &aworld&e remBuilder &9<NAME> &l<BUILDER_NAME>"
+        resetBuilders: "&e/gg &aworld&e resetBuilders &9<NAME>"
+        listBuilders: "&e/gg &aworld&e listBuilders &9<NAME>"
+        addResourcepack: "&e/gg &aworld&e addResourcepack &9<DIRECT_LINK_TO_FILE>"
+      Items:
+        Give: "&e/gg &aitems&e give &1<ITEM_NAME>"
+  Commands:
+    Help:
+      - "&cSpieler Commands:"
+      - "&a - &e/gg list: &aShows all available arenas"
+      - "&a - &e/gg join <ARENA_NAME>: &aTo Join an arena"
+      - "&a - &e/gg leave OR leave: &aTo leave the game"
+      - "&a - &e/gg info: &aShows information about the plugin"
+      - " "
+    HelpAdmin:
+      - "&cAdmin Commands:"
+      - "&a - &e/gg world: &aShows the arena world help page"
+      - "&a - &e/gg arena: &aShows the arena help page"
+      - "&a - &e/gg items: &aShows the item help page"
+      - " "
+    ItemList:
+      - "&cItems:"
+    ItemsHelp:
+      - "&cItem Commands:"
+      - "&a - &e/gg items list: &aShows all Items" 
+      - "&a - &e/gg items give <ITEM>: &aGives you the item"
+      - "&a - &e/gg items help: &aShows this page"
+    HelpArena:
+      - "&cArena Commands:"
+      - "&a - &e/gg arena help: &aShows this page"
+      - "&a - &e/gg arena list: &aShows all arenas"
+      - "&a - &e/gg arena add: &aCreates an arena"
+      - "&a - &e/gg arena enable: &aEnables/Disables an arena"
+      - "&a - &e/gg arena setlobby: &asets the lobby location of an arena"
+    HelpWorld:
+      - "&cArenawelt Commands:"
+      - "&a - &e/gg world help: &aShows this page"
+      - "&a - &e/gg world add: &aCreates an arena world"
+      - "&a - &e/gg world set: &aSets the world"
+      - "&a - &e/gg world save: &aTo create the initial copy of the world the plugin will use ingame"
+      - "&a - &e/gg world addspawn: &aCreates an spawnpoint"
+      - "&a - &e/gg world addresourcepack: &aSets the resourcepack"
+      - "&a - &e/gg world listspawns: &aShows all spawnpoints"
+      - "&a - &e/gg world tpspawn: &aTeleports to an spawnpoint"
+      - "&a - &e/gg world setspawn: &aChanges an spawnpoint"
+      - "&a - &e/gg world resetspawns: &aResets all spawnpoints"
+      - "&a - &e/gg world deletespawn: &aRemoves an spawnpoint"
+      - "&a - &e/gg world addbuilder: &aTo add an builder"
+      - "&a - &e/gg world rembuilder: &aTo remove a builder"
+      - "&a - &e/gg world resetbuilders: &aResets the builder list"
+      - "&a - &e/gg world listbuilders: &aShows the builders of the map"
+      - "&a - &eFor tank and turret spawns: same usage as the spawn commands!"
+    World:
+      worldSet: "&eChanged the world of &c%arenaworld%&e to: &a"
+      savedWorld: "&eInitial save of &c%arenaworld%&e was created successfully!"
+      added: "&eThe arenaworld &c%arenaworld%&e was created successfully!"
+      list:
+      addedSpawn: "&eAdded a spawnpoint to: &c%arenaworld%&e at: &d%location%!"
+      spawnSet: "&espawnpoint &a#%index%'s&e location was updated to &d%location%&e!"
+      deletedSpawn: "&eSpawnpoint &a#%index%&e was removed!"
+      tpToSpawn: "&eYou were teleported to spawnpoint: &a#%index%&e at: &d%location%&e!"
+      resetedSpawns: "&eAll spawnpoints of &c%arenaworld%&e were removed!"
+      addedTankSpawn: "&eAdded a tankspawnpoint to: &c%arenaworld%&e at: &d%location%!"
+      tankSpawnSet: "&etankspawnpoint &a#%index%'s&e location was updated to &d%location%&e!"
+      deletedTankSpawn: "&eTankSpawnpoint &a#%index%&e was removed!"
+      tpToTankSpawn: "&eYou were teleported to tankspawnpoint: &a#%index%&e at: &d%location%&e!"
+      resetedTankSpawns: "&eAll tankspawnpoints of &c%arenaworld%&e were removed!"
+      addedTurretSpawn: "&eAdded a turretspawnpoint to: &c%arenaworld%&e at: &d%location%!"
+      turretSpawnSet: "&eturretspawnpoint &a#%index%'s&e location was updated to &d%location%&e!"
+      deletedTurretSpawn: "&eTurretSpawnpoint &a#%index%&e was removed!"
+      tpToTurretSpawn: "&eYou were teleported to turretspawnpoint: &a#%index%&e at: &d%location%&e!"
+      resetedTurretSpawns: "&eAll turretspawnpoints of &c%arenaworld%&e were removed!"
+      addedBuilder: "&eAdded builder to &c%arenaworld%&e !"
+      removedBuilder: "&eRemoved builder of &c%arenaworld%&e!"
+      resettedBuilders: "&eRemoved all builders of &c%arenaworld%&e!"
+      setResourcepack: "&eResourcepack of &c%arenaworld%&e was set!"
+    Arena:
+      added: "&eCreated arena &c%arena%&e successfully!"
+      lobbyset: "&eLobby of &c%arena%&e was set to &d%location%&e!"
+      enabled: "&eArena &c%arena%&e was &aenabled&e!"
+      disabled: "&eArena &c%arena%&e was &4disabled&e!"     
+      list:
+    GunEngine:
+      Help:
+        All:
+          - "&c[GunEngine] Commands:"
+          - "&a - &e/ge &chelp&e: Shows this page"
+          - "&a - &e/ge &clist&e: Shows all weapons"
+          - "&a - &e/ge &clist guns&e: Shows all guns"
+          - "&a - &e/ge &clist ammo&e: Shows all ammunition"
+          - "&a - &e/ge &clist grenades&e: Shows all grenades"
+          - "&a - &e/ge &clist turrets&e: Shows all turrets"
+          - "&a - &e/ge &clist airstrikes&e: Shows all airstrikes"
+          - "&a - &e/ge &clist landmines&e: Shows all landmines"
+          - "&a - &e/ge &clist tanks&e: Shows all tanks"
+        Player:
+          - "&c[GunEngine] Commands:"
+          - "&a - &e/ge &chelp&e: Shows this page"
+          - "&a - &e/ge &clist&e: Shows all weapons"
+          - "&a - &e/ge &clist guns&e: Shows all guns"
+          - "&a - &e/ge &clist ammo&e: Shows all ammunition"
+          - "&a - &e/ge &clist grenades&e: Shows all grenades"
+          - "&a - &e/ge &clist turrets&e: Shows all turrets"
+          - "&a - &e/ge &clist airstrikes&e: Shows all airstrikes"
+          - "&a - &e/ge &clist landmines&e: Shows all landmines"
+          - "&a - &e/ge &clist tanks&e: Shows all tanks"
+          - "&a - &e/ge &cmenu&e: Opens the weapon menu &c!ONLY FOR PLAYERS!"
+      List:
+        Heading: "&c[GunEngine] Weapons:"
+        Guns: "&c > Guns:"
+        Grenades: "&c > Grenades:"
+        Ammo: "&c > Ammo:"
+        Landmines: "&c > Landmines:"
+        Airstrikes: "&c > Airstrikes:"
+        Turrets: "&c > Turrets"
+        Tanks: "&c > Tanks"
+      Visuals:
+        OutOfAmmo: "&cOut Of Ammo!"
+        MissingAmmo: "&cAmmo %ammo% is missing!"
+        MissingGrenades: "&cGrenades are missing!"
+        Reloading: "&4Reloading..."
+        RemainingShots: "&eAmmo:   %shots%"
+        TurretStatus: "&eAmmo:   %shots%     &eTemperature:    %heat%"
+        TankStatus: "&eAmmo:    %shots%    &eHP:    %hp%        %speed%"
+        WeaponLore:
+          Gun:
+            - "&eName: &a%name%"
+            - "&eType: &a%type%"
+            - "&eDamage: &a%damage%"
+            - "&eMagazine: &a%magazine%"
+            - "&eSpray: &a%spray%"
+            - "&eAmmo: &a%ammo%"
+            - "&eProjectilecount: &a%shotcount%"
+            - "&aWorth: &a%worth%"
+          Grenade:
+            - "&eName: &a%name%"
+            - "&eType: &a%type%"
+            - "&eExplosionradius: &a%radius%"
+            - "&eDamage: &a%damage%"
+            - "&aWorth: &a%worth%"
+          Ammo:
+            - "&eName: &a%name%"
+            - "&eShotcount: &a%shotsperitem%"
+            - "&aWorth: &a%worth%"
+          Landmine:
+            - "&eName: &a%name%"
+            - "&eType: &a%type%"
+            - "&eExplosionradius: &a%radius%"
+            - "&eDamage: &a%damage%"
+            - "&aWorth: &a%worth%"
+          Airstrike:
+            - "&eName: &a%name%"
+            - "&eBombcount: &a%bomblets%"
+            - "&eRadius: &a%radius%"
+            - "&eDamage: &a%damage%"
+            - "&aWorth: &a%worth%"
+          Turret:
+            - "&eName: &a%name%"
+            - "&eProjectiletype: &a%type%"
+            - "&eDamage: &a%damage%"
+            - "&eMagazine: &a%magazine%"
+            - "&eSpray: &a%spray%"
+            - "&eAmmo: &a%ammo%"
+            - "&eHP: &a%health%"
+            - "&aWorth: &a%worth%"
+          Tank:
+            - "&eName: &a%name%"
+            - "&eDamage: &a%damage%"
+            - "&eHP: &a%health%"
+            - "&aWorth: &a%worth%"
+  Info:
+    arenaValid: "&aArena %arena% is g\u00fcltig and ready to play!"
+    starting: "&aStarting in: &c%timer%&a seconds!"
+    endOfVotePhase: "&cVotingphase of has ended!"
+    preparingPhase: "&cProtectionphase ends in &4%timer%&c seconds!"
+    votedMap: "&cMap is: &e%arenaworld%&c!"
+    startingGame: "&cArena %arena% starts now! Map: &c%arenaworld%"
+    joined: "&aYou joined arena &e%arena%&a!"
+    playerJoined: "&e%player%&a joined the arena!"
+    playerLeft: "&e%player%&a left the arena!"
+    leftArena: "&aYou left arena &e%arena%&a!"
+    setGlobalLobby: "&aGlobal lobby was set to &d%location%&a!"
+    countingDown: "&c%timer% &eseconds remaining..."
+    killMessage: "&eYou killed &c%victim%&e! &aCurrent kills: &c%kills%&a, Killstreak: &c%killstreak%"
+    deathMessage: "&eYou were killed by &c%killer%"
+    victoryMessage:
+      - ""
+      - "&aRound is over!"
+      - ""
+      - "&cWinner: &e%victor% &c!"
+      - "&cYour place: &e%place%&c, Kills: &e%kills%"
+      - ""
+      - "&aThank you for playing!"
+      - ""
+      - ""
+  Game:
+    Prefix: "&c[GunGame] "
+    Error: "&c[&4ERROR&c] "
+    Mode:
+      ALL_VS_ALL: "All vs All"
+      TEAM_DEATHMATCH: "Team Deathmatch"
+      LAST_MAN_STANDING: "Battle Royal"
+  GUI:
+    VoteMenu: "&cAvailable Maps"
+    RadarMenu: "&cAvailable Targets"
+    Scoreboard:
+      Title: "&cO----&4GunGame&c----O"
+      Arena:  "&eArena: &c%arena%"
+      Map: "&eMap: &c%map%"
+      Mode: "&eGamemode: &c%mode%"
+      Players: "&ePlayers: &c%currentPlayers%/%minPlayers%/%maxPlayers%"
+    GameConfigurator:
+      Title: "&4<<<&cSettings&4>>>"
+      Contents:
+        ExplosionsBreakBlocks:
+          Item: TNT
+          Name: "&eExplosionblockdamage"
+        FireSpread:
+          Item: FIRE_CHARGE
+          Name: "&eFireblockdamage"
+        ProtectWaterBodies:
+          Item: WATER_BUCKET
+          Name: "&eProtect blocks next to water"
+        RegenerateHealth:
+          Item: GOLDEN_APPLE
+          Name: "&eHealth regeneration"
+        PhysicsEnabled:
+          Item: ANVIL
+          Name: "&ePhyisicsEngine"
+    GameModeSelector:
+      Title: "&4<<<&cGamemode&4>>>"
+      Contents:
+        ALL_VS_ALL:
+          Item: STONE_SWORD
+          Damage: 0
+          Name: "&a<All vs All>"
+        LAST_MAN_STANDING:
+          Item: CRAFTING_TABLE
+          Damage: 0
+          Name: "&e<Last Man Standing>"
+        TEAM_DEATHMATCH:
+          Item: SHIELD
+          Damage: 0
+          Name: "&c<Team Deathmatch>"
+    TeamSelector:
+      Name: "&4<<<&cChoose a team&4>>>"
+      TeamIcon:
+        Membercount: "&ePlayers: &a%count%"
+        RandomTeam:
+          Item: COMMAND_BLOCK
+          Damage: 0
+          Name: "&4<&eRandom team&4>"
+      Colors:
+        WHITE: "white"
+        BLACK: "black"
+        YELLOW: "yellow"
+        GREEN: "green"
+        RED: "red"
+        BLUE: "blue"
+        CYAN: "cyan"
+        GRAY: "gray"
+        LIGHT_BLUE: "light blue"
+        LIGHT_GRAY: "light gray"
+        LIME: "light green"
+        MAGENTA: "magenta"
+        ORANGE: "orange"
+        PINK: "pink"
+        PURPLE: "purple"
+    JoinGUI:
+      ArenaIcon:
+        Name: "&a%name%"
+        Status: "&eState: &c%state%"
+        Players: "&ePlayers: &4%currentPlayers%&c/%maxPlayers%"
+        Map: "&eMap: &c%map%"
+      Menu:
+        Name: "&eJoin Mene"
+        QuickJoin: "&cQuick join"
+        RandomJoin: "&cRandom Game"
+        All: "&cStandard"
+    GunEngine:
+      GriefSettingsGUI:
+        Title: "&cGunEngine - Griefing"
+        Icons:
+          Explosions:
+            Item: TNT
+            Title: "&eExplosionblockdamage"
+          Physics:
+            Item: ANVIL
+            Title: "&ePhysics-Engine"
+          BreakGlass:
+            Item: GLASS
+            Title: "&eProjectiles break Glass"
+          IgniteTNT:
+            Item: FLINT_AND_STEEL
+            Title: "&eProjectiles ignite TNT"
+          ProtectWaterBodies:
+            Item: WATER_BUCKET
+            Title: "&eProtect blocks next to water" 
+      SelectionMenu: "&eChoose the category"
+      GunMenu: "&cO--&4Guns&c--O"
+      GrenadeMenu: "&cO--&4Grenades&c--O"
+      AmmoMenu: "&cO--&4Ammo&c--O"
+      AirstrikeMenu: "&cO--&4Airstrikes&c--O"
+      LandmineMenu: "&cO--&4Landmines&c--O"
+      ChangePage: "&eChange page"
+      ItemsMenu:
+        Grenade:
+          Item: FIREWORK_STAR
+          Name: "&c-&4Grenades&c-"
+          Lore: ""
+        Gun:
+          Item: BOW
+          Name: "&c-&4Guns&c-"
+          Lore: ""
+        Ammo: 
+          Item: WHEAT_SEEDS
+          Name: "&c-&4Ammo&c-"
+          Lore: ""
+        Airstrikes:
+          Item: REDSTONE_TORCH
+          Name: "&c-&4Airstrikes&c-"
+          Lore: ""
+        Landmine:
+          Item: HEAVY_WEIGHTED_PRESSURE_PLATE
+          Name: "&c-&4Landmines&c-"
+          Lore: ""
+      Shop:
+        Messages:
+          ShoppingSuccessful: "&aPurchase successful! &cCosts: &l%cost% &r&cItem: &l%item% %count%"
+          NotEnoughMoney: "&cYou are missing %missingmoney% coins"
+          InventoryFull: "&cYour inventory is full!"
+          NotBuyable: "&cThis item is not available!"
+          NoPermission: "&cYou don't have the permission to use this weapon!"
+        NavItems:
+          BackItem:
+            Item: ARROW
+            Damage: 0
+            Name: "&cBack"
+            Lore: ""
+          ChangePageItem:
+            Item: STRUCTURE_VOID
+            Damage: 0
+            Name: "&eChange page"
+            Lore:
+            - "&cRightclick: &aPrevious"
+            - "&cLeftclick: &aNext"
+        GunMenu: "&cO--&4Guns&c--O"
+        GrenadeMenu: "&cO--&4Grenades&c--O"
+        AmmoMenu: "&cO--&4Ammo&c--O"
+        AirstrikeMenu: "&cO--&4Airstrikes&c--O"
+        LandmineMenu: "&cO--&4Landmines&c--O"
+        TurretMenu: "&cO--&4Turrest&c--O"
+        MiscItemsMenu: "&cO--&4Diverse&c--O"
+        TankMenu: "&cO--&4Tanks&c--O"
+        ChangePage: "&eChange page"
+        MiscItemsPrice: "&aWorth: &a%worth%"
+        MainMenu:
+          Title: "&c-&4Shop&c-"
+          Icons:
+            Grenade:
+              Item: FIREWORK_STAR
+              Damage: 0
+              Name: "&c-&4Grenades&c-"
+              Lore: ""
+            Gun:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Guns&c-"
+              Lore: ""
+            Ammo: 
+              Item: WHEAT_SEEDS
+              Damage: 0
+              Name: "&c-&4Ammo&c-"
+              Lore: ""
+            MiscItems: 
+              Item: CRAFTING_TABLE
+              Damage: 0
+              Name: "&c-&4Diverse&c-"
+              Lore: ""
+            Airstrike:
+              Item: REDSTONE_TORCH
+              Damage: 0
+              Name: "&c-&4Airstrikes&c-"
+              Lore: ""
+            Landmine:
+              Item: HEAVY_WEIGHTED_PRESSURE_PLATE
+              Damage: 0
+              Name: "&c-&4Landmines&c-"
+              Lore: ""
+            Turret:
+              Item: BREWING_STAND
+              Damage: 0
+              Name: "&c-&4Turrets&c-"
+              Lore: ""
+            Tank:
+              Item: MINECART
+              Damage: 0
+              Name: "&c-&4Tanks&c-"
+              Lore: ""
+        GunMenuInv:
+          Icons:
+            Standard:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Standardguns&c-"
+              Lore: ""
+            Assault:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Machine guns&c-"
+              Lore: ""
+            AssaultPlasma:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Automatic laserguns&c-"
+              Lore: ""
+            Minigun:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Miniguns&c-"
+              Lore: ""
+            MinigunPlasma:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Laser-Miniguns&c-"
+              Lore: ""
+            Plasma:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Laserguns&c-"
+              Lore: ""
+            Rocketlauncher:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Rocketlaunchers&c-"
+              Lore: ""
+            Grenadethrower:
+              Item: BOW
+              Damage: 0
+              Name: "&c-&4Grenadelaunchers&c-"
+              Lore: ""
+  State:
+  Items:
+    LobbyItems:
+      LeaveItem:
+        Name: "&cLeave game"
+        ConfirmQuit: "&cPlease confirm with another click that you want to leave arena: %arena%, you have &e%timer% seconds&c to do that"
+      VotePaper:
+        Name: "&eVote"
+      StatItem:
+        Name: "&eStatistics"
+      InfoItem:
+        Name: "&eInfo"
+    Crowbar:
+      Name: "&eCrowbar"
+      Lore:
+        - "&9Can open: "
+        - "  &9- Iron doors"
+        - "  &9- Iron trap doors"
+        - "&9To open door: &1Rightclick the block"
+    Radar:
+      Name: "&eRadar"
+      Lore:
+        - "&9Tracks playesr"
+        - "&9Rightclick to choose the target"
+        - "&9Leftclick to update the radar"
+      NowTracking: "&c[Radar] &eNew target: "
+    C4:
+      Name: "&7C4"
+      Lore:
+        - "&9Rightclick to throw and place"
+      Remote:
+        Name: "&eC4 Remote"
+        Lore:
+          - "&9Rightclick to detonate the bombs"
+    Trackpad:
+      Name: "&eTrackpad"
+      Lore:
+        - "&9Radar, which shows the surroundings"
+        - "&9Shows all players in a radius of 64 meters"
+        - "&9Right-Click to refresh"
+      Charges: "&cCharges left: &e%charges%"
+    SuicideVest:
+      Vest:
+        Name: "&cSuicide west"
+        Lore:
+          - "&9Hijack yourself!"
+          - "&9To detonate: rightclick with your trigger"
+      Remote:
+        Name: "&eTrigger"
+        Lore:
+          - "&9Detonates your suicide west"
+          - "&9Rightclick to detonate"
+    FlareGun:
+      Name: "&cFlare Gun"
+      Lore: 
+        - "&eFires one shot"
+        - "&eEntities hit by the bullet are visible for"
+        - "&eAll players for %timer% seconds"
+    GameConfigurator:
+      Name: "&cSettings"
+      Lore:
+        - "&eAllows to alter the game in some ways"
