@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -203,7 +202,7 @@ public class JoinGuiHelper implements Listener {
 					this.manager.tryJoin(p, arenasWithPlayers.get(0));
 					break;
 				case 2:
-					Integer i = new Random().nextInt(arenasWithPlayers.size());
+					Integer i = Util.getRandomNumber(arenasWithPlayers.size());
 					this.manager.tryJoin(p, arenasWithPlayers.get(i));
 					break;
 				case 4:
@@ -238,7 +237,7 @@ public class JoinGuiHelper implements Listener {
 		}
 	}
 	private void randomJoin(Player p) {
-		Integer i = new Random().nextInt(this.manager.arenas.size());
+		Integer i = Util.getRandomNumber(this.manager.arenas.size());
 		Arena a = this.manager.arenas.get(i);
 		this.manager.tryJoin(p, a);
 	}

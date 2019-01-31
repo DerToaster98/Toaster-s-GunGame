@@ -3,7 +3,6 @@ package de.MrBaumeister98.GunGame.Game.Mechanics;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import javax.annotation.Nullable;
@@ -28,6 +27,7 @@ import org.bukkit.scoreboard.Team.OptionStatus;
 import de.MrBaumeister98.GunGame.Game.Arena.Arena;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
+import de.MrBaumeister98.GunGame.Game.Util.Util;
 import net.md_5.bungee.api.ChatColor;
 
 public class TDMMode implements Listener {
@@ -133,8 +133,8 @@ public class TDMMode implements Listener {
 		this.teamByColor.put(color, tdmTeam);
 	}
 	public TDMTeam getRandomTeam() {
-		Random rdm = new Random();
-		Integer rdmSlot = rdm.nextInt(this.allTeams.size());
+		//Random rdm = new Random();
+		Integer rdmSlot = Util.getRandomNumber(this.allTeams.size());
 		return this.allTeams.get(rdmSlot);
 	}
 	@SuppressWarnings("deprecation")

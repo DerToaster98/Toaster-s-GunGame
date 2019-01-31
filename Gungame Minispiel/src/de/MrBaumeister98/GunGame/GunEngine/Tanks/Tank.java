@@ -1,7 +1,6 @@
 package de.MrBaumeister98.GunGame.GunEngine.Tanks;
 
 import java.text.DecimalFormat;
-import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -236,7 +235,7 @@ public class Tank {
 				
 				@Override
 				public void run() {
-					Util.createExplosion(ref.getTankPos(), new Random().nextBoolean(), new Random().nextBoolean(), false, false, 5.0F, ref.tankID, 3, false, 0);
+					Util.createExplosion(ref.getTankPos(), Util.getRandomBoolean(), Util.getRandomBoolean(), false, false, 5.0F, ref.tankID, 3, false, 0);
 				}
 			});
 		} catch(Exception ex) {

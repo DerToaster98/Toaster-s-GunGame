@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -343,14 +342,14 @@ public class GameWorld {
 	public void spawnTurret(Location loc) {
 		this.turretsToSpawn.remove(loc);
 		Debugger.logInfoWithColoredText(ChatColor.AQUA + this.world.getName() + ": " + ChatColor.GREEN + "Spawning Turret at: " + ChatColor.LIGHT_PURPLE + Util.locToString(loc) + ChatColor.GREEN + "...");
-		TurretConfig tc = GunGamePlugin.instance.turretManager.turrets.get(new Random().nextInt(GunGamePlugin.instance.turretManager.turrets.size()));
-		new Turret(loc, new Random().nextInt(360), tc);
+		TurretConfig tc = GunGamePlugin.instance.turretManager.turrets.get(Util.getRandomNumber(GunGamePlugin.instance.turretManager.turrets.size()));
+		new Turret(loc, Util.getRandomNumber(360), tc);
 	}
 	@SuppressWarnings("deprecation")
 	public void spawnTank(Location loc) {
 		this.tanksToSpawn.remove(loc);
 		Debugger.logInfoWithColoredText(ChatColor.AQUA + this.world.getName() + ": " + ChatColor.GREEN + "Spawning Tank at: " + ChatColor.LIGHT_PURPLE + Util.locToString(loc) + ChatColor.GREEN + "...");
-		TankConfig tc = this.manager.plugin.tankManager.getTankConfigs().get(new Random().nextInt(this.manager.plugin.tankManager.getTankConfigs().size()));
+		TankConfig tc = this.manager.plugin.tankManager.getTankConfigs().get(Util.getRandomNumber(this.manager.plugin.tankManager.getTankConfigs().size()));
 		//new Tank(loc.add(0, 1, 0), tc, GunGamePlugin.instance.tankManager);
 		Item item = loc.getWorld().dropItem(loc, tc.getTankItem());
 		item.setVelocity(new Vector(0, 0, 0));

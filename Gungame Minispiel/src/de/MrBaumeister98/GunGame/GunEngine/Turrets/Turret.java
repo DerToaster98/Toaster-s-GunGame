@@ -1,7 +1,6 @@
 package de.MrBaumeister98.GunGame.GunEngine.Turrets;
 
 import java.text.DecimalFormat;
-import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -345,7 +344,7 @@ public class Turret {
 				bullet.setSilent(true);
 				bullet.setShooter(this.gunner);
 				bullet.setVelocity(v);
-				((WitherSkull)bullet).setCharged(new Random().nextBoolean());
+				((WitherSkull)bullet).setCharged(Util.getRandomBoolean());
 				((WitherSkull)bullet).setIsIncendiary(false);
 				((WitherSkull)bullet).setVelocity(v);
 				((WitherSkull)bullet).setDirection(v);

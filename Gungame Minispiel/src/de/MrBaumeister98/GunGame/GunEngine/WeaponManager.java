@@ -3,7 +3,6 @@ package de.MrBaumeister98.GunGame.GunEngine;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,6 +12,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Core.Debugger.Debugger;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
+import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.Shop.ShopHelper;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankConfig;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretConfig;
@@ -117,11 +117,11 @@ public class WeaponManager {
 		}
 	}
 	public Gun getRandomGun() {
-		Gun g = this.standardGuns.get(new Random().nextInt(this.standardGuns.size()));
+		Gun g = this.standardGuns.get(Util.getRandomNumber(this.standardGuns.size()));
 		return g;
 	}
 	public Grenade getRandomGrenade() {
-		Grenade g = this.standardGrenades.get(new Random().nextInt(this.standardGrenades.size()));
+		Grenade g = this.standardGrenades.get(Util.getRandomNumber(this.standardGrenades.size()));
 		return g;
 	}
 	

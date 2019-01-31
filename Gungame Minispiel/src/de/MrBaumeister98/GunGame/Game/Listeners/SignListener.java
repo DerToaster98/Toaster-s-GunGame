@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -159,14 +158,14 @@ public class SignListener implements Listener {
 									Collections.reverse(arenasWithPlayers);
 									this.manager.tryJoin(event.getPlayer(), arenasWithPlayers.get(0));
 								} else {
-									Integer i = new Random().nextInt(this.manager.arenas.size());
+									Integer i = Util.getRandomNumber(this.manager.arenas.size());
 									Arena a = this.manager.arenas.get(i);
 									this.manager.tryJoin(event.getPlayer(), a);
 								}
 							}
 							else if(ChatColor.stripColor(lines[2]).equalsIgnoreCase("random game")) {
 								event.setCancelled(true);
-								Integer i = new Random().nextInt(this.manager.arenas.size());
+								Integer i = Util.getRandomNumber(this.manager.arenas.size());
 								Arena a = this.manager.arenas.get(i);
 								this.manager.tryJoin(event.getPlayer(), a);
 							}

@@ -3,7 +3,6 @@ package de.MrBaumeister98.GunGame.Game.Mechanics;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -22,6 +21,7 @@ import org.bukkit.inventory.ItemStack;
 
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.EGameState;
+import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.Ammo;
 import de.MrBaumeister98.GunGame.GunEngine.Grenade;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
@@ -53,42 +53,42 @@ public class LootChests implements Listener {
 						for(int i = 0; i<27; i++) {
 							freeSlots.add(i);
 						}
-						Random rdm = new Random();
-						if(rdm.nextBoolean()) {
-							Integer slot = freeSlots.get(rdm.nextInt(freeSlots.size()));
+						//Random rdm = new Random();
+						if(Util.getRandomBoolean()) {
+							Integer slot = freeSlots.get(Util.getRandomNumber(freeSlots.size()));
 							freeSlots.remove(slot);
-							Gun g = GunGamePlugin.instance.weaponManager.guns.get(rdm.nextInt(GunGamePlugin.instance.weaponManager.guns.size()));
+							Gun g = GunGamePlugin.instance.weaponManager.guns.get(Util.getRandomNumber(GunGamePlugin.instance.weaponManager.guns.size()));
 							
 							while(g.hasUsePermission() == true) {
-								g = GunGamePlugin.instance.weaponManager.guns.get(rdm.nextInt(GunGamePlugin.instance.weaponManager.guns.size()));
+								g = GunGamePlugin.instance.weaponManager.guns.get(Util.getRandomNumber(GunGamePlugin.instance.weaponManager.guns.size()));
 							}
 							
 							inv.setItem(slot, g.getItem().clone());
 						}
-						if(rdm.nextBoolean()) {
-							Integer slot = freeSlots.get(rdm.nextInt(freeSlots.size()));
+						if(Util.getRandomBoolean()) {
+							Integer slot = freeSlots.get(Util.getRandomNumber(freeSlots.size()));
 							freeSlots.remove(slot);
-							ItemStack item = C4.c4Throwable(rdm.nextInt(8) +1);
+							ItemStack item = C4.c4Throwable(Util.getRandomNumber(8) +1);
 							inv.setItem(slot, item);
 						}
-						Integer grenades = rdm.nextInt(4);
+						Integer grenades = Util.getRandomNumber(4);
 						if(grenades > 0) {
 							for(int i = 0; i < grenades; i++) {
-								Integer slot = freeSlots.get(rdm.nextInt(freeSlots.size()));
+								Integer slot = freeSlots.get(Util.getRandomNumber(freeSlots.size()));
 								freeSlots.remove(slot);
-								Grenade g = GunGamePlugin.instance.weaponManager.standardGrenades.get(rdm.nextInt(GunGamePlugin.instance.weaponManager.standardGrenades.size()));
+								Grenade g = GunGamePlugin.instance.weaponManager.standardGrenades.get(Util.getRandomNumber(GunGamePlugin.instance.weaponManager.standardGrenades.size()));
 								ItemStack gren = g.getGrenadeItem().clone();
-								gren.setAmount(rdm.nextInt(4) +1);
+								gren.setAmount(Util.getRandomNumber(4) +1);
 								inv.setItem(slot, gren);
 							}
 						}
-						Integer ammos = rdm.nextInt(6) +4;
+						Integer ammos = Util.getRandomNumber(6) +4;
 						for(int i = 0; i < ammos; i++) {
-							Integer slot = freeSlots.get(rdm.nextInt(freeSlots.size()));
+							Integer slot = freeSlots.get(Util.getRandomNumber(freeSlots.size()));
 							freeSlots.remove(slot);
-							Ammo a = GunGamePlugin.instance.weaponManager.ammos.get(rdm.nextInt(GunGamePlugin.instance.weaponManager.ammos.size()));
+							Ammo a = GunGamePlugin.instance.weaponManager.ammos.get(Util.getRandomNumber(GunGamePlugin.instance.weaponManager.ammos.size()));
 							ItemStack amm = a.getItem().clone();
-							amm.setAmount(rdm.nextInt(5) +8);
+							amm.setAmount(Util.getRandomNumber(5) +8);
 							inv.setItem(slot, amm);
 						}
 						saveInv(event.getClickedBlock(), inv);

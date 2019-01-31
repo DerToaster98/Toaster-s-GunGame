@@ -3,7 +3,6 @@ package de.MrBaumeister98.GunGame.GunEngine;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -183,8 +182,8 @@ public class WeaponListener implements Listener {
 					
 					Item itm = dispenseAt.getWorld().dropItem(dispenseAt, item);
 					Double rd = 0.0D;
-					Random random = new Random();
-					rd = random.nextDouble(); 
+					//Random random = new Random();
+					rd = Util.getRandomDouble(); 
 					itm.setVelocity(event.getVelocity().multiply((1.0D + rd)));
 					//item.setAmount(0);
 					
@@ -733,7 +732,7 @@ public class WeaponListener implements Listener {
 			if(event.getHitBlock() != null && event.getHitBlock().getType().equals(Material.TNT) && ((GunGamePlugin.instance.griefHelper.isGGWorld(event.getEntity().getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.BULLETS_IGNITE_TNT, event.getEntity().getWorld())))) {
 				UUID cause = ((Player)((Projectile)event.getEntity()).getShooter()).getUniqueId();
 				event.getHitBlock().setType(Material.AIR);
-				Util.createExplosion(event.getHitBlock().getLocation(), false, false, false, false, 3.0f, cause, 2, false, 40 + new Random().nextInt(80));
+				Util.createExplosion(event.getHitBlock().getLocation(), false, false, false, false, 3.0f, cause, 2, false, 40 + Util.getRandomNumber(80));
 				b = false;
 			}
 			if(event.getHitBlock() != null && event.getHitBlock().hasMetadata("GG_Landmine")) {

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 //import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -302,7 +301,7 @@ public class GameListener implements Listener {
 			if(this.manager.getArena(event.getPlayer()).getGameState().equals(EGameState.GAME) && event.getAction().equals(Action.LEFT_CLICK_BLOCK) && !event.getAction().equals(Action.PHYSICAL) && !event.getPlayer().isSneaking()) {
 				if(event.getClickedBlock().getType().equals(Material.TNT)) {
 					event.getClickedBlock().setType(Material.AIR);
-					Util.createExplosion(event.getClickedBlock().getLocation(), new Random().nextBoolean(), new Random().nextBoolean(), false, new Random().nextBoolean(), 3.5f, event.getPlayer().getUniqueId(), 1 + new Random().nextInt(4) , false, 50);
+					Util.createExplosion(event.getClickedBlock().getLocation(), Util.getRandomBoolean(), Util.getRandomBoolean(), false, Util.getRandomBoolean(), 3.5f, event.getPlayer().getUniqueId(), 1 + Util.getRandomNumber(4) , false, 50);
 				}
 			}
 		}

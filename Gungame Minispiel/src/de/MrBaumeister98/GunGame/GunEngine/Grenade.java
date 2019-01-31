@@ -3,7 +3,6 @@ package de.MrBaumeister98.GunGame.GunEngine;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -263,10 +262,10 @@ public class Grenade {
 			for(int i = 0; i < owner.getClusterCount(); i++) {
 				Item temp = grenade.getWorld().dropItem(grenade.getLocation(), new ItemStack(owner.getGrenadeItem()));
 				temp.getItemStack().setAmount(1);
-				Random rdm = new Random();
-				Double x = 0.5D - rdm.nextDouble();
+				//Random rdm = new Random();
+				Double x = 0.5D - Util.getRandomDouble();
 				Double y = 0.75D;
-				Double z =  0.5D - rdm.nextDouble();
+				Double z =  0.5D - Util.getRandomDouble();
 				Vector v = new Vector(x, y, z);
 				temp.setVelocity(v);
 				temp.setPickupDelay(999999999);

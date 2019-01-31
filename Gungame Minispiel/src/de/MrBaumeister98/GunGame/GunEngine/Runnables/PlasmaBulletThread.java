@@ -1,7 +1,6 @@
 package de.MrBaumeister98.GunGame.GunEngine.Runnables;
 
 import java.util.Collection;
-import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -202,7 +201,7 @@ public class PlasmaBulletThread extends BukkitRunnable {
 											}, 30);
 										}
 									}
-								}, 40 + new Random().nextInt(80));
+								}, 40 + Util.getRandomNumber(80));
 							}
 							spawnFireWork(reference.location.subtract(this.vector.normalize()), reference);
 														

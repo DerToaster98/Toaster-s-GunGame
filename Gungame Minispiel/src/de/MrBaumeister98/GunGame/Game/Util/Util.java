@@ -185,6 +185,12 @@ public abstract class Util {
 	public static int getRandomNumber(int limit) {
 		return randomGenerator.nextInt(limit);
 	}
+	public static boolean getRandomBoolean() {
+		return randomGenerator.nextBoolean();
+	}
+	public static Double getRandomDouble() {
+		return randomGenerator.nextDouble();
+	}
 	//Füllt die shopblock liste
 	public static void loadShopBlocks() {
 		List<String> shopBlockStrings = GunGamePlugin.instance.getConfig().getStringList("Config.ShopBlocks");
@@ -754,8 +760,8 @@ public abstract class Util {
 			locs = getFireLocs(radius, center);
 			
 			for(Location loc : locs) {
-				Random rdm = new Random();
-				Boolean b = rdm.nextBoolean();
+				//Random rdm = new Random();
+				Boolean b = getRandomBoolean();
 				if(b == true) {
 					fires.add(loc);
 					
@@ -790,7 +796,7 @@ public abstract class Util {
 										f.getWorld().spawnParticle(Particle.SMOKE_LARGE, f, 50, 0.0, 0.25, 0.0, 0.005);
 									}
 								}
-							}, burnDuration + new Random().nextInt(120));
+							}, burnDuration + getRandomNumber(120));
 						}
 						
 					}
@@ -865,10 +871,10 @@ public abstract class Util {
 							TNTPrimed tnt = (TNTPrimed)b.getLocation().getWorld().spawn(b.getLocation(), TNTPrimed.class);
 							b.setType(Material.AIR);
 							tnt.setIsIncendiary(false);
-							Random random = new Random();
-							tnt.setFuseTicks(10 + random.nextInt(20));
+							//Random random = new Random();
+							tnt.setFuseTicks(10 + getRandomNumber(20));
 							tnt.setYield(3.0f);
-							tnt.setMetadata("GG_breakNoBlocks", new FixedMetadataValue(GunGamePlugin.instance, String.valueOf(random.nextBoolean())));
+							tnt.setMetadata("GG_breakNoBlocks", new FixedMetadataValue(GunGamePlugin.instance, String.valueOf(getRandomBoolean())));
 							
 							if(cause != null) {
 								tnt.setMetadata("GG_Owner", new FixedMetadataValue(GunGamePlugin.instance, cause.toString()));
@@ -878,8 +884,8 @@ public abstract class Util {
 							tnt.setMetadata("GG_Explosive", new FixedMetadataValue(GunGamePlugin.instance, "true"));
 							tnt.setMetadata("GG_NoDamage", new FixedMetadataValue(GunGamePlugin.instance, "false"));
 							
-							if(random.nextBoolean()) {
-								placeFire(1 + random.nextInt(3), b.getLocation(), random.nextBoolean(), 0);
+							if(getRandomBoolean()) {
+								placeFire(1 + getRandomNumber(3), b.getLocation(), getRandomBoolean(), 0);
 							}
 						}
 					}
@@ -902,10 +908,10 @@ public abstract class Util {
 							TNTPrimed tnt = (TNTPrimed)b.getLocation().getWorld().spawn(b.getLocation(), TNTPrimed.class);
 							b.setType(Material.AIR);
 							tnt.setIsIncendiary(false);
-							Random random = new Random();
-							tnt.setFuseTicks(10 + random.nextInt(20));
+							//Random random = new Random();
+							tnt.setFuseTicks(10 + getRandomNumber(20));
 							tnt.setYield(3.0f);
-							tnt.setMetadata("GG_breakNoBlocks", new FixedMetadataValue(GunGamePlugin.instance, String.valueOf(random.nextBoolean())));
+							tnt.setMetadata("GG_breakNoBlocks", new FixedMetadataValue(GunGamePlugin.instance, String.valueOf(getRandomBoolean())));
 							
 							if(cause != null) {
 								tnt.setMetadata("GG_Owner", new FixedMetadataValue(GunGamePlugin.instance, cause.toString()));
@@ -915,8 +921,8 @@ public abstract class Util {
 							tnt.setMetadata("GG_Explosive", new FixedMetadataValue(GunGamePlugin.instance, "true"));
 							tnt.setMetadata("GG_NoDamage", new FixedMetadataValue(GunGamePlugin.instance, "false"));
 							
-							if(random.nextBoolean()) {
-								placeFire(1 + random.nextInt(3), b.getLocation(), random.nextBoolean(), 0);
+							if(getRandomBoolean()) {
+								placeFire(1 + getRandomNumber(3), b.getLocation(), getRandomBoolean(), 0);
 							}
 						}
 					}
@@ -989,10 +995,10 @@ public abstract class Util {
 							TNTPrimed tnt = (TNTPrimed)b.getLocation().getWorld().spawn(b.getLocation(), TNTPrimed.class);
 							b.setType(Material.AIR);
 							tnt.setIsIncendiary(false);
-							Random random = new Random();
-							tnt.setFuseTicks(10 + random.nextInt(20));
+							//Random random = new Random();
+							tnt.setFuseTicks(10 + getRandomNumber(20));
 							tnt.setYield(3.0f);
-							tnt.setMetadata("GG_breakNoBlocks", new FixedMetadataValue(GunGamePlugin.instance, String.valueOf(random.nextBoolean())));
+							tnt.setMetadata("GG_breakNoBlocks", new FixedMetadataValue(GunGamePlugin.instance, String.valueOf(getRandomBoolean())));
 							
 							if(cause != null) {
 								tnt.setMetadata("GG_Owner", new FixedMetadataValue(GunGamePlugin.instance, cause.toString()));
@@ -1002,8 +1008,8 @@ public abstract class Util {
 							tnt.setMetadata("GG_Explosive", new FixedMetadataValue(GunGamePlugin.instance, "true"));
 							tnt.setMetadata("GG_NoDamage", new FixedMetadataValue(GunGamePlugin.instance, "false"));
 							
-							if(random.nextBoolean()) {
-								placeFire(1 + random.nextInt(3), b.getLocation(), random.nextBoolean(), 0);
+							if(getRandomBoolean()) {
+								placeFire(1 + getRandomNumber(3), b.getLocation(), getRandomBoolean(), 0);
 							}
 						}
 					}
@@ -1028,10 +1034,10 @@ public abstract class Util {
 							TNTPrimed tnt = (TNTPrimed)b.getLocation().getWorld().spawn(b.getLocation(), TNTPrimed.class);
 							b.setType(Material.AIR);
 							tnt.setIsIncendiary(false);
-							Random random = new Random();
-							tnt.setFuseTicks(10 + random.nextInt(20));
+							//Random random = new Random();
+							tnt.setFuseTicks(10 + getRandomNumber(20));
 							tnt.setYield(3.0f);
-							tnt.setMetadata("GG_breakNoBlocks", new FixedMetadataValue(GunGamePlugin.instance, String.valueOf(random.nextBoolean())));
+							tnt.setMetadata("GG_breakNoBlocks", new FixedMetadataValue(GunGamePlugin.instance, String.valueOf(getRandomBoolean())));
 							
 							if(cause != null) {
 								tnt.setMetadata("GG_Owner", new FixedMetadataValue(GunGamePlugin.instance, cause.toString()));
@@ -1041,8 +1047,8 @@ public abstract class Util {
 							tnt.setMetadata("GG_Explosive", new FixedMetadataValue(GunGamePlugin.instance, "true"));
 							tnt.setMetadata("GG_NoDamage", new FixedMetadataValue(GunGamePlugin.instance, "false"));
 							
-							if(random.nextBoolean()) {
-								placeFire(1 + random.nextInt(3), b.getLocation(), random.nextBoolean(), 0);
+							if(getRandomBoolean()) {
+								placeFire(1 + getRandomNumber(3), b.getLocation(), getRandomBoolean(), 0);
 							}
 						}
 					}

@@ -1,6 +1,5 @@
 package de.MrBaumeister98.GunGame.GunEngine.Runnables;
 
-import java.util.Random;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -16,6 +15,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
+import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.Airstrike;
 
 @SuppressWarnings("deprecation")
@@ -87,16 +87,16 @@ public class AirstrikeRunnable_pre_1_13 extends BukkitRunnable {
 	private void spawnBombs(Integer count) {
 		
 		Vector v = new Vector(1.0, 0.0, 0.0);
-		Random rdm = new Random();
+		//Random rdm = new Random();
 		//Integer degreeRotate = rdm.nextInt(360);
 		//v = rotateVectorCC(v, new Vector(0.0, 1.0, 0.0), degreeRotate.doubleValue());
-		Double x = -0.5 + rdm.nextDouble();
-		Double z = -0.5 + rdm.nextDouble();
+		Double x = -0.5 + Util.getRandomDouble();
+		Double z = -0.5 + Util.getRandomDouble();
 		v.setX(x);
 		v.setZ(z);
 		v.normalize();
 		v = v.normalize();
-		Integer length = rdm.nextInt(this.strike.getDropRadius());
+		Integer length = Util.getRandomNumber(this.strike.getDropRadius());
 		v = v.multiply(length);
 		Location dropLoc = new Location(this.center.getWorld(), this.center.getX() + v.getX(), 255, this.center.getZ() + v.getZ());
 		
@@ -111,7 +111,7 @@ public class AirstrikeRunnable_pre_1_13 extends BukkitRunnable {
 		bomb.setMetadata("GG_Airstrike_Shooter", new FixedMetadataValue(GunGamePlugin.instance, this.shooter.toString()));
 		
 		if(count < this.strike.getBombCount()) {
-			Integer t = rdm.nextInt(4);
+			Integer t = Util.getRandomNumber(4);
 			Bukkit.getScheduler().runTaskLater(GunGamePlugin.instance, new Runnable() {
 				
 				@Override
