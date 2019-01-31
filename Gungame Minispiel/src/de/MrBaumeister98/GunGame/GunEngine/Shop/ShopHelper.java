@@ -24,10 +24,10 @@ import de.MrBaumeister98.GunGame.GunEngine.Gun;
 import de.MrBaumeister98.GunGame.GunEngine.GunItemUtil;
 import de.MrBaumeister98.GunGame.GunEngine.Landmine;
 import de.MrBaumeister98.GunGame.GunEngine.WeaponManager;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.WeaponType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EWeaponType;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankConfig;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretConfig;
-import de.MrBaumeister98.GunGame.Items.TrackPad.TrackPadItem;
+import de.MrBaumeister98.GunGame.Items.TrackPadItem;
 
 public class ShopHelper {
 	
@@ -96,7 +96,7 @@ public class ShopHelper {
 					}
 				}
 				if(hasSpace) {
-					if(ItemUtil.isGGWeapon(item) && ItemUtil.getWeaponType(item).equals(WeaponType.GUN)) {
+					if(ItemUtil.isGGWeapon(item) && ItemUtil.getWeaponType(item).equals(EWeaponType.GUN)) {
 						Gun gun = this.weaponmanager.getGun(item);
 						if(gun.hasUsePermission()) {
 							if(player.hasPermission(gun.getPermission())) {

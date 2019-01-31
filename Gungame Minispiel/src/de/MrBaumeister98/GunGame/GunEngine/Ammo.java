@@ -5,11 +5,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.ProjectileType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EProjectileType;
 
 public class Ammo {
 
-	private ProjectileType type;
+	private EProjectileType type;
 	private WeaponManager manager;
 	private String AmmoName;
 	private FileConfiguration weaponFile;
@@ -77,7 +77,7 @@ public class Ammo {
 		this.weaponFile = weaponFile;
 	}
 
-	public ProjectileType getType() {
+	public EProjectileType getType() {
 		return this.type;
 	}
 

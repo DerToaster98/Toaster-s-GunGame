@@ -5,7 +5,7 @@ import java.util.List;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import de.MrBaumeister98.GunGame.GunEngine.Enums.WeaponType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EWeaponType;
 import de.tr7zw.itemnbtapi.NBTItem;
 import de.tr7zw.itemnbtapi.NBTList;
 import de.tr7zw.itemnbtapi.NBTType;
@@ -108,12 +108,12 @@ public class ItemUtil {
 			return false;
 		}
 	}
-	public static WeaponType getWeaponType(ItemStack item) {
-		WeaponType type = null;
+	public static EWeaponType getWeaponType(ItemStack item) {
+		EWeaponType type = null;
 		if(isGGWeapon(item)) {
 			if(hasKey(item, "GGWeaponType")) {
 				String typeS = getString(item, "GGWeaponType");
-				type = WeaponType.valueOf(typeS);
+				type = EWeaponType.valueOf(typeS);
 			}
 		}
 		return type;

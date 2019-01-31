@@ -18,27 +18,27 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import de.MrBaumeister98.GunGame.Game.Arena.Arena;
-import de.MrBaumeister98.GunGame.Game.Arena.ArenaGameMode;
+import de.MrBaumeister98.GunGame.Game.Arena.EArenaGameMode;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
 
 public class GameModeSelector implements Listener {
 	
-	private ArenaGameMode gamemode;
+	private EArenaGameMode gamemode;
 	private Arena arena;
-	private HashMap<ArenaGameMode, ItemStack> itemMap = new HashMap<ArenaGameMode, ItemStack>();
+	private HashMap<EArenaGameMode, ItemStack> itemMap = new HashMap<EArenaGameMode, ItemStack>();
 	private Inventory menu;
 	private Boolean timeOut;
 	
 	
 	@SuppressWarnings("deprecation")
 	public GameModeSelector(Arena parent) {
-		this.gamemode =  ArenaGameMode.ALL_VS_ALL;
+		this.gamemode =  EArenaGameMode.ALL_VS_ALL;
 		this.arena = parent;
 		this.timeOut = false;
 		
 		Inventory inv = Bukkit.createInventory(null, InventoryType.HOPPER, LangUtil.buildGUIString("GameModeSelector.Title"));
-		for(ArenaGameMode agm : ArenaGameMode.values()) {
+		for(EArenaGameMode agm : EArenaGameMode.values()) {
 			Material m = Material.STONE_SWORD;
 			Material ms = null;
 			try {
@@ -93,13 +93,13 @@ public class GameModeSelector implements Listener {
 			if(event.getSlot() > 0 && event.getSlot() < 4) {				
 				switch(event.getSlot()) {
 				case 1:
-					this.gamemode = ArenaGameMode.LAST_MAN_STANDING;
+					this.gamemode = EArenaGameMode.LAST_MAN_STANDING;
 					break;
 				case 2:
-					this.gamemode = ArenaGameMode.ALL_VS_ALL;
+					this.gamemode = EArenaGameMode.ALL_VS_ALL;
 					break;
 				case 3:
-					this.gamemode = ArenaGameMode.TEAM_DEATHMATCH;
+					this.gamemode = EArenaGameMode.TEAM_DEATHMATCH;
 					break;
 				default:
 					break;
@@ -115,7 +115,7 @@ public class GameModeSelector implements Listener {
 		p.openInventory(this.menu);
 	}
 	public void reset() {
-		this.gamemode = ArenaGameMode.ALL_VS_ALL;
+		this.gamemode = EArenaGameMode.ALL_VS_ALL;
 		this.arena.setArenaMode(this.gamemode);
 		this.adjustMenu();
 	}
@@ -128,41 +128,41 @@ public class GameModeSelector implements Listener {
 			ItemMeta meta = this.itemMap.get(this.gamemode).getItemMeta();
 			meta.addEnchant(Enchantment.DURABILITY, 1, true);
 			this.itemMap.get(this.gamemode).setItemMeta(meta);
-			ItemMeta meta2 = this.itemMap.get(ArenaGameMode.LAST_MAN_STANDING).getItemMeta();
+			ItemMeta meta2 = this.itemMap.get(EArenaGameMode.LAST_MAN_STANDING).getItemMeta();
 			meta2.removeEnchant(Enchantment.DURABILITY);
-			this.itemMap.get(ArenaGameMode.LAST_MAN_STANDING).setItemMeta(meta2);
-			ItemMeta meta3 = this.itemMap.get(ArenaGameMode.TEAM_DEATHMATCH).getItemMeta();
+			this.itemMap.get(EArenaGameMode.LAST_MAN_STANDING).setItemMeta(meta2);
+			ItemMeta meta3 = this.itemMap.get(EArenaGameMode.TEAM_DEATHMATCH).getItemMeta();
 			meta3.removeEnchant(Enchantment.DURABILITY);
-			this.itemMap.get(ArenaGameMode.TEAM_DEATHMATCH).setItemMeta(meta3);
+			this.itemMap.get(EArenaGameMode.TEAM_DEATHMATCH).setItemMeta(meta3);
 			break;
 		case LAST_MAN_STANDING:
 			ItemMeta meta1 = this.itemMap.get(this.gamemode).getItemMeta();
 			meta1.addEnchant(Enchantment.DURABILITY, 1, true);
 			this.itemMap.get(this.gamemode).setItemMeta(meta1);
-			ItemMeta meta21 = this.itemMap.get(ArenaGameMode.ALL_VS_ALL).getItemMeta();
+			ItemMeta meta21 = this.itemMap.get(EArenaGameMode.ALL_VS_ALL).getItemMeta();
 			meta21.removeEnchant(Enchantment.DURABILITY);
-			this.itemMap.get(ArenaGameMode.ALL_VS_ALL).setItemMeta(meta21);
-			ItemMeta meta31 = this.itemMap.get(ArenaGameMode.TEAM_DEATHMATCH).getItemMeta();
+			this.itemMap.get(EArenaGameMode.ALL_VS_ALL).setItemMeta(meta21);
+			ItemMeta meta31 = this.itemMap.get(EArenaGameMode.TEAM_DEATHMATCH).getItemMeta();
 			meta31.removeEnchant(Enchantment.DURABILITY);
-			this.itemMap.get(ArenaGameMode.TEAM_DEATHMATCH).setItemMeta(meta31);
+			this.itemMap.get(EArenaGameMode.TEAM_DEATHMATCH).setItemMeta(meta31);
 			break;
 		case TEAM_DEATHMATCH:
 			ItemMeta meta11 = this.itemMap.get(this.gamemode).getItemMeta();
 			meta11.addEnchant(Enchantment.DURABILITY, 1, true);
 			this.itemMap.get(this.gamemode).setItemMeta(meta11);
-			ItemMeta meta211 = this.itemMap.get(ArenaGameMode.ALL_VS_ALL).getItemMeta();
+			ItemMeta meta211 = this.itemMap.get(EArenaGameMode.ALL_VS_ALL).getItemMeta();
 			meta211.removeEnchant(Enchantment.DURABILITY);
-			this.itemMap.get(ArenaGameMode.ALL_VS_ALL).setItemMeta(meta211);
-			ItemMeta meta311 = this.itemMap.get(ArenaGameMode.LAST_MAN_STANDING).getItemMeta();
+			this.itemMap.get(EArenaGameMode.ALL_VS_ALL).setItemMeta(meta211);
+			ItemMeta meta311 = this.itemMap.get(EArenaGameMode.LAST_MAN_STANDING).getItemMeta();
 			meta311.removeEnchant(Enchantment.DURABILITY);
-			this.itemMap.get(ArenaGameMode.LAST_MAN_STANDING).setItemMeta(meta311);
+			this.itemMap.get(EArenaGameMode.LAST_MAN_STANDING).setItemMeta(meta311);
 			break;
 		default:
 			break;
 		}
-		this.menu.setItem(1, this.itemMap.get(ArenaGameMode.LAST_MAN_STANDING));
-		this.menu.setItem(2, this.itemMap.get(ArenaGameMode.ALL_VS_ALL));
-		this.menu.setItem(3, this.itemMap.get(ArenaGameMode.TEAM_DEATHMATCH));
+		this.menu.setItem(1, this.itemMap.get(EArenaGameMode.LAST_MAN_STANDING));
+		this.menu.setItem(2, this.itemMap.get(EArenaGameMode.ALL_VS_ALL));
+		this.menu.setItem(3, this.itemMap.get(EArenaGameMode.TEAM_DEATHMATCH));
 	}
 
 }

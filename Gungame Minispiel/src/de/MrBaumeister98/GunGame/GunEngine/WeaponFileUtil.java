@@ -14,10 +14,10 @@ import org.bukkit.potion.PotionEffectType;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Core.Debugger.Debugger;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.GrenadeType;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.GunType;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.LandmineType;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.ProjectileType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EGrenadeType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EGunType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.ELandmineType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EProjectileType;
 import de.tr7zw.itemnbtapi.NBTItem;
 import de.tr7zw.itemnbtapi.NBTList;
 import de.tr7zw.itemnbtapi.NBTListCompound;
@@ -86,11 +86,11 @@ public class WeaponFileUtil {
 	
 	
 
-	public GrenadeType getGrenadeType(FileConfiguration config) {
-		GrenadeType type = GrenadeType.FRAG;
+	public EGrenadeType getGrenadeType(FileConfiguration config) {
+		EGrenadeType type = EGrenadeType.FRAG;
 		try {
 			String temp = config.getString("Type");
-			type = GrenadeType.valueOf(temp);
+			type = EGrenadeType.valueOf(temp);
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -336,21 +336,21 @@ public class WeaponFileUtil {
 	
 	
 
-	public GunType getGunType(FileConfiguration config) {
-		GunType type = GunType.STANDARD;
+	public EGunType getGunType(FileConfiguration config) {
+		EGunType type = EGunType.STANDARD;
 		try {
 			String temp = config.getString("Type");
-			type = GunType.valueOf(temp);
+			type = EGunType.valueOf(temp);
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
 		return type;
 	}
-	public ProjectileType getProjectileType(FileConfiguration config) {
-		ProjectileType pt = ProjectileType.ARROW;
+	public EProjectileType getProjectileType(FileConfiguration config) {
+		EProjectileType pt = EProjectileType.ARROW;
 		try {
 			String tmp = config.getString("ProjectileType");
-			pt = ProjectileType.valueOf(tmp);
+			pt = EProjectileType.valueOf(tmp);
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -765,11 +765,11 @@ public class WeaponFileUtil {
 	
 	
 	
-	public ProjectileType getAmmoType(FileConfiguration config) {
-		ProjectileType type = ProjectileType.SNOWBALL;
+	public EProjectileType getAmmoType(FileConfiguration config) {
+		EProjectileType type = EProjectileType.SNOWBALL;
 		try {
 			String temp = config.getString("Type");
-			type = ProjectileType.valueOf(temp);
+			type = EProjectileType.valueOf(temp);
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -1093,11 +1093,11 @@ public class WeaponFileUtil {
 		}
 		return d;
 	}
-	public LandmineType getLandmineExplosionType(FileConfiguration config) {
-		LandmineType type = LandmineType.EXPLOSIVE;
+	public ELandmineType getLandmineExplosionType(FileConfiguration config) {
+		ELandmineType type = ELandmineType.EXPLOSIVE;
 		try {
 			String tmp = config.getString("Explosion.Type");
-			type = LandmineType.valueOf(tmp);
+			type = ELandmineType.valueOf(tmp);
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}

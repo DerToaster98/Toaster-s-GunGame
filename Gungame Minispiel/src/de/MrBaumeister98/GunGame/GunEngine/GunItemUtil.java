@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.WeaponType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EWeaponType;
 import de.tr7zw.itemnbtapi.NBTItem;
 
 public abstract class GunItemUtil {
@@ -14,7 +14,7 @@ public abstract class GunItemUtil {
 	
 	public static Boolean isGrenade(ItemStack item) {
 		if(ItemUtil.isGGWeapon(item)) {
-			if(ItemUtil.getWeaponType(item).equals(WeaponType.GRENADE)) {
+			if(ItemUtil.getWeaponType(item).equals(EWeaponType.GRENADE)) {
 				return true;
 			}
 		}
@@ -23,7 +23,7 @@ public abstract class GunItemUtil {
 	
 	public static Integer getRemainingShots(ItemStack gunItem) {
 		Integer i = 0;
-		if(ItemUtil.isGGWeapon(gunItem) && ItemUtil.getWeaponType(gunItem).equals(WeaponType.GUN)) {
+		if(ItemUtil.isGGWeapon(gunItem) && ItemUtil.getWeaponType(gunItem).equals(EWeaponType.GUN)) {
 			if(ItemUtil.hasKey(gunItem, "GG_RemainingShots")) {
 				return ItemUtil.getInteger(gunItem, "GG_RemainingShots");
 			}
@@ -41,7 +41,7 @@ public abstract class GunItemUtil {
 	}
 	public static Boolean isMatchingGrenade(Grenade grenade, ItemStack toCheck) {
 		if(ItemUtil.isGGWeapon(toCheck)) {
-			if(ItemUtil.getWeaponType(toCheck).equals(WeaponType.GRENADE)) {
+			if(ItemUtil.getWeaponType(toCheck).equals(EWeaponType.GRENADE)) {
 				Grenade gren = GunGamePlugin.instance.weaponManager.getGrenade(toCheck);
 				if(gren.equals(grenade)) {
 					return true;
@@ -80,7 +80,7 @@ public abstract class GunItemUtil {
 		return i;
 	}
 	public static Boolean isCoolingDown(ItemStack gunItem) {
-		if(ItemUtil.isGGWeapon(gunItem) && ItemUtil.getWeaponType(gunItem).equals(WeaponType.GUN)) {
+		if(ItemUtil.isGGWeapon(gunItem) && ItemUtil.getWeaponType(gunItem).equals(EWeaponType.GUN)) {
 			if(ItemUtil.hasKey(gunItem, "GG_System_CoolingDown")) {
 				return ItemUtil.getBoolean(gunItem, "GG_System_CoolingDown");
 			}
@@ -88,7 +88,7 @@ public abstract class GunItemUtil {
 		return false;
 	}
 	public static Boolean isReloading(ItemStack gunItem) {
-		if(ItemUtil.isGGWeapon(gunItem) && ItemUtil.getWeaponType(gunItem).equals(WeaponType.GUN)) {
+		if(ItemUtil.isGGWeapon(gunItem) && ItemUtil.getWeaponType(gunItem).equals(EWeaponType.GUN)) {
 			if(ItemUtil.hasKey(gunItem, "GG_Gun_Reloading")) {
 				return ItemUtil.getBoolean(gunItem, "GG_Gun_Reloading");
 			}

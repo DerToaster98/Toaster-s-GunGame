@@ -41,8 +41,8 @@ import de.MrBaumeister98.GunGame.Items.GameConfigurator;
 import de.MrBaumeister98.GunGame.Items.InfoItem;
 import de.MrBaumeister98.GunGame.Items.LeaveLobbyItem;
 import de.MrBaumeister98.GunGame.Items.SuicideArmor;
+import de.MrBaumeister98.GunGame.Items.TrackPadItem;
 import de.MrBaumeister98.GunGame.Items.Voter;
-import de.MrBaumeister98.GunGame.Items.TrackPad.TrackPadItem;
 
 public class GunGamePlugin extends JavaPlugin {
 	

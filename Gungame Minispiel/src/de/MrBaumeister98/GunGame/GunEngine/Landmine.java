@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffect;
 
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.LandmineType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.ELandmineType;
 
 public class Landmine {
 	
@@ -19,7 +19,7 @@ public class Landmine {
 	private FileConfiguration config;
 	private Material material;
 	//private DyeColor woolColor;
-	private LandmineType type;
+	private ELandmineType type;
 	private Integer smokeDuration;
 	private Integer fireDuration;
 	private Integer radius;
@@ -125,10 +125,10 @@ public class Landmine {
 	public void setMaterial(Material material) {
 		this.material = material;
 	}
-	public LandmineType getType() {
+	public ELandmineType getType() {
 		return type;
 	}
-	public void setType(LandmineType type) {
+	public void setType(ELandmineType type) {
 		this.type = type;
 	}
 	public Integer getSmokeDuration() {

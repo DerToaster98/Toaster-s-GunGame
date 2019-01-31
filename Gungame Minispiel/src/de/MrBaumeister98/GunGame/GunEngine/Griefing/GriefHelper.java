@@ -58,11 +58,11 @@ public class GriefHelper implements Listener {
 	public void openGUI(Player p) {
 		this.worldSettings.get(p.getWorld()).openGUI(p);
 	}
-	public Boolean getGriefAllowed(GriefType type, World world) {
+	public Boolean getGriefAllowed(EGriefType type, World world) {
 			GriefSettings gs = this.worldSettings.get(world);
 			return gs.getGriefAllowed(type);
 	}
-	public void setGriefAllowed(GriefType type, Boolean allowed, World world) {
+	public void setGriefAllowed(EGriefType type, Boolean allowed, World world) {
 		if(this.knownWorlds.contains(world)) {
 			GriefSettings gs = this.worldSettings.get(world);
 			gs.setGriefAllowed(type, allowed);

@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Core.Debugger.Debugger;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
-import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefType;
+import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankConfig;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretConfig;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -309,7 +309,7 @@ public class GunEngineCommandListener implements CommandExecutor, TabCompleter {
 								args[1].equalsIgnoreCase("PHYSIC_ENGINE") ||
 								args[1].equalsIgnoreCase("BULLETS_IGNITE_TNT") ||
 								args[1].equalsIgnoreCase("SHOTS_BREAK_GLASS"))) {
-							switch(GriefType.valueOf(args[1].toUpperCase())) {
+							switch(EGriefType.valueOf(args[1].toUpperCase())) {
 							case BULLETS_IGNITE_TNT:
 								//Debugger.logInfo("Sub Command:= IGNITE TNT");
 								if(args.length > 2) {
@@ -319,7 +319,7 @@ public class GunEngineCommandListener implements CommandExecutor, TabCompleter {
 										if(args.length > 3) {
 											if(args[3].equalsIgnoreCase("true") || args[3].equalsIgnoreCase("false")) {
 												Boolean allow = Boolean.valueOf(args[3]);
-												GunGamePlugin.instance.griefHelper.setGriefAllowed(GriefType.valueOf(args[1].toUpperCase()), allow, world);
+												GunGamePlugin.instance.griefHelper.setGriefAllowed(EGriefType.valueOf(args[1].toUpperCase()), allow, world);
 											}
 										}
 									} else {
@@ -336,7 +336,7 @@ public class GunEngineCommandListener implements CommandExecutor, TabCompleter {
 										if(args.length >3) {
 											if(args[3].equalsIgnoreCase("true") || args[3].equalsIgnoreCase("false")) {
 												Boolean allow = Boolean.valueOf(args[3]);
-												GunGamePlugin.instance.griefHelper.setGriefAllowed(GriefType.valueOf(args[1].toUpperCase()), allow, world);
+												GunGamePlugin.instance.griefHelper.setGriefAllowed(EGriefType.valueOf(args[1].toUpperCase()), allow, world);
 											}
 										}
 									} else {
@@ -353,7 +353,7 @@ public class GunEngineCommandListener implements CommandExecutor, TabCompleter {
 										if(args.length >3) {
 											if(args[3].equalsIgnoreCase("true") || args[3].equalsIgnoreCase("false")) {
 												Boolean allow = Boolean.valueOf(args[3]);
-												GunGamePlugin.instance.griefHelper.setGriefAllowed(GriefType.valueOf(args[1].toUpperCase()), allow, world);
+												GunGamePlugin.instance.griefHelper.setGriefAllowed(EGriefType.valueOf(args[1].toUpperCase()), allow, world);
 											}
 										}
 									} else {
@@ -370,7 +370,7 @@ public class GunEngineCommandListener implements CommandExecutor, TabCompleter {
 										if(args.length >3) {
 											if(args[3].equalsIgnoreCase("true") || args[3].equalsIgnoreCase("false")) {
 												Boolean allow = Boolean.valueOf(args[3]);
-												GunGamePlugin.instance.griefHelper.setGriefAllowed(GriefType.valueOf(args[1].toUpperCase()), allow, world);
+												GunGamePlugin.instance.griefHelper.setGriefAllowed(EGriefType.valueOf(args[1].toUpperCase()), allow, world);
 											}
 										}
 									} else {
@@ -538,16 +538,16 @@ public class GunEngineCommandListener implements CommandExecutor, TabCompleter {
 					retList.clear();
 					
 					if(sender instanceof ConsoleCommandSender) {
-						retList.add(GriefType.EXPLOSIONS.toString());
-						retList.add(GriefType.BULLETS_IGNITE_TNT.toString());
-						retList.add(GriefType.PHYSIC_ENGINE.toString());
-						retList.add(GriefType.SHOTS_BREAK_GLASS.toString());
+						retList.add(EGriefType.EXPLOSIONS.toString());
+						retList.add(EGriefType.BULLETS_IGNITE_TNT.toString());
+						retList.add(EGriefType.PHYSIC_ENGINE.toString());
+						retList.add(EGriefType.SHOTS_BREAK_GLASS.toString());
 						if(args.length > 1) {
 							if(args[1].equalsIgnoreCase("EXPLOSIONS") ||
 									args[1].equalsIgnoreCase("PHYSIC_ENGINE") ||
 									args[1].equalsIgnoreCase("BULLETS_IGNITE_TNT") ||
 									args[1].equalsIgnoreCase("SHOTS_BREAK_GLASS")) {
-								switch(GriefType.valueOf(args[1].toUpperCase())) {
+								switch(EGriefType.valueOf(args[1].toUpperCase())) {
 								case BULLETS_IGNITE_TNT:
 									retList.clear();
 									for(World w : Bukkit.getWorlds()) {

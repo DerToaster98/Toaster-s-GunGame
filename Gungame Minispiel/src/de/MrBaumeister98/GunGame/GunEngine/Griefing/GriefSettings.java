@@ -213,7 +213,7 @@ public class GriefSettings implements Listener {
 		
 	}
 	
-	public Boolean getGriefAllowed(GriefType type) {
+	public Boolean getGriefAllowed(EGriefType type) {
 		switch(type) {
 		case BULLETS_IGNITE_TNT:
 			return this.bulletsIgniteTNT;
@@ -232,7 +232,7 @@ public class GriefSettings implements Listener {
 	public void openGUI(Player p) {
 		p.openInventory(this.menu);
 	}
-	public void setGriefAllowed(GriefType type, Boolean allowed) {
+	public void setGriefAllowed(EGriefType type, Boolean allowed) {
 		File infoFileF = new File(this.world.getWorldFolder().getAbsolutePath() + "/data/gungame", "info.yml");
 		FileConfiguration infoFile = YamlConfiguration.loadConfiguration(infoFileF);
 		switch(type) {
@@ -244,7 +244,7 @@ public class GriefSettings implements Listener {
 			this.explosionsGrief = allowed;
 			infoFile.set("GunEngineGrief.Explosions", allowed);
 			if(!allowed) {
-				setGriefAllowed(GriefType.PHYSIC_ENGINE, false);
+				setGriefAllowed(EGriefType.PHYSIC_ENGINE, false);
 			}
 			break;
 		case PROTECT_WATER_BODIES:
@@ -313,7 +313,7 @@ public class GriefSettings implements Listener {
 					//setGriefAllowed(GriefType.PHYSIC_ENGINE, false);
 				}
 				
-				setGriefAllowed(GriefType.EXPLOSIONS, !this.explosionsGrief);
+				setGriefAllowed(EGriefType.EXPLOSIONS, !this.explosionsGrief);
 				break;
 			case 1:
 				ItemStack item1 = new ItemStack(Material.valueOf(ChatColor.stripColor(LangUtil.buildGUIString("GunEngine.GriefSettingsGUI.Icons.Physics.Item"))), 1);
@@ -335,7 +335,7 @@ public class GriefSettings implements Listener {
 				
 				this.menu.setItem(1, item1);
 				
-				setGriefAllowed(GriefType.PHYSIC_ENGINE, !this.physicsGrief);
+				setGriefAllowed(EGriefType.PHYSIC_ENGINE, !this.physicsGrief);
 				break;
 			case 2:
 				ItemStack item4 = new ItemStack(Material.valueOf(ChatColor.stripColor(LangUtil.buildGUIString("GunEngine.GriefSettingsGUI.Icons.ProtectWaterBodies.Item"))), 1);
@@ -357,7 +357,7 @@ public class GriefSettings implements Listener {
 				
 				this.menu.setItem(2, item4);
 				
-				setGriefAllowed(GriefType.PROTECT_WATER_BODIES, !this.protectWaterBodies);
+				setGriefAllowed(EGriefType.PROTECT_WATER_BODIES, !this.protectWaterBodies);
 				break;
 			case 3:
 				ItemStack item2 = new ItemStack(Material.valueOf(ChatColor.stripColor(LangUtil.buildGUIString("GunEngine.GriefSettingsGUI.Icons.BreakGlass.Item"))), 1);
@@ -379,7 +379,7 @@ public class GriefSettings implements Listener {
 				
 				this.menu.setItem(3, item2);
 				
-				setGriefAllowed(GriefType.SHOTS_BREAK_GLASS, !this.bulletGlassGrief);
+				setGriefAllowed(EGriefType.SHOTS_BREAK_GLASS, !this.bulletGlassGrief);
 				break;
 			case 4:
 				ItemStack item3 = new ItemStack(Material.valueOf(ChatColor.stripColor(LangUtil.buildGUIString("GunEngine.GriefSettingsGUI.Icons.IgniteTNT.Item"))), 1);
@@ -401,7 +401,7 @@ public class GriefSettings implements Listener {
 				
 				this.menu.setItem(4, item3);
 				
-				setGriefAllowed(GriefType.BULLETS_IGNITE_TNT, !this.bulletsIgniteTNT);
+				setGriefAllowed(EGriefType.BULLETS_IGNITE_TNT, !this.bulletsIgniteTNT);
 				break;
 			default:
 				break;

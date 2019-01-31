@@ -34,14 +34,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 import de.MrBaumeister98.GunGame.Game.Arena.Arena;
-import de.MrBaumeister98.GunGame.Game.Arena.ArenaGameMode;
+import de.MrBaumeister98.GunGame.Game.Arena.EArenaGameMode;
 import de.MrBaumeister98.GunGame.Game.Core.FileManager;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Core.Debugger.Debugger;
 import de.MrBaumeister98.GunGame.GunEngine.Ammo;
 import de.MrBaumeister98.GunGame.GunEngine.Grenade;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
-import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefType;
+import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 import de.MrBaumeister98.GunGame.Items.C4;
 import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
 import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
@@ -699,7 +699,7 @@ public abstract class Util {
 				(breakBlocks &&
 				(
 						GunGamePlugin.instance.griefHelper.isGGWorld(loc.getWorld()) &&
-						GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.EXPLOSIONS, loc.getWorld())
+						GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.EXPLOSIONS, loc.getWorld())
 						))
 				) {
 			loc.getBlock().breakNaturally();
@@ -717,7 +717,7 @@ public abstract class Util {
 						) ||
 				(
 						!GunGamePlugin.instance.griefHelper.isGGWorld(loc.getWorld()) &&
-						!GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.EXPLOSIONS, loc.getWorld())
+						!GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.EXPLOSIONS, loc.getWorld())
 						)
 				) {
 			tnt.setMetadata("GG_breakNoBlocks", new FixedMetadataValue(GunGamePlugin.instance, String.valueOf(breakBlocks)));
@@ -732,7 +732,7 @@ public abstract class Util {
 		}
 		if(!physics || (
 				!GunGamePlugin.instance.griefHelper.isGGWorld(loc.getWorld()) &&
-				!GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.PHYSIC_ENGINE, loc.getWorld())
+				!GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.PHYSIC_ENGINE, loc.getWorld())
 				)) {
 			tnt.setMetadata("GG_Physics", new FixedMetadataValue(GunGamePlugin.instance, true));
 		}
@@ -814,7 +814,7 @@ public abstract class Util {
 			if((BlockList.get(0).getLocation().getWorld().hasMetadata("GG_Physics") && 
 					BlockList.get(0).getLocation().getWorld().getMetadata("GG_Physics").get(0).asBoolean()) || (
 							!GunGamePlugin.instance.griefHelper.isGGWorld(BlockList.get(0).getLocation().getWorld()) &&
-							GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.PHYSIC_ENGINE, BlockList.get(0).getLocation().getWorld())
+							GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.PHYSIC_ENGINE, BlockList.get(0).getLocation().getWorld())
 							)) {
 				
 				List<String> changeList = GunGamePlugin.instance.getConfig().getStringList("Config.BlockChangeList");
@@ -894,7 +894,7 @@ public abstract class Util {
 				if((BlockList.get(0).getLocation().getWorld().hasMetadata("GG_ExplosionBreakBlocks") && 
 						BlockList.get(0).getLocation().getWorld().getMetadata("GG_ExplosionBreakBlocks").get(0).asBoolean()) || (
 								!GunGamePlugin.instance.griefHelper.isGGWorld(BlockList.get(0).getLocation().getWorld()) &&
-								GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.EXPLOSIONS, BlockList.get(0).getLocation().getWorld())
+								GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.EXPLOSIONS, BlockList.get(0).getLocation().getWorld())
 					)) {
 					//NORMAL EXPLOSION, WHEN PHYSICS DISABLED!
 					for(Block b : BlockList) {
@@ -937,7 +937,7 @@ public abstract class Util {
 			if((BlockList.get(0).getLocation().getWorld().hasMetadata("GG_Physics") && 
 					BlockList.get(0).getLocation().getWorld().getMetadata("GG_Physics").get(0).asBoolean()) || (
 							!GunGamePlugin.instance.griefHelper.isGGWorld(BlockList.get(0).getLocation().getWorld()) &&
-							GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.PHYSIC_ENGINE, BlockList.get(0).getLocation().getWorld())
+							GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.PHYSIC_ENGINE, BlockList.get(0).getLocation().getWorld())
 							)) {
 				
 				List<String> changeList = GunGamePlugin.instance.getConfig().getStringList("Config.BlockChangeList");
@@ -1018,7 +1018,7 @@ public abstract class Util {
 				if((BlockList.get(0).getLocation().getWorld().hasMetadata("GG_ExplosionBreakBlocks") && 
 						BlockList.get(0).getLocation().getWorld().getMetadata("GG_ExplosionBreakBlocks").get(0).asBoolean()) || (
 								!GunGamePlugin.instance.griefHelper.isGGWorld(BlockList.get(0).getLocation().getWorld()) &&
-								GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.EXPLOSIONS, BlockList.get(0).getLocation().getWorld())
+								GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.EXPLOSIONS, BlockList.get(0).getLocation().getWorld())
 					)) {
 					//NORMAL EXPLOSION, WHEN PHYSICS DISABLED!
 					for(Block b : BlockList) {
@@ -1137,7 +1137,7 @@ public abstract class Util {
 			
 			Arena arena = GunGamePlugin.instance.arenaManager.getArena(p);
 			
-			if(arena.getArenaMode().equals(ArenaGameMode.ALL_VS_ALL)) {
+			if(arena.getArenaMode().equals(EArenaGameMode.ALL_VS_ALL)) {
 				float killsToWin = arena.getKillsToWin();
 				float kills = arena.getKills(p);
 				
@@ -1145,10 +1145,10 @@ public abstract class Util {
 				
 				p.setExp(percentage);
 			}
-			if(arena.getArenaMode().equals(ArenaGameMode.TEAM_DEATHMATCH)) {
+			if(arena.getArenaMode().equals(EArenaGameMode.TEAM_DEATHMATCH)) {
 				arena.getTdmMode().getTeam(p).addKill();
 			}
-			if(arena.getArenaMode().equals(ArenaGameMode.LAST_MAN_STANDING)) {
+			if(arena.getArenaMode().equals(EArenaGameMode.LAST_MAN_STANDING)) {
 				p.setExp(1.0f);
 			}
 		} catch(Exception ex) {

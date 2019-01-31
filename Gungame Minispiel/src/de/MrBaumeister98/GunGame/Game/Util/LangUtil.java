@@ -17,7 +17,7 @@ import de.MrBaumeister98.GunGame.GunEngine.Ammo;
 import de.MrBaumeister98.GunGame.GunEngine.Grenade;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
 import de.MrBaumeister98.GunGame.GunEngine.Landmine;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.LandmineType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.ELandmineType;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankConfig;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretConfig;
 
@@ -566,7 +566,7 @@ public class LangUtil {
 		 */
 		String name = ChatColor.stripColor(gun.getName());
 		String damage = "";
-		if(gun.getType().equals(LandmineType.BEARTRAP)) {
+		if(gun.getType().equals(ELandmineType.BEARTRAP)) {
 			damage = gun.getBearTrapDamage().toString();
 		} else {
 			damage = String.valueOf(gun.getStrength());

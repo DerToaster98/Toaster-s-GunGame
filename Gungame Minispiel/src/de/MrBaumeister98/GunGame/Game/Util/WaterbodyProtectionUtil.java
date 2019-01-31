@@ -10,7 +10,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Waterlogged;
 
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
-import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefType;
+import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 
 public class WaterbodyProtectionUtil {
 	
@@ -22,7 +22,7 @@ public class WaterbodyProtectionUtil {
 				) || 
 				(
 					!GunGamePlugin.instance.griefHelper.isGGWorld(world) && 
-					GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.PROTECT_WATER_BODIES, world) == false
+					GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.PROTECT_WATER_BODIES, world) == false
 				)
 			) {
 			//Water bodies are not protected --> block can be broken

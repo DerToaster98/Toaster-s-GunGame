@@ -39,7 +39,7 @@ public class Turret {
 	
 	public TurretManager manager;
 	public TurretConfig config;
-	public TurretShooter turretShooter;
+	public TurretShootController turretShooter;
 	public TurretCooler cooler;
 	public TurretReloader reloader;
 	private Boolean isDead;
@@ -94,7 +94,7 @@ public class Turret {
 		setMagazine(this.config.getMagazineSize());
 		
 		this.reloader = new TurretReloader(this);
-		this.turretShooter = new TurretShooter(this);
+		this.turretShooter = new TurretShootController(this);
 		this.cooler = new TurretCooler(this);
 		
 		this.hitbox.setCustomName(ChatColor.GRAY + "[" + ChatColor.YELLOW + "HP: " + ChatColor.RED + df.format(this.health) + ChatColor.GREEN + "/" + this.config.getMaxHealth().toString() + ChatColor.GRAY + "]");

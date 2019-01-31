@@ -26,7 +26,7 @@ import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
 import de.MrBaumeister98.GunGame.Items.FlareGun;
 import de.MrBaumeister98.GunGame.Items.Radar;
 import de.MrBaumeister98.GunGame.Items.SuicideArmor;
-import de.MrBaumeister98.GunGame.Items.TrackPad.TrackPadItem;
+import de.MrBaumeister98.GunGame.Items.TrackPadItem;
 
 public class ShopGUI implements Listener {
 	//PATH: getGUI + "GunEngine.Shop.MainMenu...."

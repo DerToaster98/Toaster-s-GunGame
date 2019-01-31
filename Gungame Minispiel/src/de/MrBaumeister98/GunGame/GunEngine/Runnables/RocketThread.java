@@ -26,7 +26,7 @@ import org.bukkit.util.Vector;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
-import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefType;
+import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 
 public class RocketThread extends BukkitRunnable {
 
@@ -179,7 +179,7 @@ public class RocketThread extends BukkitRunnable {
 			}
 			if(this.running && canPass(nxtLoc.getBlock())) {
 				Material type = nxtLoc.getBlock().getType();
-				if((GunGamePlugin.instance.griefHelper.isGGWorld(nxtLoc.getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.SHOTS_BREAK_GLASS, nxtLoc.getWorld())) &&
+				if((GunGamePlugin.instance.griefHelper.isGGWorld(nxtLoc.getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.SHOTS_BREAK_GLASS, nxtLoc.getWorld())) &&
 						Util.isGlass(type)
 						/*(/*type.equals(Material.GLASS) ||
 						type.equals(Material.STAINED_GLASS) ||

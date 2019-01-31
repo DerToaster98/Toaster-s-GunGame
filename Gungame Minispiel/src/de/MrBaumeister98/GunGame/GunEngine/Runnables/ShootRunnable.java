@@ -14,7 +14,7 @@ import de.MrBaumeister98.GunGame.GunEngine.Gun;
 import de.MrBaumeister98.GunGame.GunEngine.GunItemUtil;
 import de.MrBaumeister98.GunGame.GunEngine.WeaponListener;
 import de.MrBaumeister98.GunGame.GunEngine.WeaponManager;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.GunType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EGunType;
 
 public class ShootRunnable extends BukkitRunnable{
 	
@@ -45,12 +45,12 @@ public class ShootRunnable extends BukkitRunnable{
 
 	@Override
 	public void run() {
-		if(GunItemUtil.readyToShoot(this.gun) || this.gunObject.getType().equals(GunType.MINIGUN) || this.gunObject.getType().equals(GunType.MINIGUN_PLASMA)) {
+		if(GunItemUtil.readyToShoot(this.gun) || this.gunObject.getType().equals(EGunType.MINIGUN) || this.gunObject.getType().equals(EGunType.MINIGUN_PLASMA)) {
 			if(!this.gunObject.hasUsePermission() || (this.gunObject.hasUsePermission() && this.shooter.hasPermission(this.gunObject.getPermission()))) {
 				//Vector v = this.shooter.getEyeLocation().getDirection();
 				
-				GunType type = this.gunObject.getType();
-				if(!type.equals(GunType.GRENADETHROWER)) {
+				EGunType type = this.gunObject.getType();
+				if(!type.equals(EGunType.GRENADETHROWER)) {
 					float accuracy = this.gunObject.getAccuracy();
 					if(accuracy > (float)0) {
 						recalcVector();
@@ -59,7 +59,7 @@ public class ShootRunnable extends BukkitRunnable{
 				}
 				//Recoil
 				
-				if(!this.gunObject.getType().equals(GunType.MINIGUN) && !this.gunObject.getType().equals(GunType.MINIGUN_PLASMA) && !this.assaultVolley) {
+				if(!this.gunObject.getType().equals(EGunType.MINIGUN) && !this.gunObject.getType().equals(EGunType.MINIGUN_PLASMA) && !this.assaultVolley) {
 					Double recoil = this.gunObject.getRecoilAmount();
 					Vector move = this.shooter.getLocation().getDirection().normalize().multiply(recoil).multiply(-1.0).setY(0.0);
 					if(this.shooter.isSneaking()) {
@@ -210,7 +210,7 @@ public class ShootRunnable extends BukkitRunnable{
 				}
 				
 				//Play sounds
-				if(!this.gunObject.getType().equals(GunType.MINIGUN) && !this.gunObject.getType().equals(GunType.MINIGUN_PLASMA)) {
+				if(!this.gunObject.getType().equals(EGunType.MINIGUN) && !this.gunObject.getType().equals(EGunType.MINIGUN_PLASMA)) {
 					this.gunObject.getSoundSet().shootSound.play(shooter.getWorld(), shooter.getLocation());
 				}
 				//Play particles, if set
@@ -223,7 +223,7 @@ public class ShootRunnable extends BukkitRunnable{
 				}
 				
 				//remove one shot
-				if(!this.gunObject.getType().equals(GunType.MINIGUN) && !this.gunObject.getType().equals(GunType.MINIGUN_PLASMA)) {
+				if(!this.gunObject.getType().equals(EGunType.MINIGUN) && !this.gunObject.getType().equals(EGunType.MINIGUN_PLASMA)) {
 					this.gun = GunItemUtil.updateRemainingShots(this.gun, GunItemUtil.getRemainingShots(this.gun) -1);
 				}
 				
@@ -259,12 +259,12 @@ public class ShootRunnable extends BukkitRunnable{
 			}
 		} else if(GunItemUtil.isOutOfAmmo(this.gun)) {
 			this.manager.visualHelper.sendOutOfAmmo(this.shooter);			
-			if(this.gunObject.getType().equals(GunType.ASSAULT) || this.gunObject.getType().equals(GunType.ASSAULT_PLASMA)) {
+			if(this.gunObject.getType().equals(EGunType.ASSAULT) || this.gunObject.getType().equals(EGunType.ASSAULT_PLASMA)) {
 				this.manager.visualHelper.sendReloadingWeapon(this.shooter);	
 				this.gunObject.getSoundSet().reloadSound.play(this.shooter.getWorld(), this.shooter.getLocation());
 				ReloadRunnable process = new ReloadRunnable(this.shooter, this.gunItemSlot, this.gun, this.offHand);
 				process.run();
-			} else if(this.gunObject.getType().equals(GunType.GRENADETHROWER)) {
+			} else if(this.gunObject.getType().equals(EGunType.GRENADETHROWER)) {
 				if(this.shooter.isOnline()) {
 					if(this.offHand) {
 						this.shooter.getInventory().setItemInOffHand(GunItemUtil.setLoadedGrenade(this.shooter.getInventory().getItemInOffHand(), "NONE"));

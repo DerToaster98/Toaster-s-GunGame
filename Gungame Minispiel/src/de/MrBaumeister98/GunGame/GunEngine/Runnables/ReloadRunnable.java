@@ -12,8 +12,8 @@ import de.MrBaumeister98.GunGame.GunEngine.Grenade;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
 import de.MrBaumeister98.GunGame.GunEngine.GunItemUtil;
 import de.MrBaumeister98.GunGame.GunEngine.WeaponManager;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.GunType;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.WeaponType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EGunType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EWeaponType;
 
 public class ReloadRunnable extends BukkitRunnable {
 	
@@ -67,7 +67,7 @@ public class ReloadRunnable extends BukkitRunnable {
 				
 				//gunI = shooter.getInventory().getItem(slot);
 				
-				if(this.gunObject.getType().equals(GunType.GRENADETHROWER)) {
+				if(this.gunObject.getType().equals(EGunType.GRENADETHROWER)) {
 					if(GunItemUtil.getRemainingShots(this.shooter.getInventory().getItem(this.slot)) > 0) {
 						if(getPlayersAmmo(this.shooter, GunItemUtil.getLoadedGrenade(this.shooter.getInventory().getItem(this.slot))) > 0) {
 							Integer toLoad2 = this.gunObject.getMaxAmmo() - GunItemUtil.getRemainingShots(this.gun);
@@ -133,7 +133,7 @@ public class ReloadRunnable extends BukkitRunnable {
 			
 			@Override
 			public void run() {
-				if(!reference.gunObject.getType().equals(GunType.GRENADETHROWER)) {
+				if(!reference.gunObject.getType().equals(EGunType.GRENADETHROWER)) {
 					//Normal Gun reload (everything except Grenadelauncher)
 					if(getPlayersAmmo(reference.shooter, reference.gunObject.getAmmo()) > 0) {
 						
@@ -311,7 +311,7 @@ public class ReloadRunnable extends BukkitRunnable {
 	private Boolean hasPlayerGrenades(Player p) {
 		for(ItemStack s : p.getInventory().getContents()) {
 			if(ItemUtil.isGGWeapon(s)) {
-				if(ItemUtil.getWeaponType(s).equals(WeaponType.GRENADE)) {
+				if(ItemUtil.getWeaponType(s).equals(EWeaponType.GRENADE)) {
 					return true;
 				}
 			}
@@ -330,7 +330,7 @@ public class ReloadRunnable extends BukkitRunnable {
 	private Grenade getFirstInInv(Player p) {
 		for(ItemStack stack : p.getInventory().getContents()) {
 			if(ItemUtil.isGGWeapon(stack)) {
-				if(ItemUtil.getWeaponType(stack).equals(WeaponType.GRENADE)) {
+				if(ItemUtil.getWeaponType(stack).equals(EWeaponType.GRENADE)) {
 					return this.manager.getGrenade(stack);
 				}
 			}

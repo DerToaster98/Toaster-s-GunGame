@@ -18,7 +18,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.WeaponType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EWeaponType;
 
 public class GunMenu implements Listener {
 	
@@ -419,7 +419,7 @@ public class GunMenu implements Listener {
 							}
 						}
 						} else if(ItemUtil.isGGWeapon(clicked)) {
-							if(ItemUtil.getWeaponType(clicked).equals(WeaponType.GRENADE)) {
+							if(ItemUtil.getWeaponType(clicked).equals(EWeaponType.GRENADE)) {
 								event.setCancelled(true);
 								Grenade gren = this.manager.getGrenade(clicked);
 								ItemStack itm = gren.getGrenadeItem();
@@ -449,7 +449,7 @@ public class GunMenu implements Listener {
 								p.openInventory(this.gunMenu.get(getNumber(inv, InvType.GUNS) -1));
 							}
 						} else if(ItemUtil.isGGWeapon(clicked)) {
-							if(ItemUtil.getWeaponType(clicked).equals(WeaponType.GUN)) {
+							if(ItemUtil.getWeaponType(clicked).equals(EWeaponType.GUN)) {
 								event.setCancelled(true);
 								Gun gren = this.manager.getGun(clicked);
 								ItemStack itm = gren.getItem();

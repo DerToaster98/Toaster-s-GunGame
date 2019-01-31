@@ -18,7 +18,7 @@ import de.MrBaumeister98.GunGame.Game.Core.Debugger.Debugger;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.Game.Util.Math.VectorUtil;
-import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefType;
+import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 import net.md_5.bungee.api.ChatColor;
 
 public class TankMover /*extends Thread*/ {
@@ -496,7 +496,7 @@ public class TankMover /*extends Thread*/ {
 	}
 	private void dealWithFences(Block[] points) {
 		try {
-			if(GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.PHYSIC_ENGINE, (points[0].getWorld()))) {
+			if(GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.PHYSIC_ENGINE, (points[0].getWorld()))) {
 				List<Block> blocks = new ArrayList<Block>();
 				for(Block b : points) {
 					blocks.add(b);

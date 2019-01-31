@@ -259,5 +259,16 @@ public class TankManager {
 		}
 		return null;
 	}
+	public List<Tank> getTanksInWorld(World world) {
+		List<Tank> ret = new ArrayList<Tank>();
+		
+		for(Tank tnk : this.activeTanks) {
+			if(tnk.getWorld().equals(world)) {
+				ret.add(tnk);
+			}
+		}
+		
+		return ret;
+	}
 
 }

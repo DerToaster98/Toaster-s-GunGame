@@ -92,7 +92,7 @@ public class Arena {
 	private HashMap<Player, Integer> playerKills = new HashMap<Player, Integer>();
 
 	// GAMEMODES
-	private ArenaGameMode arenaMode;
+	private EArenaGameMode arenaMode;
 	private boolean gamemodeConfirmed;
 	private int forceVotingTaskID;
 	private Player modeChooser;
@@ -109,7 +109,7 @@ public class Arena {
 
 	public Arena(ArenaManager main, String Name, int minPlayer, int maxPlayer, int killsToWin) {
 		this.manager = main;
-		this.setArenaMode(ArenaGameMode.ALL_VS_ALL);
+		this.setArenaMode(EArenaGameMode.ALL_VS_ALL);
 		this.arenaMaster = null;
 		this.setGameWorld(new GameWorld(this));
 		this.countdownHelper = new CountdownUtil(this);
@@ -172,7 +172,7 @@ public class Arena {
 	public void remPlayer(Player p) {
 		// p.setScoreboard(null);
 		this.players.remove(p);
-		if (this.arenaMode.equals(ArenaGameMode.TEAM_DEATHMATCH)) {
+		if (this.arenaMode.equals(EArenaGameMode.TEAM_DEATHMATCH)) {
 			this.getTdmMode().remPlayer(p);
 		}
 
@@ -260,7 +260,7 @@ public class Arena {
 
 			this.getScoreboardutil().updateScoreBoard();
 
-			if (this.gamemodeConfirmed && this.arenaMode.equals(ArenaGameMode.TEAM_DEATHMATCH)) {
+			if (this.gamemodeConfirmed && this.arenaMode.equals(EArenaGameMode.TEAM_DEATHMATCH)) {
 				this.tdmMode.openMenu(p);
 			}
 
@@ -315,7 +315,7 @@ public class Arena {
 		updateSigns();
 		for (Player p2 : players) {
 			Util.giveLobbyItems(p2, true);
-			if (this.arenaMode.equals(ArenaGameMode.TEAM_DEATHMATCH)) {
+			if (this.arenaMode.equals(EArenaGameMode.TEAM_DEATHMATCH)) {
 				if (this.tdmMode.getTeam(p2) != null) {
 					this.tdmMode.openMenu(p2);
 				}
@@ -402,7 +402,7 @@ public class Arena {
 					}
 					// CountdownUtil.startCountDown(temp, Util.lobbyCountDown, 5);
 					countdownHelper.startCountDown(Util.lobbyCountDown, 5);
-					if (temp.arenaMode.equals(ArenaGameMode.TEAM_DEATHMATCH)) {
+					if (temp.arenaMode.equals(EArenaGameMode.TEAM_DEATHMATCH)) {
 						temp.tdmMode.onStartGame();
 					}
 					taskID = Bukkit.getScheduler().scheduleSyncDelayedTask(GunGamePlugin.instance, new Runnable() {
@@ -551,7 +551,7 @@ public class Arena {
 			}
 
 			HashMap<Integer, Player> placemapevent = new HashMap<Integer, Player>();
-			if (this.arenaMode.equals(ArenaGameMode.ALL_VS_ALL)) {
+			if (this.arenaMode.equals(EArenaGameMode.ALL_VS_ALL)) {
 				HashMap<Integer, List<Player>> victorMap = new HashMap<Integer, List<Player>>();
 				for (Integer i = 0; i <= this.killsToWin; i++) {
 					List<Player> tmp = new ArrayList<Player>();
@@ -598,7 +598,7 @@ public class Arena {
 
 				}
 			}
-			if (this.arenaMode.equals(ArenaGameMode.TEAM_DEATHMATCH)) {
+			if (this.arenaMode.equals(EArenaGameMode.TEAM_DEATHMATCH)) {
 				List<TDMTeam> victorList = new ArrayList<TDMTeam>(this.tdmMode.getTeams());
 				Collections.sort(victorList, new Comparator<TDMTeam>() {
 
@@ -638,14 +638,14 @@ public class Arena {
 					tdteam.onEndOfGame();
 				}
 			}
-			if (this.arenaMode.equals(ArenaGameMode.LAST_MAN_STANDING)) {
+			if (this.arenaMode.equals(EArenaGameMode.LAST_MAN_STANDING)) {
 				List<Player> victors = new ArrayList<Player>(this.dyingOrderLMS);
 				Collections.reverse(victors);
 				Player victor = victors.get(0);
 				this.statManager.getStatPlayer.get(victor.getUniqueId()).winORlose(true);
 				Player loser = victors.get(victors.size() - 1);
 				this.statManager.getStatPlayer.get(loser.getUniqueId()).winORlose(false);
-				if (this.arenaMode.equals(ArenaGameMode.LAST_MAN_STANDING)) {
+				if (this.arenaMode.equals(EArenaGameMode.LAST_MAN_STANDING)) {
 					this.manager.remSpectators(this);
 				}
 				for (Player p : this.players) {
@@ -690,7 +690,7 @@ public class Arena {
 		ArenaChangeStateEvent statechangeevent = new ArenaChangeStateEvent(this, this.state, EGameState.ENDGAME);
 		Bukkit.getServer().getPluginManager().callEvent(statechangeevent);
 		this.state = EGameState.ENDGAME;
-		this.arenaMode = ArenaGameMode.ALL_VS_ALL;
+		this.arenaMode = EArenaGameMode.ALL_VS_ALL;
 		this.gamemodeConfirmed = false;
 		this.gamemodeManager.reset();
 		this.dyingOrderLMS.clear();
@@ -746,7 +746,7 @@ public class Arena {
 
 		this.getScoreboardutil().destroy();
 		this.manager.remSpectators(this);
-		this.arenaMode = ArenaGameMode.ALL_VS_ALL;
+		this.arenaMode = EArenaGameMode.ALL_VS_ALL;
 		this.gamemodeConfirmed = false;
 		this.gamemodeManager.reset();
 		try {
@@ -819,7 +819,7 @@ public class Arena {
 	}
 
 	public void respawn(Player p) {
-		if (!this.arenaMode.equals(ArenaGameMode.LAST_MAN_STANDING)) {
+		if (!this.arenaMode.equals(EArenaGameMode.LAST_MAN_STANDING)) {
 			p.setHealth(20);
 			p.setFireTicks(0);
 			p.setFallDistance(0.0F);
@@ -933,14 +933,14 @@ public class Arena {
 			this.statManager.getStatPlayer.get(p.getUniqueId()).incrementKillStreak();
 		}
 		Util.calcCoins(p);
-		if (this.playerKills.get(p) >= this.killsToWin && !this.arenaMode.equals(ArenaGameMode.TEAM_DEATHMATCH)) {
+		if (this.playerKills.get(p) >= this.killsToWin && !this.arenaMode.equals(EArenaGameMode.TEAM_DEATHMATCH)) {
 			preEndArena();
 		}
 	}
 
 	public void confirmGameMode() {
 		this.gamemodeConfirmed = true;
-		if (this.arenaMode.equals(ArenaGameMode.TEAM_DEATHMATCH)) {
+		if (this.arenaMode.equals(EArenaGameMode.TEAM_DEATHMATCH)) {
 			for (Player p : this.players) {
 				this.tdmMode.openMenu(p);
 			}
@@ -1061,11 +1061,11 @@ public class Arena {
 		return this.getScoreboardutil();
 	}
 
-	public ArenaGameMode getArenaMode() {
+	public EArenaGameMode getArenaMode() {
 		return arenaMode;
 	}
 
-	public void setArenaMode(ArenaGameMode arenaMode) {
+	public void setArenaMode(EArenaGameMode arenaMode) {
 		this.arenaMode = arenaMode;
 	}
 

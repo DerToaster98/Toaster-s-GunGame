@@ -22,7 +22,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.Landmine;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.LandmineType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.ELandmineType;
 
 public class LandmineExplodeRunnable extends BukkitRunnable {
 	
@@ -48,7 +48,7 @@ public class LandmineExplodeRunnable extends BukkitRunnable {
 	private PotionEffect bearTrapEffect;
 	
 	private Landmine mine;
-	private LandmineType type;
+	private ELandmineType type;
 
 	public LandmineExplodeRunnable(Landmine mine, Block block, UUID placerID) {
 		this.setPlacer(placerID);

@@ -13,17 +13,17 @@ import org.bukkit.permissions.PermissionDefault;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.GunType;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.ProjectileType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EGunType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EProjectileType;
 
 @SuppressWarnings("deprecation")
 public class Gun {
 	
 	private WeaponManager manager;
 	private FileConfiguration weaponFile;
-	private ProjectileType bulletType;
+	private EProjectileType bulletType;
 	private String GunName;
-	private GunType type;
+	private EGunType type;
 	private ItemStack gunItem;
 	private Ammo ammo;
 	private Integer maxAmmo;
@@ -123,10 +123,10 @@ public class Gun {
 			this.setUsePermission(false);
 		}
 		
-		if(!this.type.equals(GunType.GRENADETHROWER)) {
+		if(!this.type.equals(EGunType.GRENADETHROWER)) {
 			this.setAccuracy(this.wfu.getAccuracy(this.weaponFile));
 		}
-		if(this.type.equals(GunType.ROCKETLAUNCHER)) {
+		if(this.type.equals(EGunType.ROCKETLAUNCHER)) {
 			this.setRocketBreakBlocks(this.wfu.getRocketBreakBlocks(this.weaponFile));
 			this.setRocketCreateFire(this.wfu.getRocketCreateFire(this.weaponFile));
 			this.setRocketExplosionDamage(this.wfu.getRocketExplosionDamage(this.weaponFile));
@@ -135,22 +135,22 @@ public class Gun {
 			this.setSeekingRocket(this.wfu.getRocketSeekingHeat(this.weaponFile));
 		}
 		
-		if(this.type.equals(GunType.PLASMA)) {
+		if(this.type.equals(EGunType.PLASMA)) {
 			this.setLaserHelper(new PlasmaParticleUtil(this));
 			this.setLaserRayIterationDelay(this.wfu.getLaserRayIterationDelay(this.weaponFile));
 		}
-		if(this.type.equals(GunType.ASSAULT)) {
+		if(this.type.equals(EGunType.ASSAULT)) {
 			this.setVolleyShotAmount(this.wfu.getVolleyShotAmount(this.weaponFile));
 		}
-		if(this.type.equals(GunType.ASSAULT_PLASMA)) {
+		if(this.type.equals(EGunType.ASSAULT_PLASMA)) {
 			this.setLaserHelper(new PlasmaParticleUtil(this));
 			this.setVolleyShotAmount(this.wfu.getVolleyShotAmount(this.weaponFile));
 			this.setLaserRayIterationDelay(this.wfu.getLaserRayIterationDelay(this.weaponFile));
 		}
-		if(this.type.equals(GunType.MINIGUN_PLASMA)) {
+		if(this.type.equals(EGunType.MINIGUN_PLASMA)) {
 			this.setLaserHelper(new PlasmaParticleUtil(this));
 		}
-		if(this.type.equals(GunType.ASSAULT) || this.type.equals(GunType.MINIGUN) || this.type.equals(GunType.STANDARD)) {
+		if(this.type.equals(EGunType.ASSAULT) || this.type.equals(EGunType.MINIGUN) || this.type.equals(EGunType.STANDARD)) {
 			this.setBulletType(this.wfu.getProjectileType(this.weaponFile));
 		}
 		
@@ -167,7 +167,7 @@ public class Gun {
 		
 		gun = this.wfu.getGunItem(this.weaponFile);
 		
-		if(this.type.equals(GunType.GRENADETHROWER)) {
+		if(this.type.equals(EGunType.GRENADETHROWER)) {
 			gun = ItemUtil.addTags(gun, "GG_GrenadeThrower_LoadedGrenade", "NONE");
 			gun = GunItemUtil.updateRemainingShots(gun, 0);
 		}
@@ -181,7 +181,7 @@ public class Gun {
 		setMaxAmmo(tempI);
 	}
 	public void setType() {
-		GunType temp = this.wfu.getGunType(this.weaponFile);
+		EGunType temp = this.wfu.getGunType(this.weaponFile);
 		setType(temp);
 	}
 
@@ -371,11 +371,11 @@ public class Gun {
 		this.ammo = ammo;
 	}
 
-	public GunType getType() {
+	public EGunType getType() {
 		return this.type;
 	}
 
-	public void setType(GunType type) {
+	public void setType(EGunType type) {
 		this.type = type;
 	}
 
@@ -605,11 +605,11 @@ public class Gun {
 		this.permission = perm;
 	}
 
-	public ProjectileType getBulletType() {
+	public EProjectileType getBulletType() {
 		return bulletType;
 	}
 
-	public void setBulletType(ProjectileType bulletType) {
+	public void setBulletType(EProjectileType bulletType) {
 		this.bulletType = bulletType;
 	}
 

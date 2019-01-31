@@ -56,9 +56,9 @@ import de.MrBaumeister98.GunGame.API.WeaponShootEvent;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.GunType;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.WeaponType;
-import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EGunType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EWeaponType;
+import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 import de.MrBaumeister98.GunGame.GunEngine.Runnables.AirstrikeRunnable_pre_1_13;
 import de.MrBaumeister98.GunGame.GunEngine.Runnables.AirstrikeRunnable_v1_13_up;
 import de.MrBaumeister98.GunGame.GunEngine.Runnables.AssaultShootRunnable;
@@ -128,9 +128,9 @@ public class WeaponListener implements Listener {
 	}
 	private Boolean weaponsInBothHands(Player p) {
 		if(ItemUtil.isGGWeapon(p.getInventory().getItemInMainHand())) {
-			if(ItemUtil.getWeaponType(p.getInventory().getItemInMainHand()).equals(WeaponType.GUN)) {
+			if(ItemUtil.getWeaponType(p.getInventory().getItemInMainHand()).equals(EWeaponType.GUN)) {
 				if(ItemUtil.isGGWeapon(p.getInventory().getItemInOffHand())) {
-					if(ItemUtil.getWeaponType(p.getInventory().getItemInOffHand()).equals(WeaponType.GUN)) {
+					if(ItemUtil.getWeaponType(p.getInventory().getItemInOffHand()).equals(EWeaponType.GUN)) {
 						return true;
 					}
 				}
@@ -171,8 +171,8 @@ public class WeaponListener implements Listener {
 	public void onDispenserDispenseGrenade(BlockDispenseEvent event) {
 		ItemStack item = event.getItem();
 		if(ItemUtil.isGGWeapon(item)) {
-			WeaponType wType = ItemUtil.getWeaponType(item);
-			if(wType.equals(WeaponType.GRENADE)) {
+			EWeaponType wType = ItemUtil.getWeaponType(item);
+			if(wType.equals(EWeaponType.GRENADE)) {
 				if(event.getBlock().getType().equals(Material.DISPENSER)) {
 					event.setCancelled(true);
 					
@@ -278,8 +278,8 @@ public class WeaponListener implements Listener {
 						event.setCancelled(true);
 						//type = WeaponType.GUN;
 						
-						if(GunItemUtil.readyToShoot(p.getInventory().getItemInMainHand()) || gMain.getType().equals(GunType.MINIGUN) || gMain.getType().equals(GunType.MINIGUN_PLASMA)) {
-							if(gMain.getType().equals(GunType.MINIGUN) || gMain.getType().equals(GunType.MINIGUN_PLASMA)) {
+						if(GunItemUtil.readyToShoot(p.getInventory().getItemInMainHand()) || gMain.getType().equals(EGunType.MINIGUN) || gMain.getType().equals(EGunType.MINIGUN_PLASMA)) {
+							if(gMain.getType().equals(EGunType.MINIGUN) || gMain.getType().equals(EGunType.MINIGUN_PLASMA)) {
 								if(isShootingMinigun(p.getUniqueId())) {
 									event.setCancelled(true);
 									cancelShooting(p.getUniqueId());
@@ -295,7 +295,7 @@ public class WeaponListener implements Listener {
 								}
 							} else {
 								Boolean ass = false;
-								if(gMain.getType().equals(GunType.ASSAULT) || gMain.getType().equals(GunType.ASSAULT_PLASMA)) {
+								if(gMain.getType().equals(EGunType.ASSAULT) || gMain.getType().equals(EGunType.ASSAULT_PLASMA)) {
 									if(isShootingAssaultGun(p.getUniqueId())) {
 										event.setCancelled(true);
 										cancelShooting(p.getUniqueId());
@@ -368,12 +368,12 @@ public class WeaponListener implements Listener {
 			if(event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 				ItemStack item = event.getItem();
 				if(ItemUtil.isGGWeapon(item)) {
-					WeaponType WType = ItemUtil.getWeaponType(item);
+					EWeaponType WType = ItemUtil.getWeaponType(item);
 					if(!Util.isInteractable(event.getClickedBlock()) || 
 							(
 									Util.isInteractable(event.getClickedBlock()) && 
 									p.isSneaking() && 
-									WType.equals(WeaponType.GRENADE
+									WType.equals(EWeaponType.GRENADE
 								)
 						)/*(event.getClickedBlock() instanceof Openable ||
 							event.getClickedBlock() instanceof Door ||
@@ -391,8 +391,8 @@ public class WeaponListener implements Listener {
 								//type = WeaponType.GUN;
 								Gun gun = this.manager.getGun(itemName);
 								
-								if(GunItemUtil.readyToShoot(item) || gun.getType().equals(GunType.MINIGUN) || gun.getType().equals(GunType.MINIGUN_PLASMA)) {
-									if(gun.getType().equals(GunType.MINIGUN) || gun.getType().equals(GunType.MINIGUN_PLASMA)) {
+								if(GunItemUtil.readyToShoot(item) || gun.getType().equals(EGunType.MINIGUN) || gun.getType().equals(EGunType.MINIGUN_PLASMA)) {
+									if(gun.getType().equals(EGunType.MINIGUN) || gun.getType().equals(EGunType.MINIGUN_PLASMA)) {
 										if(isShootingMinigun(p.getUniqueId())) {
 											event.setCancelled(true);
 											cancelShooting(p.getUniqueId());
@@ -402,7 +402,7 @@ public class WeaponListener implements Listener {
 												oh = true;
 											}
 											Boolean ass = false;
-											if(gun.getType().equals(GunType.ASSAULT) || gun.getType().equals(GunType.ASSAULT_PLASMA)) {
+											if(gun.getType().equals(EGunType.ASSAULT) || gun.getType().equals(EGunType.ASSAULT_PLASMA)) {
 												if(isShootingAssaultGun(p.getUniqueId())) {
 													cancelShooting(p.getUniqueId());
 												} else {
@@ -425,7 +425,7 @@ public class WeaponListener implements Listener {
 											oh = true;
 										}
 										Boolean ass = false;
-										if(gun.getType().equals(GunType.ASSAULT) || gun.getType().equals(GunType.ASSAULT_PLASMA)) {
+										if(gun.getType().equals(EGunType.ASSAULT) || gun.getType().equals(EGunType.ASSAULT_PLASMA)) {
 											if(isShootingAssaultGun(p.getUniqueId())) {
 												event.setCancelled(true);
 												cancelShooting(p.getUniqueId());
@@ -493,8 +493,8 @@ public class WeaponListener implements Listener {
 								event.getClickedBlock() instanceof TrapDoor ||
 								event.getClickedBlock() instanceof Button ||
 								event.getClickedBlock() instanceof Lever)) {*/
-							WeaponType WType = ItemUtil.getWeaponType(item);
-							if(WType.equals(WeaponType.GUN)) {
+							EWeaponType WType = ItemUtil.getWeaponType(item);
+							if(WType.equals(EWeaponType.GUN)) {
 								event.setCancelled(true);
 								Gun gun = this.manager.getGun(item);
 								if(gun.getScopeEnabled()) {
@@ -540,7 +540,7 @@ public class WeaponListener implements Listener {
 	public void onDrag(InventoryDragEvent event) {
 		ItemStack item = event.getCursor();
 		if(ItemUtil.isGGWeapon(item)) {
-			if(ItemUtil.getWeaponType(item).equals(WeaponType.GUN)) {
+			if(ItemUtil.getWeaponType(item).equals(EWeaponType.GUN)) {
 				if(GunItemUtil.isReloading(item)) {
 					event.setCancelled(true);
 					try {
@@ -570,7 +570,7 @@ public class WeaponListener implements Listener {
 	public void onClick(InventoryClickEvent event) {
 		ItemStack item = event.getCurrentItem();
 		if(ItemUtil.isGGWeapon(item)) {
-			if(ItemUtil.getWeaponType(item).equals(WeaponType.GUN)) {
+			if(ItemUtil.getWeaponType(item).equals(EWeaponType.GUN)) {
 				if(GunItemUtil.isReloading(item)) {
 					event.setCancelled(true);
 					try {
@@ -601,7 +601,7 @@ public class WeaponListener implements Listener {
 		Player p = event.getPlayer();
 		ItemStack item = event.getItemDrop().getItemStack();
 		if(ItemUtil.isGGWeapon(item) && !p.hasMetadata("GG_isTurretRider")) {
-			if(ItemUtil.getWeaponType(item).equals(WeaponType.GUN)) {
+			if(ItemUtil.getWeaponType(item).equals(EWeaponType.GUN)) {
 				/*if(reloadingMap.containsKey(p.getUniqueId()) && reloadingMap.get(p.getUniqueId()) != null) {
 					event.setCancelled(true);
 				} else {*/
@@ -639,11 +639,11 @@ public class WeaponListener implements Listener {
 						}
 				}
 			}
-			if(ItemUtil.getWeaponType(item).equals(WeaponType.GRENADE)) {
+			if(ItemUtil.getWeaponType(item).equals(EWeaponType.GRENADE)) {
 				event.setCancelled(false);
 			}
 		} else {
-			if(!p.hasMetadata("GG_isTurretRider") && ItemUtil.isGGWeapon(p.getInventory().getItemInOffHand()) && (ItemUtil.getWeaponType(p.getInventory().getItemInOffHand()).equals(WeaponType.GUN) == true)) {
+			if(!p.hasMetadata("GG_isTurretRider") && ItemUtil.isGGWeapon(p.getInventory().getItemInOffHand()) && (ItemUtil.getWeaponType(p.getInventory().getItemInOffHand()).equals(EWeaponType.GUN) == true)) {
 					if(p.isSneaking()) {
 						event.setCancelled(false);
 					} 
@@ -723,13 +723,13 @@ public class WeaponListener implements Listener {
 				b = false;
 			}
 			if(event.getHitBlock() != null && 
-					((GunGamePlugin.instance.griefHelper.isGGWorld(event.getHitBlock().getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.SHOTS_BREAK_GLASS, event.getHitBlock().getWorld())) &&
+					((GunGamePlugin.instance.griefHelper.isGGWorld(event.getHitBlock().getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.SHOTS_BREAK_GLASS, event.getHitBlock().getWorld())) &&
 							Util.isGlass(event.getHitBlock().getType()))) {
 				event.getHitBlock().getWorld().playSound(event.getHitBlock().getLocation(), Sound.BLOCK_GLASS_BREAK, 8.0F, 0.8F);
 				event.getHitBlock().breakNaturally();
 				event.getHitBlock().setType(Material.AIR);
 			}
-			if(event.getHitBlock() != null && event.getHitBlock().getType().equals(Material.TNT) && ((GunGamePlugin.instance.griefHelper.isGGWorld(event.getEntity().getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.BULLETS_IGNITE_TNT, event.getEntity().getWorld())))) {
+			if(event.getHitBlock() != null && event.getHitBlock().getType().equals(Material.TNT) && ((GunGamePlugin.instance.griefHelper.isGGWorld(event.getEntity().getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.BULLETS_IGNITE_TNT, event.getEntity().getWorld())))) {
 				UUID cause = ((Player)((Projectile)event.getEntity()).getShooter()).getUniqueId();
 				event.getHitBlock().setType(Material.AIR);
 				Util.createExplosion(event.getHitBlock().getLocation(), false, false, false, false, 3.0f, cause, 2, false, 40 + Util.getRandomNumber(80));
@@ -785,7 +785,7 @@ public class WeaponListener implements Listener {
 			ItemStack item = event.getPlayer().getInventory().getItem(event.getNewSlot());
 			//if(ItemUtil.isGunGameItem(item)) {
 			if(ItemUtil.isGGWeapon(item)) {
-				WeaponType WType = ItemUtil.getWeaponType(item);
+				EWeaponType WType = ItemUtil.getWeaponType(item);
 				//String weaponName = ItemUtil.getString(item, "GGGunName");
 				switch(WType) {
 					default: 

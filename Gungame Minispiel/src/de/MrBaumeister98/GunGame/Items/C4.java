@@ -32,7 +32,7 @@ import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
-import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefType;
+import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 
 public class C4 implements Listener {
 	
@@ -114,7 +114,7 @@ public class C4 implements Listener {
 								||
 								(
 										GunGamePlugin.instance.griefHelper.isGGWorld(bomb.getWorld()) &&
-										GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.EXPLOSIONS, bomb.getWorld())
+										GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.EXPLOSIONS, bomb.getWorld())
 								)
 						) {
 							bomb.getBlock().setType(Material.AIR);

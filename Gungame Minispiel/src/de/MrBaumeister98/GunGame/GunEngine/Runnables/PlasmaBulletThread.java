@@ -25,7 +25,7 @@ import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
 import de.MrBaumeister98.GunGame.GunEngine.PlasmaParticleUtil;
-import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefType;
+import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.Tank;
 
 public class PlasmaBulletThread extends BukkitRunnable {
@@ -154,7 +154,7 @@ public class PlasmaBulletThread extends BukkitRunnable {
 				}
 				Material m = reference.location.getBlock().getType();
 				if((!canPass(m) || (this.laserHelper.meltsBlocks && Util.meltMap.containsKey(m))) && reference.running) {
-					if(this.laserHelper.meltsBlocks && (GunGamePlugin.instance.griefHelper.isGGWorld(reference.location.getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.BULLETS_IGNITE_TNT, reference.location.getWorld())) && Util.meltMap.containsKey(m)) {
+					if(this.laserHelper.meltsBlocks && (GunGamePlugin.instance.griefHelper.isGGWorld(reference.location.getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.BULLETS_IGNITE_TNT, reference.location.getWorld())) && Util.meltMap.containsKey(m)) {
 						// DONE: SChmelzliste
 						/*
 						 * Cobble --> Magma block (1.12: MAGMA, >: MAGMA_BLOCK
@@ -215,7 +215,7 @@ public class PlasmaBulletThread extends BukkitRunnable {
 							}
 						}
 					}
-					else if(m.equals(Material.TNT) && (GunGamePlugin.instance.griefHelper.isGGWorld(reference.location.getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.BULLETS_IGNITE_TNT, reference.location.getWorld()))) {
+					else if(m.equals(Material.TNT) && (GunGamePlugin.instance.griefHelper.isGGWorld(reference.location.getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.BULLETS_IGNITE_TNT, reference.location.getWorld()))) {
 						reference.location.getBlock().setType(Material.AIR);
 						reference.location.getBlock().breakNaturally();
 						

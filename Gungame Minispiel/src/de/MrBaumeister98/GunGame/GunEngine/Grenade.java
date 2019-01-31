@@ -29,12 +29,12 @@ import de.MrBaumeister98.GunGame.API.GrenadeExplodeEvent;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
-import de.MrBaumeister98.GunGame.GunEngine.Enums.GrenadeType;
-import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefType;
+import de.MrBaumeister98.GunGame.GunEngine.Enums.EGrenadeType;
+import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 
 public class Grenade {
 	
-	private GrenadeType type;
+	private EGrenadeType type;
 	private WeaponManager manager;
 	private String GrenadeName;
 	private FileConfiguration weaponFile;
@@ -107,13 +107,13 @@ public class Grenade {
 		setExplodeOnImpact(this.wfu.getExplodeOnImpact(this.weaponFile));
 		
 		setSmokeEnabled(this.wfu.getSmokeEnabled(this.weaponFile));
-		if(getSmokeEnabled() || getGrenadeType().equals(GrenadeType.SMOKE)) {
+		if(getSmokeEnabled() || getGrenadeType().equals(EGrenadeType.SMOKE)) {
 			setupSmoke();
 		}
-		if(getGrenadeType().equals(GrenadeType.CLUSTER)) {
+		if(getGrenadeType().equals(EGrenadeType.CLUSTER)) {
 			setClusterCount(this.wfu.getClusterCount(this.weaponFile));
 		}
-		if(getGrenadeType().equals(GrenadeType.INCENDIARY)) {
+		if(getGrenadeType().equals(EGrenadeType.INCENDIARY)) {
 			setFireEnabled(true);
 		} else {
 			setFireEnabled(this.wfu.getFireEnabled(this.weaponFile));
@@ -239,7 +239,7 @@ public class Grenade {
 	private void createExplosion(Item grenade, Location center, Grenade owner, UUID thrower, Boolean splitIntoCluster, Boolean fire, Boolean smoke) {
 		owner.getSoundSet().explodeSound.play(center.getWorld(), center);
 		//Bukkit.getPlayer(thrower).sendMessage(splitIntoCluster.toString());
-		if(owner.getGrenadeType().equals(GrenadeType.INCENDIARY)) {
+		if(owner.getGrenadeType().equals(EGrenadeType.INCENDIARY)) {
 			
 			Util.createExplosion(center, true, owner.getBreakBlocks(), owner.getExplosionNoDamage(), true, owner.getStrength(), thrower, owner.getRadius(), true);
 			if(smoke == true) {
@@ -658,7 +658,7 @@ public class Grenade {
 		}
 		
 		private Boolean isGlass(Material m, World w) {
-			if((GunGamePlugin.instance.griefHelper.isGGWorld(w) || GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.SHOTS_BREAK_GLASS, w)) && Util.isGlass(m)/*(m.equals(Material.GLASS) ||
+			if((GunGamePlugin.instance.griefHelper.isGGWorld(w) || GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.SHOTS_BREAK_GLASS, w)) && Util.isGlass(m)/*(m.equals(Material.GLASS) ||
 					m.equals(Material.GLASS_PANE) ||
 					m.equals(Material.STAINED_GLASS) ||
 					m.equals(Material.STAINED_GLASS_PANE))*/) {
@@ -986,11 +986,11 @@ public class Grenade {
 		this.weaponFile = weaponFile;
 	}
 
-	public GrenadeType getGrenadeType() {
+	public EGrenadeType getGrenadeType() {
 		return type;
 	}
 
-	public void setType(GrenadeType type) {
+	public void setType(EGrenadeType type) {
 		this.type = type;
 	}
 

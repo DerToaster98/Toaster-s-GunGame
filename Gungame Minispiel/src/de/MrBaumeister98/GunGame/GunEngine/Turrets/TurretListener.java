@@ -36,7 +36,7 @@ import de.MrBaumeister98.GunGame.API.TurretEvents.TurretTakeDamageEvent;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
-import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefType;
+import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 
 public class TurretListener implements Listener {
 	
@@ -226,7 +226,7 @@ public class TurretListener implements Listener {
 		}
 		if(event.getEntity() != null && event.getEntity().hasMetadata("GG_TurretShell") && event.getHitBlock() != null) {
 			Material m = event.getHitBlock().getType();
-			if((GunGamePlugin.instance.griefHelper.isGGWorld(event.getEntity().getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(GriefType.SHOTS_BREAK_GLASS, event.getEntity().getWorld())) &&
+			if((GunGamePlugin.instance.griefHelper.isGGWorld(event.getEntity().getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.SHOTS_BREAK_GLASS, event.getEntity().getWorld())) &&
 					Util.isGlass(m)
 				) {
 				event.getHitBlock().getWorld().playSound(event.getHitBlock().getLocation(), Sound.BLOCK_GLASS_BREAK, 8.0F, 0.8F);
