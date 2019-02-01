@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import org.bukkit.entity.Player;
 
-import de.MrBaumeister98.GunGame.Achievements.Achievements.GunGameAchievementUtil.CriteriaE;
 import de.MrBaumeister98.GunGame.Game.Arena.Arena;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
@@ -54,7 +53,6 @@ public class StatManager {
 							if(statP.getFile().getProgress(ggach.getCriteria()) == minimumReach) {
 								//GRANT THE ADVANCEMENT
 								ggach.getAdv().grant(statP.getPlayer());
-								
 							}
 						} else {
 							if(statP.getFile().getProgress(ggach.getCriteria()) >= minimumReach) {

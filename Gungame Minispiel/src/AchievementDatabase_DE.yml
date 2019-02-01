@@ -1,11 +1,11 @@
 WARNING: DO NOT CHANGE THIS FILE UNLESS YOU REALLY KNOW WHAT YOU ARE DOING!!!
-ForceUpdateOnNextStart: false
+ForceUpdateOnNextStart: true
 Names:
   - GunGame-TASK-IMPOSSIBLE-1-false
-  - FirstTime-TASK-PLAYGAME-1-false
-  - GettingUsed-TASK-PLAYGAME-10-false
-  - Addicted-TASK-PLAYGAME-100-false
-  - YouHaveNoLife-GOAL-PLAYGAME-1000-true
+  - FirstTime-CHALLENGE-PLAYGAME-1-false
+  - GettingUsed-CHALLENGE-PLAYGAME-10-false
+  - Addicted-CHALLENGE-PLAYGAME-100-false
+  - YouHaveNoLife-CHALLENGE-PLAYGAME-1000-true
   - Killer-TASK-KILL-10-false
   - Gladiator-TASK-KILL-50-false
   - MassMurder-GOAL-KILL-100-false
@@ -13,12 +13,12 @@ Names:
   - FiveSeries-TASK-KILLSTREAK-5-false
   - TenSeries-TASK-KILLSTREAK-10-false
   - TwentySeries-GOAL-KILLSTREAK-20-false
-  - Lockpicker-TASK-LOCKPICK-10-false
-  - LockExpert-TASK-LOCKPICK-50-false
-  - Thief-TASK-LOCKPICK-250-false
-  - Villain-GOAL-LOCKPICK-1000-false
-  - Victor-TASK-WIN-1-false
-  - SeriesVictor-GOAL-WIN-10-false
+  - Lockpicker-CHALLENGE-LOCKPICK-10-false
+  - LockExpert-CHALLENGE-LOCKPICK-50-false
+  - Thief-CHALLENGE-LOCKPICK-250-false
+  - Villain-CHALLENGE-LOCKPICK-1000-false
+  - Victor-CHALLENGE-WIN-1-false
+  - SeriesVictor-CHALLENGE-WIN-10-false
   - Lucker-TASK-WIN_SERIES-5-false
   - Unstoppable-TASK-WIN_SERIES-20-false
   - God-GOAL-WIN_NO_DAM-1-true
@@ -26,8 +26,8 @@ Names:
   - UnableToWin-TASK-LOSE_SERIES-5-false
   - InfiniteLoser-GOAL-LOSE_SERIES-100-false
   - HeadShot-TASK-HEADSHOT-1-false
-  - Sniper-TASK-HEADSHOT-5-false
-  - SniperKing-GOAL-HEADSHOT-50-false
+  - Sniper-CHALLENGE-HEADSHOT-5-false
+  - SniperKing-CHALLENGE-HEADSHOT-50-false
   - Shield-TASK-TAKE_DAMAGE-1000-false
   - Tank-GOAL-TAKE_DAMAGE_NO_DIE-100-false
   - YunoFuchingGasai-CHALLENGE-KILLS_ONE_ROUND-38-true

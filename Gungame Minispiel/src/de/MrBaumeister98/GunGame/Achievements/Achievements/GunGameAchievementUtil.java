@@ -448,32 +448,6 @@ public class GunGameAchievementUtil {
 	public void setPlugin(GunGamePlugin plugin) {
 		this.plugin = plugin;
 	}
-
-	public enum CriteriaE {
-		JOIN,
-		KILL,
-		KILLS_ONE_ROUND,
-		KILLSTREAK,
-		KILLSTREAK_NO_DAM,
-		TAKE_DAMAGE,
-		TAKE_DAMAGE_NO_DIE,
-		DAMAGE_DEALT,
-		HEADSHOT,
-		PLAYGAME,
-		WIN,
-		WIN_SERIES,
-		WIN_NO_DAM,
-		LOSE,
-		LOSE_SERIES,
-		DIE,
-		LOCKPICK,
-		USE_C4,
-		RELOAD,
-		SHOOT,
-		SUICIDEBOMB,
-		THROWGRENADE,
-		IMPOSSIBLE
-	}
 	
 	private String getAchievementName(String achID) {
 		String path = "Language." + achID + ".Name";

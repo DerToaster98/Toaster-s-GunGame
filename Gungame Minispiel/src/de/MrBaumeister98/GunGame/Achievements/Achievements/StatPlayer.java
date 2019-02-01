@@ -43,7 +43,7 @@ public class StatPlayer {
 		this.file = new StatFile(p, this);
 		this.manager = manager;
 	}
-	private void check() {
+	private void checkForUnlockedAdvancements() {
 		this.manager.calculateAchievements(this.player);
 	}
 	
@@ -53,8 +53,10 @@ public class StatPlayer {
 		this.weaponsReloaded++;
 		this.file.updateReloadCount();
 		
+		countUpAdvancementsOfCriteria(CriteriaE.RELOAD);
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -64,8 +66,10 @@ public class StatPlayer {
 		this.weaponsShot++;
 		this.file.updateShotCount();
 		
+		countUpAdvancementsOfCriteria(CriteriaE.SHOOT);
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -75,8 +79,10 @@ public class StatPlayer {
 		this.grenadesThrown++;
 		this.file.updateGrenadesThrown();
 		
+		countUpAdvancementsOfCriteria(CriteriaE.THROWGRENADE);
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -86,8 +92,10 @@ public class StatPlayer {
 		this.c4Planted++;
 		this.file.updatePlantedC4();
 		
+		countUpAdvancementsOfCriteria(CriteriaE.USE_C4);
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -97,8 +105,10 @@ public class StatPlayer {
 		this.suicideBombed++;
 		this.file.updateSuicideBombings();
 		
+		countUpAdvancementsOfCriteria(CriteriaE.SUICIDEBOMB);
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -108,8 +118,10 @@ public class StatPlayer {
 		this.locksPicked++;
 		this.file.updateLocksPicked();
 		
+		countUpAdvancementsOfCriteria(CriteriaE.LOCKPICK);
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -119,8 +131,10 @@ public class StatPlayer {
 		this.headShotsDealt++;
 		this.file.updateHeadShotsDealt();
 		
+		countUpAdvancementsOfCriteria(CriteriaE.HEADSHOT);
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -130,18 +144,26 @@ public class StatPlayer {
 		this.kills++;
 		this.file.updateKills();
 		this.currentKillStreak++;
+
+		countUpAdvancementsOfCriteria(CriteriaE.KILL);
+		countUpAdvancementsOfCriteria(CriteriaE.KILLS_ONE_ROUND);
+		countUpAdvancementsOfCriteria(CriteriaE.KILLSTREAK);
+		
 		if(this.currentKillStreak >= this.file.getKillStreak()) {
 			this.file.updateMaximumKillstreak();
 		}
 		//if(this.tookDamageDuringRound == false) {
 			this.currentKillStreakNoDamage++;
+			
+			countUpAdvancementsOfCriteria(CriteriaE.KILLSTREAK_NO_DAM);
+			
 			if(this.currentKillStreakNoDamage >= this.file.getKillStreakNoDamage()) {
 				this.file.updateMaximumKillstreakNoDamage();
 			}
 		//}
 			
 			if(Util.grantAchievementsAfterUnlocking) {
-				check();
+				checkForUnlockedAdvancements();
 			} else {
 				refreshList();
 			}
@@ -150,8 +172,10 @@ public class StatPlayer {
 	public void incrementJoinedGames() {
 		this.file.updateJoinedGames();
 		
+		countUpAdvancementsOfCriteria(CriteriaE.JOIN);
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -159,17 +183,28 @@ public class StatPlayer {
 	//DONE
 	public void incrementTakenDamage(Double damage) {
 		this.currentKillStreakNoDamage = 0;
+		countResetAdvancementsOfCriteria(CriteriaE.KILLSTREAK_NO_DAM);
+		
 		Double temp = this.damageTaken + damage;
 		this.damageTaken = temp;
+		
+		countUpAdvancementsOfCriteria(CriteriaE.TAKE_DAMAGE);
+		countUpAdvancementsOfCriteria(CriteriaE.TAKE_DAMAGE_NO_DIE);
+		
 		this.file.updateDamageTaken();
-		if(this.deathCount == 0 | this.deathCount == null | this.deathCount <= 0) {
+		if(this.deathCount == 0 || this.deathCount == null || this.deathCount <= 0) {
 			Double temp2 = this.damageTakenNoDie + damage;
 			this.damageTakenNoDie = temp2;
+			
+			countUpAdvancementsOfCriteria(CriteriaE.TAKE_DAMAGE_NO_DIE);
+			
 			this.file.updateDamageTakenNoDie();
+		} else {
+			countResetAdvancementsOfCriteria(CriteriaE.TAKE_DAMAGE_NO_DIE);
 		}
 		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -180,8 +215,12 @@ public class StatPlayer {
 		this.damageDealt = temp;
 		this.file.updateDamageDealt();
 		
+		for(int i = 0; i < damage.intValue(); i++) {
+			countUpAdvancementsOfCriteria(CriteriaE.DAMAGE_DEALT);
+		}
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -196,8 +235,14 @@ public class StatPlayer {
 		this.deathCount++;
 		this.file.updateDeathCount();
 		
+		countResetAdvancementsOfCriteria(CriteriaE.KILLSTREAK);
+		countResetAdvancementsOfCriteria(CriteriaE.KILLSTREAK_NO_DAM);
+		countResetAdvancementsOfCriteria(CriteriaE.TAKE_DAMAGE_NO_DIE);
+		
+		countUpAdvancementsOfCriteria(CriteriaE.DIE);
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -208,16 +253,32 @@ public class StatPlayer {
 		
 		this.file.updateKillsLastRound();
 		
+		countUpAdvancementsOfCriteria(CriteriaE.PLAYGAME);
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		}
 	}
 	//DONE
 	public void winORlose(Boolean won) {
+		countResetAdvancementsOfCriteria(CriteriaE.KILLS_ONE_ROUND);
 		this.file.updateWinsAndLosed(won, this.tookDamageDuringRound);
 		
+		if(won) {
+			countUpAdvancementsOfCriteria(CriteriaE.WIN);
+			countUpAdvancementsOfCriteria(CriteriaE.WIN_SERIES);
+			if(!tookDamageDuringRound) {
+				countUpAdvancementsOfCriteria(CriteriaE.WIN_NO_DAM);
+			}
+			countResetAdvancementsOfCriteria(CriteriaE.LOSE_SERIES);
+		} else {
+			countUpAdvancementsOfCriteria(CriteriaE.LOSE);
+			countResetAdvancementsOfCriteria(CriteriaE.WIN_SERIES);
+			countUpAdvancementsOfCriteria(CriteriaE.LOSE_SERIES);
+		}
+		
 		if(Util.grantAchievementsAfterUnlocking) {
-			check();
+			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
 		}
@@ -238,6 +299,21 @@ public class StatPlayer {
 						
 					}
 				}
+			}
+		}
+	}
+	
+	private void countUpAdvancementsOfCriteria(CriteriaE crit) {
+		for(GunGameAchievement ach : crit.getAchievements()) {
+			if(ach.isEnumerated()) {
+				ach.getAdv().counterUp(getPlayer());
+			}
+		}
+	}
+	private void countResetAdvancementsOfCriteria(CriteriaE crit) {
+		for(GunGameAchievement ach : crit.getAchievements()) {
+			if(ach.isEnumerated()) {
+				ach.getAdv().counterReset(getPlayer());
 			}
 		}
 	}

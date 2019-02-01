@@ -55,15 +55,11 @@ public abstract class Util {
 	
 	public static Location GlobalLobby = null;
 	public static String defaultPack = GunGamePlugin.instance.getConfig().getString("Config.DefaultResourcepack");
-	//public static List<TNTPrimed> GunGameExplosives = new ArrayList<TNTPrimed>();
 		
 	private static Random randomGenerator = new Random();
 	
 	public static List<Material> shopBlocks = new ArrayList<Material>();
 	public static List<Material> breakableBlocks = new ArrayList<Material>();
-
-	//public static final boolean isCrowBarUnbreakable = GunGamePlugin.instance.getConfig().getBoolean("Config.Items.Crowbar.Unbreakable", true);
-	//public static final short CrowBarDur = Short.valueOf(GunGamePlugin.instance.getConfig().getString("Config.Items.Crowbar.Durability"));
 
 	public static final Integer votingPhaseDuration = GunGamePlugin.instance.getConfig().getInt("Config.VotePhaseDuration", 30);
 
@@ -219,8 +215,8 @@ public abstract class Util {
 		if(canVote == true) {
 			p.getInventory().setItem(1, Voter.votePaper());
 		}		
-		//p.getInventory().setItem(4, StatItem.statViewer(p));
 	}
+	
 	public static File getPlayerGunGameFile(Player p) {
 		String path = FileManager.getPlayerDataFolder().getAbsolutePath();
 		String name = p.getUniqueId().toString() + ".yml";
@@ -766,12 +762,7 @@ public abstract class Util {
 					fires.add(loc);
 					
 					loc.getBlock().breakNaturally();
-					loc.getBlock().setType(Material.FIRE);
-					/*Random rdm2 = new Random();
-					Boolean b2 = rdm2.nextBoolean();
-					if(breakBlocks == true && b2 == true) {
-						loc.getBlock().getRelative(BlockFace.DOWN).setType(Material.COAL_BLOCK);
-					}*/					
+					loc.getBlock().setType(Material.FIRE);				
 				}
 			}
 			for(Location loc : fires) {

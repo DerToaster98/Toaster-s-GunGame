@@ -5,7 +5,6 @@ import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 
-import de.MrBaumeister98.GunGame.Achievements.Achievements.GunGameAchievementUtil.CriteriaE;
 import de.MrBaumeister98.GunGame.Achievements.AdvencementAPI.AdvancementAPI;
 import de.MrBaumeister98.GunGame.Achievements.AdvencementAPI.FrameType;
 import de.MrBaumeister98.GunGame.Achievements.AdvencementAPI.Trigger;
@@ -16,6 +15,7 @@ public class GunGameAchievement {
 	public GunGameAchievementUtil manager;
 	
 	private boolean loaded;
+	private boolean enumerated;
 	private boolean hidden;
 	private String key;
 	private String name;
@@ -37,6 +37,7 @@ public class GunGameAchievement {
 		setDesc(desc);
 		setIcon(icon);
 		setCriteria(crit);
+		crit.addAchievement(this);
 		setFrameType(fType);
 		setToReach(toreach);
 		if(parentName != null && parentName.equalsIgnoreCase("NULL")) {
@@ -44,6 +45,10 @@ public class GunGameAchievement {
 			this.parentName = null;
 		} else if(parentName != null) {
 			this.parentName = parentName;
+		}
+		setEnumerated(false);
+		if(this.getFrameType().equals(FrameType.CHALLENGE)) {
+			setEnumerated(true);
 		}
 		this.setLoaded(false);
 	}
@@ -71,6 +76,7 @@ public class GunGameAchievement {
 			AdvancementAPI advncmnt = AdvancementAPI.builder(new NamespacedKey(GunGamePlugin.instance, "GunGame/" + this.key))
 					.title(ChatColor.translateAlternateColorCodes('&', this.name))
 					.description(desc2)
+					.counter(this.toReach > 1 ? 1 : this.toReach )
 					.icon("minecraft:" + this.icon.toLowerCase())
 					.trigger(
 							Trigger.builder(
@@ -191,6 +197,14 @@ public class GunGameAchievement {
 
 	public void setHidden(boolean hidden) {
 		this.hidden = hidden;
+	}
+
+	public boolean isEnumerated() {
+		return enumerated;
+	}
+
+	public void setEnumerated(boolean enumerated) {
+		this.enumerated = enumerated;
 	}
 	
 	

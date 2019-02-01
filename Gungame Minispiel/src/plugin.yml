@@ -1,7 +1,7 @@
 name: Gungame
 author: MrBaumeister98
 authors: [Game - MrBaumeister98, AdvancementAPI - Chazmondo, WorldRestoreAPI - Arceus02]
-version: 1.8.1.2
+version: 1.8.3
 api-version: 1.13
 main: de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin
 depend: [ItemNBTAPI]

@@ -26,6 +26,7 @@ import de.MrBaumeister98.GunGame.GunEngine.WeaponListener;
 import de.MrBaumeister98.GunGame.GunEngine.WeaponManager;
 import de.MrBaumeister98.GunGame.GunEngine.Griefing.GriefHelper;
 import de.MrBaumeister98.GunGame.GunEngine.Shop.ShopGUI;
+import de.MrBaumeister98.GunGame.GunEngine.Tanks.PlayerInteractAtTankListener;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankListener;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankManager;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankMoveListener.TankMovementListener_1_12_R1;
@@ -235,6 +236,7 @@ public class GunGamePlugin extends JavaPlugin {
 		
 		registerPacketEvents();
 		this.getServer().getPluginManager().registerEvents(new TankListener(), this);
+		this.getServer().getPluginManager().registerEvents(new PlayerInteractAtTankListener(), this);
 		
 		this.getServer().getPluginManager().registerEvents(new SignListener(), this);
 		this.getServer().getPluginManager().registerEvents(new GameListener(), this);	

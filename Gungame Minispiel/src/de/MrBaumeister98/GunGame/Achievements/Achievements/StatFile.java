@@ -5,7 +5,6 @@ import java.io.File;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import de.MrBaumeister98.GunGame.Achievements.Achievements.GunGameAchievementUtil.CriteriaE;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
 
 public class StatFile {
