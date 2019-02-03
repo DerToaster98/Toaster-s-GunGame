@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import de.MrBaumeister98.GunGame.API.TabTitleSendEvent;
 import net.md_5.bungee.api.ChatColor;
 
 public class TabListUtil {
@@ -19,11 +20,11 @@ public class TabListUtil {
 			footer = "";
 		footer = ChatColor.translateAlternateColorCodes('&', footer);
 
-		/*
-		 * TabTitleSendEvent tabTitleSendEvent = new TabTitleSendEvent(player, header,
-		 * footer); Bukkit.getPluginManager().callEvent(tabTitleSendEvent); if
-		 * (tabTitleSendEvent.isCancelled()) { return; }
-		 */
+		
+		TabTitleSendEvent tabTitleSendEvent = new TabTitleSendEvent(player, header,
+		footer); Bukkit.getPluginManager().callEvent(tabTitleSendEvent); if
+		(tabTitleSendEvent.isCancelled()) { return; }
+		
 		header = header.replaceAll("%player%", player.getDisplayName());
 		footer = footer.replaceAll("%player%", player.getDisplayName());
 		try {
