@@ -63,7 +63,7 @@ public class GunGamePlugin extends JavaPlugin {
 	
 	public Boolean serverPre113;
 	
-	public Boolean TabListAPIloaded;
+	//public Boolean TabListAPIloaded;
 	
 	public String versionMC;
 	
@@ -93,10 +93,10 @@ public class GunGamePlugin extends JavaPlugin {
 			Debugger.logInfoWithColoredText(ChatColor.GREEN + "Server version is 1.12.2 and lower!");
 		}
 		
-		this.TabListAPIloaded = false;
+		/*this.TabListAPIloaded = false;
 		if(Bukkit.getPluginManager().getPlugin("TTA") != null && Bukkit.getPluginManager().isPluginEnabled("TTA")) {
 			this.TabListAPIloaded = true;
-		}
+		}*/
 		
 		
 		

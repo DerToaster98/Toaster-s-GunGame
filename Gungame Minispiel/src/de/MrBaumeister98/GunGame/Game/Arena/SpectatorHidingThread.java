@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.EGameState;
+import de.MrBaumeister98.GunGame.Game.Util.TabListUtil;
 
 public class SpectatorHidingThread {
 
@@ -62,10 +63,17 @@ public class SpectatorHidingThread {
 						}
 						//HIDES ALL PLAYERS THAT ARE NOT IN THE ARENA FOR THE PLAYERS IN THE ARENA
 						for(Player p : arena.getPlayers()) {
-							if(GunGamePlugin.instance.TabListAPIloaded) {
+							/*if(GunGamePlugin.instance.TabListAPIloaded) {
 								String header = "&8<<<&l&cGun&r&l&7Game&r&8>>>";
 								String playerKills = "&aKills: &e" + arena.getKills(p) + "&a/&c" + arena.getKillsToWin();
 								de.Herbystar.TTA.TTA_Methods.sendTablist(p, header, playerKills);
+							}*/
+							try {
+								String header = "&8<<<&l&cGun&r&l&7Game&r&8>>>";
+								String playerKills = "&aKills: &e" + arena.getKills(p) + "&a/&c" + arena.getKillsToWin();
+								TabListUtil.sendTabTitle(p, header, playerKills);
+							} catch(Exception ex) {
+								ex.printStackTrace();
 							}
 							
 							for(Player pOnline : Bukkit.getOnlinePlayers()) {

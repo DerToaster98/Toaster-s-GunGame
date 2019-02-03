@@ -37,6 +37,7 @@ import de.MrBaumeister98.GunGame.Game.Util.EGameState;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
 import de.MrBaumeister98.GunGame.Game.Util.RadarUtil;
 import de.MrBaumeister98.GunGame.Game.Util.ScoreboardUtil;
+import de.MrBaumeister98.GunGame.Game.Util.TabListUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.Game.Util.VoteUtil;
 import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
@@ -187,8 +188,13 @@ public class Arena {
 					this.getMinPlayers(), this.getMaxPlayers(), null, null, null, null, null, null, null, true, false));
 		}
 		
-		if(GunGamePlugin.instance.TabListAPIloaded) {
+		/*if(GunGamePlugin.instance.TabListAPIloaded) {
 			de.Herbystar.TTA.TTA_Methods.sendTablist(p, null, null);
+		}*/
+		try {
+			TabListUtil.sendTabTitle(p, null, null);
+		} catch(Exception ex) {
+			ex.printStackTrace();
 		}
 
 		// RadarUtil.removePlayer(p);
