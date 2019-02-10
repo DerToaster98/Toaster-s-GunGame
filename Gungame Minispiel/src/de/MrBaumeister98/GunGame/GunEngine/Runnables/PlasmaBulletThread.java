@@ -154,7 +154,7 @@ public class PlasmaBulletThread extends BukkitRunnable {
 				}
 				Material m = reference.location.getBlock().getType();
 				if((!canPass(m) || (this.laserHelper.meltsBlocks && Util.meltMap.containsKey(m))) && reference.running) {
-					if(this.laserHelper.meltsBlocks && (GunGamePlugin.instance.griefHelper.isGGWorld(reference.location.getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.BULLETS_IGNITE_TNT, reference.location.getWorld())) && Util.meltMap.containsKey(m)) {
+					if(this.laserHelper.meltsBlocks && (GunGamePlugin.instance.griefHelper.isGGWorld(reference.location.getWorld()) || GunGamePlugin.instance.griefHelper.getGriefAllowed(EGriefType.SHOTS_BREAK_GLASS, reference.location.getWorld())) && Util.meltMap.containsKey(m)) {
 						// DONE: SChmelzliste
 						/*
 						 * Cobble --> Magma block (1.12: MAGMA, >: MAGMA_BLOCK
