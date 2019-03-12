@@ -355,9 +355,12 @@ public class GunGamePlugin extends JavaPlugin {
 	}
 	
 	private void launchMetrics() {
-		metrics = new Metrics(instance);
+		metrics = new Metrics(this);
 	}
-	
+
+	public Metrics getMetrics() {
+		return metrics;
+	}
 	
 	
 	

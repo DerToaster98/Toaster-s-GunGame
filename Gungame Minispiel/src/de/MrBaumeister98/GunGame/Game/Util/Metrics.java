@@ -185,7 +185,8 @@ public class Metrics {
      *
      * @return The plugin specific data.
      */
-    public JSONObject getPluginData() {
+    @SuppressWarnings("unchecked")
+	public JSONObject getPluginData() {
         JSONObject data = new JSONObject();
 
         String pluginName = plugin.getDescription().getName();
@@ -212,7 +213,8 @@ public class Metrics {
      *
      * @return The server specific data.
      */
-    private JSONObject getServerData() {
+    @SuppressWarnings("unchecked")
+	private JSONObject getServerData() {
         // Minecraft specific data
         int playerAmount;
         try {
@@ -255,7 +257,8 @@ public class Metrics {
     /**
      * Collects the data and sends it afterwards.
      */
-    private void submitData() {
+    @SuppressWarnings("unchecked")
+	private void submitData() {
         final JSONObject data = getServerData();
 
         JSONArray pluginData = new JSONArray();
@@ -381,7 +384,8 @@ public class Metrics {
             this.chartId = chartId;
         }
 
-        private JSONObject getRequestJsonObject() {
+        @SuppressWarnings("unchecked")
+		private JSONObject getRequestJsonObject() {
             JSONObject chart = new JSONObject();
             chart.put("chartId", chartId);
             try {
@@ -422,7 +426,8 @@ public class Metrics {
             this.callable = callable;
         }
 
-        @Override
+        @SuppressWarnings("unchecked")
+		@Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
             String value = callable.call();
@@ -453,7 +458,8 @@ public class Metrics {
             this.callable = callable;
         }
 
-        @Override
+        @SuppressWarnings("unchecked")
+		@Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
             JSONObject values = new JSONObject();
@@ -497,7 +503,8 @@ public class Metrics {
             this.callable = callable;
         }
 
-        @Override
+        @SuppressWarnings("unchecked")
+		@Override
         public JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
             JSONObject values = new JSONObject();
@@ -546,7 +553,8 @@ public class Metrics {
             this.callable = callable;
         }
 
-        @Override
+        @SuppressWarnings("unchecked")
+		@Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
             int value = callable.call();
@@ -578,7 +586,8 @@ public class Metrics {
             this.callable = callable;
         }
 
-        @Override
+        @SuppressWarnings("unchecked")
+		@Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
             JSONObject values = new JSONObject();
@@ -623,7 +632,8 @@ public class Metrics {
             this.callable = callable;
         }
 
-        @Override
+        @SuppressWarnings("unchecked")
+		@Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
             JSONObject values = new JSONObject();
@@ -661,7 +671,8 @@ public class Metrics {
             this.callable = callable;
         }
 
-        @Override
+        @SuppressWarnings("unchecked")
+		@Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
             JSONObject values = new JSONObject();
