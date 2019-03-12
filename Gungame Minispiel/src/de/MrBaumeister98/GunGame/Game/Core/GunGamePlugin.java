@@ -18,6 +18,7 @@ import de.MrBaumeister98.GunGame.Game.Mechanics.LootChests;
 import de.MrBaumeister98.GunGame.Game.Mechanics.MediCake_pre_1_13;
 import de.MrBaumeister98.GunGame.Game.Mechanics.MediCake_v1_13_up;
 import de.MrBaumeister98.GunGame.Game.Util.JoinGuiHelper;
+import de.MrBaumeister98.GunGame.Game.Util.Metrics;
 import de.MrBaumeister98.GunGame.Game.Util.RadarUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.GunEngineCommandListener;
@@ -61,6 +62,8 @@ public class GunGamePlugin extends JavaPlugin {
 	public TankManager tankManager;
 	public ChunkLoadListener chunkloadlistener;
 	
+	private Metrics metrics;
+	
 	public Boolean serverPre113;
 	
 	//public Boolean TabListAPIloaded;
@@ -97,7 +100,6 @@ public class GunGamePlugin extends JavaPlugin {
 		if(Bukkit.getPluginManager().getPlugin("TTA") != null && Bukkit.getPluginManager().isPluginEnabled("TTA")) {
 			this.TabListAPIloaded = true;
 		}*/
-		
 		
 		
 		
@@ -204,6 +206,7 @@ public class GunGamePlugin extends JavaPlugin {
 		}, 30);
 		
 		Debugger.saveLog();
+		launchMetrics();
 	}
 
 	@Override
@@ -349,6 +352,10 @@ public class GunGamePlugin extends JavaPlugin {
 		FileManager.getArenaConfig().options().copyDefaults(true);
 		FileManager.saveArenaConfig();
 
+	}
+	
+	private void launchMetrics() {
+		metrics = new Metrics(instance);
 	}
 	
 	
