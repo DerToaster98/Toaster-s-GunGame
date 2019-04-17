@@ -24,7 +24,7 @@ import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.tr7zw.itemnbtapi.NBTItem;
 
 public class TankManager {
-	
+
 	private HashMap<UUID, Tank> tankByID;
 	private List<Tank> activeTanks;
 	private List<TankConfig> tankConfigs;

@@ -37,7 +37,7 @@ public class WaterbodyProtectionUtil {
 				blocksToCheck.add(block);
 			}
 			for(Block b : blocksToCheck) {
-				if(isBlockWater(b) ||  (isBlockNextToWater(b) && !isFullBlock(willChangeTo))) {
+				if(isBlockFluid(b) ||  (isBlockNextToWater(b) && !isFullBlock(willChangeTo))) {
 					return false;
 				}
 			}
@@ -134,14 +134,14 @@ public class WaterbodyProtectionUtil {
 		neighbors.add(b.getRelative(BlockFace.SELF));
 		
 		for(Block neighbor : neighbors) {
-			if(isBlockWater(neighbor)) {
+			if(isBlockFluid(neighbor)) {
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	private static boolean isBlockWater(Block b) {
+	private static boolean isBlockFluid(Block b) {
 		Material m = b.getType();
 		if(GunGamePlugin.instance.serverPre113) {
 			if(m.equals(Material.WATER) ||

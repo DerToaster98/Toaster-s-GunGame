@@ -14,16 +14,18 @@ import org.bukkit.util.Vector;
 
 import de.MrBaumeister98.GunGame.API.TankEvents.TankMountEvent;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
+import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 
 public class PlayerInteractAtTankListener implements Listener {
 	
 	@EventHandler(priority = EventPriority.LOW)
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		Player p = event.getPlayer();
-		if(p != null && p.isOnline() && (event.getAction().equals(Action.LEFT_CLICK_AIR) || event.getAction().equals(Action.LEFT_CLICK_BLOCK)) && p.isSneaking()) {
+		if(p != null && p.isOnline() && !ItemUtil.isGGWeapon(event.getItem()) && (event.getAction().equals(Action.LEFT_CLICK_AIR) || event.getAction().equals(Action.LEFT_CLICK_BLOCK) || event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) && !p.isSneaking()) {
 			List<Tank> tanks = GunGamePlugin.instance.tankManager.getTanksInWorld(p.getWorld());
 			if(tanks != null && !tanks.isEmpty()) {
 				Vector direction = p.getEyeLocation().getDirection().normalize();
+				direction = direction.normalize();
 				Location pos0 = p.getEyeLocation();
 				Tank tank = null;
 				for(int i = 1; i < 26; i++) {
