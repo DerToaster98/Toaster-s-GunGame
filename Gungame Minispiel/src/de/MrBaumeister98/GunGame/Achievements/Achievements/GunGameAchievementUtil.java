@@ -212,9 +212,9 @@ public class GunGameAchievementUtil {
 			}
 			FileConfiguration infoFile = YamlConfiguration.loadConfiguration(infoFileF);
 			
-			Boolean installed = infoFile.getBoolean("InstalledAdvancements");
+			Boolean installed = infoFile.getBoolean("InstalledAdvancements", false);
 			
-			if(installed != null && installed == true) {
+			if(installed) {
 				String installedVersion = infoFile.getString("Version");
 				if(GunGamePlugin.instance.getDescription().getVersion().equalsIgnoreCase(installedVersion)) {
 					b = true;
@@ -319,9 +319,9 @@ public class GunGameAchievementUtil {
 					}
 					FileConfiguration infoFile = YamlConfiguration.loadConfiguration(infoFileF);
 					
-					Boolean installed = infoFile.getBoolean("InstalledAdvancements");
+					Boolean installed = infoFile.getBoolean("InstalledAdvancements", false);
 					
-					if(installed != null && installed == true) {
+					if(installed) {
 						String installedVersion = infoFile.getString("Version");
 						if(GunGamePlugin.instance.getDescription().getVersion().equalsIgnoreCase(installedVersion)) {
 							Debugger.logInfoWithColoredText(ChatColor.AQUA + world.getName() +  ": " + ChatColor.YELLOW + "Achievement files are up to date!");
