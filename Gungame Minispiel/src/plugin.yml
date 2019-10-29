@@ -4,9 +4,9 @@ authors: [Game - MrBaumeister98, AdvancementAPI - Chazmondo, WorldRestoreAPI - A
 version: 1.8.4
 api-version: 1.13
 main: de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin
-depend: [ItemNBTAPI]
+depend: [NBTAPI]
 softdepend: [BKCommonLib, ProtocolLib, TTA]
-loadafter: [BKCommonLib, ProtocolLib, ItemNBTAPI, TTA]
+loadafter: [BKCommonLib, ProtocolLib, NBTAPI, TTA]
 load: POSTWORLD
 permissions:
   gungame.user:
