@@ -11,6 +11,7 @@ public class TurretShootController extends BukkitRunnable {
 	private TurretConfig config;
 	
 	private Boolean running;
+	//private Boolean coolingDown = false;
 	
 	private Integer shotDelay;
 	private Double criticalHeat;
@@ -24,8 +25,16 @@ public class TurretShootController extends BukkitRunnable {
 
 	@Override
 	public void run() {
+		//Part for AI
+		/*if(this.turret.getTemperature() >= this.criticalHeat *0.8) {
+			this.coolingDown = true;
+		}
+		if(this.turret.getTemperature() <= this.criticalHeat *0.3 && this.coolingDown) {
+			this.coolingDown = false;
+		}*/
+		
 		if(this.running && this.turret.getTemperature() < this.criticalHeat) {
-			if(this.turret.getGunner() != null) {
+			if(this.turret.getGunner() != null/* && !this.coolingDown*/) {
 				this.turret.fireShot();
 			}
 			TurretShootController ts = this;

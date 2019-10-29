@@ -20,10 +20,13 @@ public class TabListUtil {
 			footer = "";
 		footer = ChatColor.translateAlternateColorCodes('&', footer);
 
-		
-		TabTitleSendEvent tabTitleSendEvent = new TabTitleSendEvent(player, header,
-		footer); Bukkit.getPluginManager().callEvent(tabTitleSendEvent); if
-		(tabTitleSendEvent.isCancelled()) { return; }
+		TabTitleSendEvent tabTitleSendEvent = new TabTitleSendEvent(player, header, footer);
+		Bukkit.getPluginManager().callEvent(tabTitleSendEvent);
+		if (tabTitleSendEvent.isCancelled()) {
+			return;
+		}
+		header = tabTitleSendEvent.getHeader();
+		footer = tabTitleSendEvent.getFooter();
 		
 		header = header.replaceAll("%player%", player.getDisplayName());
 		footer = footer.replaceAll("%player%", player.getDisplayName());
