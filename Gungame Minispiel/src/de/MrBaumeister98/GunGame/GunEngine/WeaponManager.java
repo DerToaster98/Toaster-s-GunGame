@@ -16,7 +16,7 @@ import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.Shop.ShopHelper;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankConfig;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretConfig;
-import de.tr7zw.itemnbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTItem;
 
 public class WeaponManager {
 	

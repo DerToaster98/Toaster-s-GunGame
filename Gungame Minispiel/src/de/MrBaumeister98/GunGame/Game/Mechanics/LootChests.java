@@ -26,7 +26,7 @@ import de.MrBaumeister98.GunGame.GunEngine.Ammo;
 import de.MrBaumeister98.GunGame.GunEngine.Grenade;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
 import de.MrBaumeister98.GunGame.Items.C4;
-import de.tr7zw.itemnbtapi.NBTTileEntity;
+import de.tr7zw.nbtapi.NBTTileEntity;
 import net.md_5.bungee.api.ChatColor;
 
 public class LootChests implements Listener {

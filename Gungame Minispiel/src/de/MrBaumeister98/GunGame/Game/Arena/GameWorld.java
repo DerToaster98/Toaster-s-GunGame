@@ -30,7 +30,7 @@ import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankConfig;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.Turret;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretConfig;
-import de.tr7zw.itemnbtapi.NBTFile;
+import de.tr7zw.nbtapi.NBTFile;
 import net.md_5.bungee.api.ChatColor;
 
 public class GameWorld {

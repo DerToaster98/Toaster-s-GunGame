@@ -18,10 +18,9 @@ import de.MrBaumeister98.GunGame.GunEngine.Enums.EGrenadeType;
 import de.MrBaumeister98.GunGame.GunEngine.Enums.EGunType;
 import de.MrBaumeister98.GunGame.GunEngine.Enums.ELandmineType;
 import de.MrBaumeister98.GunGame.GunEngine.Enums.EProjectileType;
-import de.tr7zw.itemnbtapi.NBTItem;
-import de.tr7zw.itemnbtapi.NBTList;
-import de.tr7zw.itemnbtapi.NBTListCompound;
-import de.tr7zw.itemnbtapi.NBTType;
+import de.tr7zw.nbtapi.NBTCompoundList;
+import de.tr7zw.nbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTListCompound;
 
 public class WeaponFileUtil {
 	
@@ -431,7 +430,7 @@ public class WeaponFileUtil {
 		gun = GunItemUtil.updateRemainingShots(gun, getGunCapacity(config));
 		
 		NBTItem nbti = new NBTItem(gun);
-		NBTList attribute = nbti.getList("AttributeModifiers", NBTType.NBTTagCompound);
+		/*NBTList<NBTListCompound>*/NBTCompoundList attribute = nbti.getCompoundList("AttributeModifiers");//getList("AttributeModifiers", NBTType.NBTTagCompound);
 		
 		if(getWeight(config) > 5.0) {
 			Double weight = (getWeight(config) / 25) * -1.0D;

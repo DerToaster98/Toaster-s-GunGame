@@ -6,9 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import de.MrBaumeister98.GunGame.GunEngine.Enums.EWeaponType;
-import de.tr7zw.itemnbtapi.NBTItem;
-import de.tr7zw.itemnbtapi.NBTList;
-import de.tr7zw.itemnbtapi.NBTType;
+import de.tr7zw.nbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTList;
 
 public class ItemUtil {
 	
@@ -144,9 +143,9 @@ public class ItemUtil {
 	public static ItemStack addTags(ItemStack item, String GGAString, List<String> tags) {
 		NBTItem nbti = new NBTItem(item);
 		//if(GGAString.length == tag.length) {
-			NBTList destroys = nbti.getList(GGAString, NBTType.NBTTagString);
+			NBTList<String> destroys = nbti.getStringList(GGAString);//nbti.getList(GGAString, NBTType.NBTTagString);
 			for(String s : tags) {
-				destroys.addString(s);
+				destroys.add(s);//addString(s);
 			}
 			return nbti.getItem();
 		/*} else {

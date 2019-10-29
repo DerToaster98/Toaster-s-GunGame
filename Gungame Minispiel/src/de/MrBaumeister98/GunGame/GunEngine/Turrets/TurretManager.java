@@ -22,7 +22,7 @@ import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Core.Debugger.Debugger;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
-import de.tr7zw.itemnbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTItem;
 
 public class TurretManager {
 	

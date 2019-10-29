@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.GunEngine.Enums.EWeaponType;
-import de.tr7zw.itemnbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTItem;
 
 public abstract class GunItemUtil {
 	
