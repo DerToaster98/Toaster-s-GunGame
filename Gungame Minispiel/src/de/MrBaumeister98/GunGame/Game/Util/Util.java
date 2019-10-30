@@ -43,7 +43,6 @@ import de.MrBaumeister98.GunGame.GunEngine.Grenade;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
 import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
 import de.MrBaumeister98.GunGame.Items.C4;
-import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
 import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
 import de.MrBaumeister98.GunGame.Items.InfoItem;
 import de.MrBaumeister98.GunGame.Items.LeaveLobbyItem;
@@ -1021,11 +1020,7 @@ public abstract class Util {
 		
 		p.getInventory().setItem(5, SuicideArmor.remote());
 		p.getInventory().setItem(6, C4.c4Remote());
-		if(GunGamePlugin.instance.serverPre113) {
-			p.getInventory().setItem(8, Crowbar_pre_1_13.CrowBar());
-		} else {
 			p.getInventory().setItem(8, Crowbar_v1_13_up.CrowBar());
-		}
 		p.getInventory().setItem(7, Radar.radar());
 		
 		ItemStack helmet = new ItemStack(Material.CHAINMAIL_HELMET);
@@ -1081,16 +1076,6 @@ public abstract class Util {
 		}
 	}
 	public static Boolean isGlass(Material mat) {
-		if(GunGamePlugin.instance.serverPre113) {
-			if(mat.equals(Material.GLASS) ||
-					mat.equals(Material.valueOf("STAINED_GLASS")) ||
-					mat.equals(Material.ICE) ||
-					mat.equals(Material.FROSTED_ICE) ||
-					mat.equals(Material.valueOf("THIN_GLASS")) ||
-					mat.equals(Material.valueOf("STAINED_GLASS_PANE"))) {
-				return true;
-			}
-		} else {
 			if(mat.equals(Material.GLASS) ||
 					mat.equals(Material.GLASS_PANE) ||
 					mat.equals(Material.ICE) ||
@@ -1130,16 +1115,9 @@ public abstract class Util {
 					) {
 				return true;
 			}
-		}
 		return false;
 	}
 	public static Boolean isGlassPane(Material mat) {
-		if(GunGamePlugin.instance.serverPre113) {
-			if(mat.equals(Material.valueOf("THIN_GLASS")) ||
-					mat.equals(Material.valueOf("STAINED_GLASS_PANE"))) {
-				return true;
-			}
-		} else {
 			if(//mat.equals(Material.GLASS) ||
 					mat.equals(Material.GLASS_PANE) ||
 					//mat.equals(Material.ICE) ||
@@ -1179,41 +1157,11 @@ public abstract class Util {
 					) {
 				return true;
 			}
-		}
 		return false;
 	}
 	public static boolean isInteractable(Block block) {
 		if(block != null) {
 			Material m = block.getType();
-			if(GunGamePlugin.instance.serverPre113) {
-				if(isDoorOrTrapDoor(block) ||
-						m.equals(Material.valueOf("FLOWER_POT")) ||
-						m.equals(Material.valueOf("STONE_BUTTON")) ||
-						m.equals(Material.valueOf("WOOD_BUTTON")) ||
-						m.equals(Material.valueOf("CHEST")) ||
-						m.equals(Material.valueOf("TRAPPED_CHEST")) ||
-						m.equals(Material.valueOf("BED_BLOCK")) ||
-						m.equals(Material.valueOf("ANVIL")) ||
-						m.equals(Material.valueOf("BEACON")) ||
-						m.equals(Material.valueOf("ENCHANTMENT_TABLE")) ||
-						m.equals(Material.valueOf("WORKBENCH")) ||
-						m.equals(Material.valueOf("LEVER")) ||
-						m.equals(Material.valueOf("REDSTONE_COMPARATOR_ON")) ||
-						m.equals(Material.valueOf("REDSTONE_COMPARATOR_OFF")) ||
-						m.equals(Material.valueOf("DIODE_BLOCK_ON")) ||
-						m.equals(Material.valueOf("DIODE_BLOCK_OFF")) ||
-						m.equals(Material.valueOf("JUKEBOX")) ||
-						m.equals(Material.valueOf("NOTE_BLOCK")) ||
-						m.equals(Material.valueOf("BREWING_STAND")) ||
-						m.equals(Material.valueOf("FURNACE")) ||
-						m.equals(Material.valueOf("BURNING_FURNACE")) ||
-						m.equals(Material.valueOf("CAULDRON")) ||
-						m.equals(Material.valueOf("ENDER_CHEST")) ||
-						m.equals(Material.valueOf("ENDER_PORTAL_FRAME"))
-						) {
-					return true;
-				}
-			} else {
 				if(isDoorOrTrapDoor(block) ||
 						m.equals(Material.BEACON) ||
 						m.equals(Material.ENDER_CHEST) ||
@@ -1261,36 +1209,12 @@ public abstract class Util {
 					return true;
 				}
 			}
-		}
 		
 		return false;
 	}
 	
 	private static Boolean isDoorOrTrapDoor(Block block) {
 		Material m = block.getType();
-		if(GunGamePlugin.instance.serverPre113) {
-			if(
-					m.equals(Material.valueOf("FENCE_GATE")) ||
-					m.equals(Material.valueOf("ACACIA_FENCE_GATE")) ||
-					m.equals(Material.valueOf("BIRCH_FENCE_GATE")) ||
-					m.equals(Material.valueOf("DARK_OAK_FENCE_GATE")) ||
-					m.equals(Material.valueOf("JUNGLE_FENCE_GATE")) ||
-					m.equals(Material.valueOf("SPRUCE_FENCE_GATE")) ||
-					m.equals(Material.valueOf("WOODEN_DOOR")) ||
-					m.equals(Material.valueOf("WOOD_DOOR")) ||
-					m.equals(Material.valueOf("ACACIA_DOOR")) ||
-					m.equals(Material.valueOf("BIRCH_DOOR")) ||
-					m.equals(Material.valueOf("DARK_OAK_DOOR")) ||
-					m.equals(Material.valueOf("IRON_DOOR")) ||
-					m.equals(Material.valueOf("IRON_DOOR_BLOCK")) ||
-					m.equals(Material.valueOf("JUNGLE_DOOR")) ||
-					m.equals(Material.valueOf("SPRUCE_DOOR")) ||
-					m.equals(Material.valueOf("TRAP_DOOR")) ||
-					m.equals(Material.valueOf("IRON_TRAPDOOR"))
-				) {
-				return true;
-			}
-		} else {
 			org.bukkit.block.data.BlockData data = block.getBlockData();
 			if(
 					m.equals(Material.ACACIA_FENCE_GATE) ||
@@ -1319,7 +1243,6 @@ public abstract class Util {
 					) {
 				return true;
 			}
-		}
 		return false;
 	}
 	public static String vecToString(Vector v) {

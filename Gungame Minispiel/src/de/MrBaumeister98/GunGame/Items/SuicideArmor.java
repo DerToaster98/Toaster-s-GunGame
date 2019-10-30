@@ -26,11 +26,7 @@ public class SuicideArmor implements Listener {
 	
 	public static ItemStack suicideWest() {
 		ItemStack vest = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			vest = new ItemStack(Material.valueOf("GOLD_CHESTPLATE"), 1);
-		} else {
 			vest = new ItemStack(Material.GOLDEN_CHESTPLATE, 1);
-		}
 		ItemMeta meta = vest.getItemMeta();
 			
 		meta.setUnbreakable(true);

@@ -269,11 +269,7 @@ public class GameListener implements Listener {
 							causer = UUID.fromString(exploder.getMetadata("GG_Owner").get(0).asString());
 						}
 						List<Block> blockList = new ArrayList<Block>(event.blockList());
-						if(GunGamePlugin.instance.serverPre113) {
-							Util.computeBlockDamage_pre1_13(blockList, causer);
-						} else {
 							Util.computeBlockDamage_v1_13_up(blockList, causer);
-						}
 						event.blockList().clear();
 					}
 				} else if(!exploder.hasMetadata("GG_breakNoBlocks") /*&& !exploder.hasMetadata("GG_Physics")*/) {
@@ -282,11 +278,7 @@ public class GameListener implements Listener {
 						causer = UUID.fromString(exploder.getMetadata("GG_Owner").get(0).asString());
 					}
 					List<Block> blockList = new ArrayList<Block>(event.blockList());
-					if(GunGamePlugin.instance.serverPre113) {
-						Util.computeBlockDamage_pre1_13(blockList, causer);
-					} else {
 						Util.computeBlockDamage_v1_13_up(blockList, causer);
-					}
 					event.blockList().clear();
 				}
 				

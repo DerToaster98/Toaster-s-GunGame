@@ -59,7 +59,6 @@ import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.Enums.EGunType;
 import de.MrBaumeister98.GunGame.GunEngine.Enums.EWeaponType;
 import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
-import de.MrBaumeister98.GunGame.GunEngine.Runnables.AirstrikeRunnable_pre_1_13;
 import de.MrBaumeister98.GunGame.GunEngine.Runnables.AirstrikeRunnable_v1_13_up;
 import de.MrBaumeister98.GunGame.GunEngine.Runnables.AssaultShootRunnable;
 import de.MrBaumeister98.GunGame.GunEngine.Runnables.LandmineExplodeRunnable;
@@ -770,7 +769,7 @@ public class WeaponListener implements Listener {
 	@EventHandler
 	public void onEquip(PlayerItemHeldEvent event) {
 		Player p = event.getPlayer();
-		//Überprüfe, ob die vorherige Waffe nachlädt, falls ja, !sofort! den Nachladeprozess canceln
+		//ï¿½berprï¿½fe, ob die vorherige Waffe nachlï¿½dt, falls ja, !sofort! den Nachladeprozess canceln
 		if(GunItemUtil.isReloading(p.getInventory().getItem(event.getPreviousSlot())) && this.reloadingMap.containsKey(p.getUniqueId())) {
 			this.reloadingMap.get(p.getUniqueId()).cancelProcess();
 		} //else {
@@ -844,13 +843,8 @@ public class WeaponListener implements Listener {
 					
 					Block block = event.getClickedBlock().getRelative(BlockFace.UP);
 					
-					if(GunGamePlugin.instance.serverPre113) {
-						AirstrikeRunnable_pre_1_13 process = new AirstrikeRunnable_pre_1_13(event.getPlayer().getUniqueId(), block, strike);
-						process.run();
-					} else {
 						AirstrikeRunnable_v1_13_up process = new AirstrikeRunnable_v1_13_up(event.getPlayer().getUniqueId(), block, strike);
 						process.run();
-					}
 					
 					if(!event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
 						Player p = event.getPlayer();

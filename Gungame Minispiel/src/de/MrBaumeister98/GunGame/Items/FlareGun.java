@@ -45,12 +45,12 @@ public class FlareGun implements Listener {
 		try {
 			m = Material.getMaterial(mat);
 		} catch(IllegalArgumentException iaex) {
-			m = Material.getMaterial(GunGamePlugin.instance.serverPre113 ? "IRON_BARDING" : "IRON_HORSE_ARMOR");
+			m = Material.getMaterial("IRON_HORSE_ARMOR");
 			Debugger.logError("&4ERROR: &cMaterial " + mat + " is not valid! Path: Config.Items.FlareGun.Item.Material");
 			Debugger.logWarning("&eUsing default value [" + m.toString() + "] instead...");
 		}
 		if(m == null) {
-			m = Material.getMaterial(GunGamePlugin.instance.serverPre113 ? "IRON_BARDING" : "IRON_HORSE_ARMOR");
+			m = Material.getMaterial("IRON_HORSE_ARMOR");
 			Debugger.logError("&4ERROR: &cMissing value for path: Config.Items.FlareGun.Item.Material");
 			Debugger.logWarning("&eUsing default value [" + m.toString() + "] instead...");
 		}
@@ -106,11 +106,7 @@ public class FlareGun implements Listener {
 					projectile.setMetadata("GG_FlareGun_Projectile", new FixedMetadataValue(GunGamePlugin.instance, true));
 					
 					Player p = event.getPlayer();
-					if(GunGamePlugin.instance.serverPre113) {
-						p.playSound(p.getEyeLocation(), Sound.valueOf("ENTITY_FIREWORK_LAUNCH"), 1.5F, 0.8F);
-					} else {
 						p.playSound(p.getEyeLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1.5F, 0.8F);
-					}
 					
 					if(!p.getGameMode().equals(GameMode.CREATIVE)) {
 						int amount = p.getInventory().getItem(p.getInventory().getHeldItemSlot()).getAmount();

@@ -78,7 +78,6 @@ public class RadarUtil implements Listener {
 			return false;
 		}
 	}
-	@SuppressWarnings("deprecation")
 	private Inventory openRadarGUI(Player p) {
 		Integer size = 0;
 		//Arena tempArena = Main.plugin.arenaManager.getArena(p);
@@ -94,17 +93,6 @@ public class RadarUtil implements Listener {
 			tempTargetList.remove(p);
 			
 			for(Player target : tempTargetList) {
-				if(GunGamePlugin.instance.serverPre113) {
-					ItemStack item = new ItemStack(Material.valueOf("SKULL_ITEM"), 1, (short) 3);
-					SkullMeta meta = (SkullMeta) item.getItemMeta();
-					ArrayList<String> lore = new ArrayList<String>();
-					lore.add(ChatColor.YELLOW + target.getUniqueId().toString());
-					meta.setOwner(target.getName());
-					meta.setLore(lore);
-					meta.setDisplayName(ChatColor.RED + target.getName());
-					item.setItemMeta(meta);
-					radGUI.addItem(item);
-				} else {
 					ItemStack item = new ItemStack(Material.valueOf("PLAYER_HEAD"), 1/*, (short) 3*/);
 					SkullMeta meta = (SkullMeta) item.getItemMeta();
 					ArrayList<String> lore = new ArrayList<String>();
@@ -117,7 +105,6 @@ public class RadarUtil implements Listener {
 					meta.setDisplayName(ChatColor.RED + target.getName());
 					item.setItemMeta(meta);
 					radGUI.addItem(item);
-				}
 			}
 			
 			return radGUI;
@@ -169,9 +156,7 @@ public class RadarUtil implements Listener {
 			if(this.owner.manager.isIngame(p) && this.owner.manager.getArena(p).equals(this.owner)) {
 				if(event.getView()/*getInventory()*/.getTitle().equals(LangUtil.buildGUIString("RadarMenu"))) {
 					if(
-							GunGamePlugin.instance.serverPre113 && event.getCurrentItem().getType().equals(Material.valueOf("SKULL_ITEM"))
-							|| 
-							!GunGamePlugin.instance.serverPre113 && event.getCurrentItem().getType().equals(Material.valueOf("PLAYER_HEAD"))
+							event.getCurrentItem().getType().equals(Material.valueOf("PLAYER_HEAD"))
 						) {
 						UUID pUUID = UUID.fromString(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getLore().get(0)));
 						

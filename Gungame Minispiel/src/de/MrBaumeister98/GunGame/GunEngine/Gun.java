@@ -6,7 +6,6 @@ import org.bukkit.Particle;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
@@ -16,7 +15,6 @@ import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
 import de.MrBaumeister98.GunGame.GunEngine.Enums.EGunType;
 import de.MrBaumeister98.GunGame.GunEngine.Enums.EProjectileType;
 
-@SuppressWarnings("deprecation")
 public class Gun {
 	
 	private WeaponManager manager;
@@ -227,23 +225,8 @@ public class Gun {
 				org.bukkit.block.data.BlockData bd = m.createBlockData();
 				this.setShootParticleExtra(bd);*/
 				Object bd = null;
-				if(GunGamePlugin.instance.serverPre113) {
-					String[] dta = vars[5].split("-");
-					Material m = Material.valueOf(dta[0]);
-					byte dmg = 0;
-					try {
-						byte tmp = Byte.valueOf(dta[1]);
-						dmg = tmp;
-					} catch(Exception ex) {
-						ex.printStackTrace();
-						dmg = 0;
-					}
-					MaterialData md = new MaterialData(m, dmg);
-					bd = md;
-				} else {
 					Material m = Material.valueOf(vars[5]);
 					bd = m.createBlockData();
-				}
 				this.setShootParticleExtra(bd);
 			} catch(Exception ex) {
 				ex.printStackTrace();
@@ -287,23 +270,8 @@ public class Gun {
 			try {
 				
 				Object bd = null;
-				if(GunGamePlugin.instance.serverPre113) {
-					String[] dta = vars[5].split("-");
-					Material m = Material.valueOf(dta[0]);
-					byte dmg = 0;
-					try {
-						byte tmp = Byte.valueOf(dta[1]);
-						dmg = tmp;
-					} catch(Exception ex) {
-						ex.printStackTrace();
-						dmg = 0;
-					}
-					MaterialData md = new MaterialData(m, dmg);
-					bd = md;
-				} else {
 					Material m = Material.valueOf(vars[5]);
 					bd = m.createBlockData();
-				}
 				this.setHitParticleExtra(bd);
 			} catch(Exception ex) {
 				ex.printStackTrace();

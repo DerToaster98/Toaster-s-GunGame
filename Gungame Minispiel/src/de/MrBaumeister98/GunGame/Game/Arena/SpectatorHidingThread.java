@@ -38,7 +38,6 @@ public class SpectatorHidingThread {
 		Bukkit.getScheduler().cancelTask(this.taskID);
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void execute() {
 		try {
 			if(this.running) {
@@ -52,11 +51,7 @@ public class SpectatorHidingThread {
 							for(Player player : arena.getPlayers()) {
 								if(player.isOnline() && spec.isOnline() && !player.getUniqueId().equals(specID)) {
 									if(player.canSee(spec)) {
-										if(GunGamePlugin.instance.serverPre113) {
-											player.hidePlayer(spec);
-										} else {
 											player.hidePlayer(GunGamePlugin.instance, spec);
-										}
 									}
 								}
 							}
@@ -80,28 +75,16 @@ public class SpectatorHidingThread {
 								if(this.manager.isIngame(pOnline)) {
 									if(!arena.equals(this.manager.getArena(pOnline))) {
 										if(p.canSee(pOnline)) {
-											if(GunGamePlugin.instance.serverPre113) {
-												p.hidePlayer(pOnline);
-											} else {
 												p.hidePlayer(GunGamePlugin.instance, pOnline);
-											}
 										}
 									} else if(arena.equals(this.manager.getArena(pOnline))) {
 										if(!p.canSee(pOnline)) {
-											if(GunGamePlugin.instance.serverPre113) {
-												p.showPlayer(pOnline);
-											} else {
 												p.showPlayer(GunGamePlugin.instance, pOnline);
-											}
 										}
 									}
 								} else {
 									if(p.canSee(pOnline)) {
-										if(GunGamePlugin.instance.serverPre113) {
-											p.hidePlayer(pOnline);
-										} else {
 											p.hidePlayer(GunGamePlugin.instance, pOnline);
-										}
 									}
 								}
 							}

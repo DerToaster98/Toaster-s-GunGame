@@ -30,11 +30,7 @@ public class TrackPadItem implements Listener {
 	@SuppressWarnings("deprecation")
 	public static void initTrackPadItem() {
 		ItemStack trackpad;
-		if(GunGamePlugin.instance.serverPre113) {
-			trackpad = new ItemStack(Material.valueOf("MAP"), 1, (short)0);
-		} else {
 			trackpad = new ItemStack(Material.FILLED_MAP, 1, (short)0);
-		}
 		ItemMeta meta = trackpad.getItemMeta();
 		meta.setDisplayName(LangUtil.buildItemName("Trackpad"));
 		meta.setLore(LangUtil.buildItemLore("Trackpad"));
@@ -61,13 +57,9 @@ public class TrackPadItem implements Listener {
 	public static void giveTrackPad(Player p, int count) {
 		ItemStack map = getTrackPadBaseItem();
 		short mapID = TrackPadCreator.renderMapView(p.getLocation(), p.getUniqueId());
-		if(GunGamePlugin.instance.serverPre113) {
-			map.setDurability(mapID);
-		} else {
 			MapMeta meta = (MapMeta) map.getItemMeta();
 			meta.setMapId(mapID);
 			map.setItemMeta(meta);
-		}
 		map.setAmount(count);
 		p.getInventory().addItem(map);
 	}
@@ -93,13 +85,9 @@ public class TrackPadItem implements Listener {
 						map.setItemMeta(meta);
 						//Updates Image
 						short mapID = TrackPadCreator.renderMapView(event.getPlayer().getLocation(), event.getPlayer().getUniqueId());
-						if(GunGamePlugin.instance.serverPre113) {
-							map.setDurability(mapID);
-						} else {
 							MapMeta mMeta = (MapMeta) map.getItemMeta();
 							mMeta.setMapId(mapID);
 							map.setItemMeta(mMeta);
-						}
 						//Updates Uses Meta
 						map = ItemUtil.addTags(map, "GG_TrackPad_ChargesLeft", chargesLeft -1);
 					}

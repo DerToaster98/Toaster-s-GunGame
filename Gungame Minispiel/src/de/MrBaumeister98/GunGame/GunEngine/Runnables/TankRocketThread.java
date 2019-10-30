@@ -71,11 +71,7 @@ public class TankRocketThread extends BukkitRunnable {
 		this.hitbox.setInvulnerable(true);
 		this.hitbox.setCollidable(false);
 		this.hitbox.setMarker(true);
-		if(GunGamePlugin.instance.serverPre113) {
-			this.hitbox.setHelmet(new ItemStack(Material.valueOf("FIREWORK")));
-		} else {
 			this.hitbox.setHelmet(new ItemStack(Material.FIREWORK_ROCKET));
-		}
 		//this.hitbox.setGravity(false);
 		//SET Head Pose and rotate it to fit!
 		

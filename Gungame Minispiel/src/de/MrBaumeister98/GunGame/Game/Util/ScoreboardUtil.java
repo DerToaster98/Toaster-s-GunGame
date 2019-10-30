@@ -8,25 +8,19 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
 import de.MrBaumeister98.GunGame.Game.Arena.Arena;
-import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 
 public class ScoreboardUtil {
 	
 	private Arena arena;
 	private Scoreboard board;
 	
-	@SuppressWarnings("deprecation")
 	public ScoreboardUtil(Arena arena) {
 		this.arena = arena;
 		
 		Scoreboard sb = Bukkit.getScoreboardManager().getNewScoreboard();
 		
 		Objective obj = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			obj = sb.registerNewObjective("GunGame-" + arena.getName(), "dummy");
-		} else {
 			obj = sb.registerNewObjective("GunGame-" + arena.getName(), "dummy", LangUtil.buildGUIString("Scoreboard.Title"));
-		}
 		obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 		obj.setDisplayName(LangUtil.buildGUIString("Scoreboard.Title"));
 		
@@ -64,7 +58,6 @@ public class ScoreboardUtil {
 			updateScoreBoard(p);
 		}
 	}
-	@SuppressWarnings("deprecation")
 	public void updateScoreBoard(Player p) {
 		Scoreboard sb = this.board;
 
@@ -73,11 +66,7 @@ public class ScoreboardUtil {
 			obj.unregister();
 		}
 		
-		if(GunGamePlugin.instance.serverPre113) {
-			obj = sb.registerNewObjective("GunGame-" + arena.getName(), "dummy");
-		} else {
 			obj = sb.registerNewObjective("GunGame-" + arena.getName(), "dummy", LangUtil.buildGUIString("Scoreboard.Title"));
-		}
 		
 		obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 		obj.setDisplayName(LangUtil.buildGUIString("Scoreboard.Title"));

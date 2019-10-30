@@ -305,21 +305,12 @@ public class PlasmaBulletThread extends BukkitRunnable {
 		fw = (Firework)loc.getWorld().spawn(loc, Firework.class);
 		FireworkMeta meta = fw.getFireworkMeta();
 		FireworkEffect effect = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			effect = FireworkEffect.builder().
-					trail(false)
-					.flicker(true)
-					.withColor(Color.fromRGB(Math.round(((Double)(Math.abs(pbt.laserHelper.R) * 255.0)).intValue() ), Math.round(((Double)(Math.abs(pbt.laserHelper.G) * 255.0)).intValue()), Math.round(((Double)(Math.abs(pbt.laserHelper.B) * 255.0)).intValue())))
-					.with(FireworkEffect.Type.BURST)
-					.build();
-		} else {
 			effect = FireworkEffect.builder().
 					trail(false)
 					.flicker(true)
 					.withColor(Color.fromRGB(Math.round(((Double)(Math.abs((pbt.laserHelper.R.equals(Double.MIN_VALUE) || pbt.laserHelper.R < 0.0) ? 0 : pbt.laserHelper.R))).intValue()), Math.round(((Double)(Math.abs(pbt.laserHelper.G))).intValue()), Math.round(((Double)(Math.abs(pbt.laserHelper.B))).intValue())))
 					.with(FireworkEffect.Type.BURST)
 					.build();
-		}
 		meta.addEffects(new FireworkEffect[] { effect });
 		fw.setFireworkMeta(meta);
 		Bukkit.getScheduler().runTaskLater(GunGamePlugin.instance, new Runnable() {
@@ -423,6 +414,7 @@ public class PlasmaBulletThread extends BukkitRunnable {
 					m.equals(Material.LARGE_FERN)||
 					m.equals(Material.TALL_GRASS) ||
 					m.equals(Material.GRASS) ||
+					m.equals(Material.WITHER_ROSE) ||
 					//m.equals(Material.LEGACY_YELLOW_FLOWER) ||
 					m.equals(Material.DANDELION) ||
 					m.equals(Material.POPPY) ||

@@ -21,7 +21,6 @@ import de.MrBaumeister98.GunGame.Game.Util.EGameState;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.Items.C4;
-import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
 import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
 import de.MrBaumeister98.GunGame.Items.FlareGun;
 import de.MrBaumeister98.GunGame.Items.Radar;
@@ -1946,11 +1945,7 @@ public class CommandListener implements CommandExecutor, TabCompleter {
 											return true;
 											
 										case "crowbar":
-											if(GunGamePlugin.instance.serverPre113) {
-												p.getInventory().addItem(Crowbar_pre_1_13.CrowBar());
-											} else {
 												p.getInventory().addItem(Crowbar_v1_13_up.CrowBar());
-											}
 											return true;
 										case "flaregun":
 											if(GunGamePlugin.instance.arenaManager.isIngame(p)) {

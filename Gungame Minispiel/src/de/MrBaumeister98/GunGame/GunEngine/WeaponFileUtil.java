@@ -11,7 +11,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Core.Debugger.Debugger;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.GunEngine.Enums.EGrenadeType;
@@ -100,7 +99,7 @@ public class WeaponFileUtil {
 		//ItemStack gun = null;	
 		Material mat = null;
 		try {
-			String temp = config.getString("Item.Material", GunGamePlugin.instance.serverPre113 ? "FIREWORK_CHARGE" : "FIREWORK_STAR");
+			String temp = config.getString("Item.Material", "FIREWORK_STAR");
 			mat = Material.valueOf(temp);
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -385,11 +384,7 @@ public class WeaponFileUtil {
 		} catch(Exception ex) {
 			invalidMat = true;
 			Debugger.logError("Material for gun with configuration: " + config.getName() + " is invalid! Using default material...");
-			if(GunGamePlugin.instance.serverPre113) {
-				mat = Material.getMaterial("IRON_BARDING");
-			} else {
 				mat = Material.IRON_HORSE_ARMOR;
-			}
 			//ex.printStackTrace();
 		}
 		short damage = 0;
@@ -787,7 +782,7 @@ public class WeaponFileUtil {
 	public ItemStack getAmmoItem(FileConfiguration config) {
 		Material mat = null;
 		try {
-			String temp = config.getString("Item.Material", GunGamePlugin.instance.serverPre113 ? "SEEDS" : "WHEAT_SEEDS");
+			String temp = config.getString("Item.Material", "WHEAT_SEEDS");
 			mat = Material.valueOf(temp);
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -832,11 +827,7 @@ public class WeaponFileUtil {
 	
 	public ItemStack getAirstrikeItem(FileConfiguration config) {
 		Material mat = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			mat = Material.valueOf("REDSTONE_TORCH_ON");
-		} else {
 			mat = Material.valueOf("REDSTONE_TORCH");
-		}
 	
 		short dmg = 0;
 		try {
@@ -971,11 +962,7 @@ public class WeaponFileUtil {
 	
 	public Material getLandmineBlockMaterial(FileConfiguration config) {
 		Material mat = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			mat = Material.valueOf("IRON_PLATE");
-		} else {
 			mat = Material.valueOf("HEAVY_WEIGHTED_PRESSURE_PLATE");
-		}
 		try {
 			String s = config.getString("Block.Material");
 			mat = Material.valueOf(s);
@@ -1145,11 +1132,7 @@ public class WeaponFileUtil {
 	}
 	public ItemStack getLandmineItem(FileConfiguration config) {
 		Material m = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			m = Material.valueOf("IRON_PLATE");
-		} else {
 			m = Material.valueOf("HEAVY_WEIGHTED_PRESSURE_PLATE");
-		}
 		try {
 			String s = config.getString("Item.Material");
 			Material tmp = Material.valueOf(s);

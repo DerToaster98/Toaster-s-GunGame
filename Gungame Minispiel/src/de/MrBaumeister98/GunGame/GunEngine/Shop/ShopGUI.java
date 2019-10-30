@@ -21,7 +21,6 @@ import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
 import de.MrBaumeister98.GunGame.Items.C4;
-import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
 import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
 import de.MrBaumeister98.GunGame.Items.FlareGun;
 import de.MrBaumeister98.GunGame.Items.Radar;
@@ -69,7 +68,7 @@ public class ShopGUI implements Listener {
 		this.gunMenu = Bukkit.createInventory(null, 9, LangUtil.buildGUIString("GunEngine.Shop.GunMenu"));
 		
 		//Material mat = Material.valueOf(LangUtil.buildGUIString("GunEngine.Shop.NavItems.BackItem.Item"));
-		Material mat = LangUtil.getShopGUIItem("NavItems.BackItem.Item", GunGamePlugin.instance.serverPre113 ? "ARROW" : "ARROW");
+		Material mat = LangUtil.getShopGUIItem("NavItems.BackItem.Item", "ARROW");
 		short dmgBI = Short.valueOf(LangUtil.buildGUIString("GunEngine.Shop.NavItems.BackItem.Damage"));
 		ItemStack bI = new ItemStack(mat, 1, dmgBI);
 		ItemMeta meta = bI.getItemMeta();
@@ -85,7 +84,7 @@ public class ShopGUI implements Listener {
 		this.backItem = bI;
 		
 		//Material mat2 = Material.valueOf(LangUtil.buildGUIString("GunEngine.Shop.NavItems.ChangePageItem.Item"));
-		Material mat2 = LangUtil.getShopGUIItem("NavItems.ChangePageItem.Item", GunGamePlugin.instance.serverPre113 ? "STRUCTURE_VOID" : "STRUCTURE_VOID");
+		Material mat2 = LangUtil.getShopGUIItem("NavItems.ChangePageItem.Item", "STRUCTURE_VOID");
 		short dmgCI = Short.valueOf(LangUtil.buildGUIString("GunEngine.Shop.NavItems.ChangePageItem.Damage"));
 		ItemStack cI = new ItemStack(mat2, 1, dmgCI);
 		ItemMeta meta2 = cI.getItemMeta();
@@ -103,7 +102,7 @@ public class ShopGUI implements Listener {
 		String[] keys = {"Grenade", "Gun", "Ammo", "Airstrike", "Landmine", "Turret", "MiscItems", "Tank"};
 		for(String k : keys) {
 			//Material m = Material.valueOf(LangUtil.buildGUIString("GunEngine.Shop.MainMenu.Icons." + k + ".Item"));
-			Material m = LangUtil.getShopGUIItem("MainMenu.Icons." + k + ".Item", GunGamePlugin.instance.serverPre113 ? "COMMAND" : "COMMAND_BLOCK");
+			Material m = LangUtil.getShopGUIItem("MainMenu.Icons." + k + ".Item", "COMMAND_BLOCK");
 			short dmg = Short.valueOf(LangUtil.buildGUIString("GunEngine.Shop.MainMenu.Icons." + k + ".Damage"));
 			ItemStack item = new ItemStack(m, 1, dmg);
 			ItemMeta met = item.getItemMeta();
@@ -239,11 +238,7 @@ public class ShopGUI implements Listener {
 		c4Remote.setItemMeta(c4RemoteMeta);
 		
 		ItemStack crowbar = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			crowbar = Crowbar_pre_1_13.CrowBar();
-		} else {
 			crowbar = Crowbar_v1_13_up.CrowBar();
-		}
 		crowbar = ItemUtil.addTags(crowbar, "GG_Shop_Buyable_Item", true);
 		crowbar = ItemUtil.addTags(crowbar, "GG_Shop_Buyable_Item_Misc", "Crowbar");
 		ItemMeta crowbarMeta = crowbar.getItemMeta();

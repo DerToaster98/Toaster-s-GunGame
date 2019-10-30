@@ -62,16 +62,6 @@ public class TrackPadCreator {
 					Block block = startLoc.getWorld().getBlockAt(this.startLoc.getBlockX() - 64 + iX, iY, this.startLoc.getBlockZ() - 64 + iZ);
 					if(block != null) {
 						Material matTmp = block.getType();
-						if(GunGamePlugin.instance.serverPre113) {
-							if(!(matTmp.equals(Material.valueOf("AIR")) ||
-									matTmp.equals(Material.valueOf("STRING")) ||
-									matTmp.equals(Material.valueOf("TRIPWIRE")) ||
-									matTmp.equals(Material.valueOf("BARRIER"))
-									)) {
-								y = iY;
-								iY = 0;
-							}
-						} else {
 							if(!(matTmp.equals(Material.AIR) ||
 									matTmp.equals(Material.STRING) ||
 									matTmp.equals(Material.TRIPWIRE) ||
@@ -79,7 +69,6 @@ public class TrackPadCreator {
 								y = iY;
 								iY = 0;
 							}
-						}
 					} else {
 					}
 				}
@@ -104,7 +93,6 @@ public class TrackPadCreator {
 		}
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void acquireTargets() {
 		List<Location> playerMarks = new ArrayList<Location>();
 		for(Entity lEnt : this.startLoc.getWorld().getNearbyEntities(this.startLoc, 64, 255, 64)) {
@@ -121,13 +109,8 @@ public class TrackPadCreator {
 		MapCursorCollection cursors = new MapCursorCollection();
 		if(!playerMarks.isEmpty() && this.mapCanvas != null) {
 			for(Location target : playerMarks) {
-				if(GunGamePlugin.instance.serverPre113) {
-					MapCursor cursorTmp = new MapCursor((byte)(target.getBlockX() - this.startLoc.getBlockX()), (byte)(target.getBlockZ() - this.startLoc.getBlockZ()), (byte)0, MapCursor.Type.RED_MARKER.getValue(), true);
-					cursors.addCursor(cursorTmp);
-				} else {
 					MapCursor cursorTmp = new MapCursor((byte)(target.getBlockX() - this.startLoc.getBlockX()), (byte)(target.getBlockZ() - this.startLoc.getBlockZ()), (byte)0, MapCursor.Type.RED_MARKER, true);
 					cursors.addCursor(cursorTmp);
-				}
 			}
 		}
 		this.mapRenderer = new TrackPadRenderer(this.imageRender, cursors);

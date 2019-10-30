@@ -40,7 +40,6 @@ import de.MrBaumeister98.GunGame.Game.Util.ScoreboardUtil;
 import de.MrBaumeister98.GunGame.Game.Util.TabListUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.Game.Util.VoteUtil;
-import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
 import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
 import de.MrBaumeister98.GunGame.Items.GameConfigurator;
 
@@ -129,11 +128,7 @@ public class Arena {
 		this.arenaWorld = null;
 		this.full = false;
 		this.cancelled = false;
-		if (GunGamePlugin.instance.serverPre113) {
-			Crowbar_pre_1_13.initializeMap(this);
-		} else {
 			Crowbar_v1_13_up.initializeMap(this);
-		}
 		this.setScoreboardutil(new ScoreboardUtil(this));
 		this.gamemodeManager = new GameModeSelector(this);
 		this.gamemodeConfirmed = false;
@@ -464,11 +459,7 @@ public class Arena {
 			for (Player p : this.players) {
 
 				// teleport the player to a random spawn location
-				if (GunGamePlugin.instance.serverPre113) {
-					p.playSound(p.getLocation(), Sound.valueOf("ENTITY_ENDERMEN_TELEPORT"), 1, 1);
-				} else {
 					p.playSound(p.getLocation(), Sound.valueOf("ENTITY_ENDERMAN_TELEPORT"), 1, 1);
-				}
 
 				p.teleport(getRandomSpawn());
 
@@ -729,11 +720,7 @@ public class Arena {
 		Bukkit.getServer().getPluginManager().callEvent(statechangeevent2);
 		this.state = EGameState.LOBBY;
 		this.playerKills.clear();
-		if (GunGamePlugin.instance.serverPre113) {
-			Crowbar_pre_1_13.clearMap(this);
-		} else {
 			Crowbar_v1_13_up.clearMap(this);
-		}
 		updateSigns();
 		this.statManager = null;
 
@@ -795,11 +782,7 @@ public class Arena {
 		this.kills.clear();
 		this.canVote.clear();
 		this.playerKills.clear();
-		if (GunGamePlugin.instance.serverPre113) {
-			Crowbar_pre_1_13.clearMap(this);
-		} else {
 			Crowbar_v1_13_up.clearMap(this);
-		}
 		this.full = false;
 		ArenaChangeStateEvent statechangeevent = new ArenaChangeStateEvent(this, this.state, EGameState.RESTORING);
 		Bukkit.getServer().getPluginManager().callEvent(statechangeevent);

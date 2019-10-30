@@ -95,11 +95,7 @@ public class TurretConfig {
 		
 		
 		ItemStack item = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			item = new ItemStack(Material.valueOf("BREWING_STAND_ITEM"), 1);
-		} else {
 			item = new ItemStack(Material.BREWING_STAND, 1);
-		}
 		ItemMeta meta = item.getItemMeta();
 		meta.setDisplayName(ChatColor.YELLOW + this.name);
 		meta.setUnbreakable(true);

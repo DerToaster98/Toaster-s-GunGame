@@ -15,7 +15,6 @@ import de.MrBaumeister98.GunGame.Game.Listeners.GameListener;
 import de.MrBaumeister98.GunGame.Game.Listeners.SignListener;
 import de.MrBaumeister98.GunGame.Game.Listeners.SpectatorListener;
 import de.MrBaumeister98.GunGame.Game.Mechanics.LootChests;
-import de.MrBaumeister98.GunGame.Game.Mechanics.MediCake_pre_1_13;
 import de.MrBaumeister98.GunGame.Game.Mechanics.MediCake_v1_13_up;
 import de.MrBaumeister98.GunGame.Game.Util.JoinGuiHelper;
 import de.MrBaumeister98.GunGame.Game.Util.Metrics;
@@ -34,7 +33,6 @@ import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankMoveListener.TankMovementLi
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretListener;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretManager;
 import de.MrBaumeister98.GunGame.Items.C4;
-import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
 import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
 import de.MrBaumeister98.GunGame.Items.FlareGun;
 import de.MrBaumeister98.GunGame.Items.GameConfigurator;
@@ -62,7 +60,7 @@ public class GunGamePlugin extends JavaPlugin {
 	
 	private Metrics metrics;
 	
-	public Boolean serverPre113;
+	//public Boolean serverPre113;
 	
 	//public Boolean TabListAPIloaded;
 	
@@ -86,12 +84,12 @@ public class GunGamePlugin extends JavaPlugin {
 			versionMC = majorVer + "." + minorVer;
 		}
 		Debugger.logInfoWithColoredText(ChatColor.AQUA + "Server version: " + net.md_5.bungee.api.ChatColor.GREEN + versionMC);
+		boolean flag = false;
 		if(Integer.valueOf(majorVer) >= 1 && Integer.valueOf(minorVer) >= 13) {
-			serverPre113 = false;
 			Debugger.logInfoWithColoredText(ChatColor.GREEN + "Server version is 1.13 and up!");
+			flag = true;
 		} else {
-			serverPre113 = true;
-			Debugger.logInfoWithColoredText(ChatColor.GREEN + "Server version is 1.12.2 and lower!");
+			Debugger.logInfoWithColoredText(ChatColor.GREEN + "Server version is 1.12.2 and lower! Please use an older version!");
 		}
 		
 		/*this.TabListAPIloaded = false;
@@ -101,110 +99,112 @@ public class GunGamePlugin extends JavaPlugin {
 		
 		
 		
-		arenaManager = new ArenaManager(this);
-		//vehicleManager = new VehicleManager(this);
-		weaponManager = new WeaponManager(this);
-		gunShop = new GunMenu(this, this.weaponManager);
-		turretManager = new TurretManager(this);
-		joinGuiManager = new JoinGuiHelper();
-		griefHelper = new GriefHelper(this);
-		weaponShop = new ShopGUI(this);
-		//if(Bukkit.getPluginManager().getPlugin("ProtocolLib") != null && Bukkit.getPluginManager().isPluginEnabled("ProtocolLib")) {
-			tankManager = new TankManager();
-		//}
-		chunkloadlistener = new ChunkLoadListener();
-		
-		if(this.getConfig().getBoolean("Config.UseDebuggerWindow")) {
-			Debugger.initializeAdvancedDebugger(instance);
-		}
-		
-		Debugger.logInfoWithColoredText(ChatColor.RED + "!BOOTING UP GUNGAME!");
-		
-		//checkForPlugins();
+		if(flag) {
+			arenaManager = new ArenaManager(this);
+			//vehicleManager = new VehicleManager(this);
+			weaponManager = new WeaponManager(this);
+			gunShop = new GunMenu(this, this.weaponManager);
+			turretManager = new TurretManager(this);
+			joinGuiManager = new JoinGuiHelper();
+			griefHelper = new GriefHelper(this);
+			weaponShop = new ShopGUI(this);
+			//if(Bukkit.getPluginManager().getPlugin("ProtocolLib") != null && Bukkit.getPluginManager().isPluginEnabled("ProtocolLib")) {
+				tankManager = new TankManager();
+			//}
+			chunkloadlistener = new ChunkLoadListener();
 			
-		loadConfigurations();
-
-		FileManager.getBackupFolder();	
-
-		saveConfig();	
-		
-		Debugger.logInfoWithColoredText(ChatColor.RED + "Initializing Game System...");
-		
-		try {
-			Util.getGlobalLobby();
-		} catch(ExceptionInInitializerError e) {
-			e.printStackTrace();
-			Util.setGlobalLobby(Bukkit.getWorlds().get(0).getSpawnLocation());
-		}
-		Util.loadShopBlocks();
-		Util.getAllowedCommands();
-		Util.fillMeltList();
-		
-		//this.vehicleManager.loadFlakNames();
-		
-		this.weaponManager.initialize();
-		this.turretManager.initialize();
-		
-		if(Bukkit.getPluginManager().getPlugin("ProtocolLib") != null && Bukkit.getPluginManager().isPluginEnabled("ProtocolLib")) {
-			Debugger.logInfoWithColoredText(ChatColor.GREEN + "ProtocolLib found!");
-			this.tankManager.loadTankConfigs();
-		} else {
-			Debugger.logInfoWithColoredText(ChatColor.RED + "ProtocolLib not present :(");
-			Debugger.logInfoWithColoredText(ChatColor.RED + "Tank System won't be loaded!");
-		}
-		
-		this.weaponManager.initializeShop();
-		
-		this.weaponManager.setupItemLores();
-		
-		TrackPadItem.initTrackPadItem();
-		
-		this.arenaManager.initializeArenas();
-		
-		this.gunShop.loadPages();
-		
-		this.achUtil = new GunGameAchievementUtil(this);
-		
-		registerCommands();
-		registerEvents();
-		
-		Debugger.logInfoWithColoredText(ChatColor.RED + "Initializing Anti-Griefing System for Weapon Engine...");
-		for(World world : Bukkit.getWorlds()) {
-			this.griefHelper.processWorld(world);
-		}
-
-		
-		this.weaponShop.setupLists();
-		
-		Bukkit.getScheduler().runTaskLater(GunGamePlugin.instance, new Runnable() {
-			
-			@Override
-			public void run() {
-				Debugger.logInfoWithColoredText(ChatColor.RED + "Loading Tank-Respawn-Data...");
-				for(World world : Bukkit.getWorlds()) {
-					Bukkit.getScheduler().runTask(GunGamePlugin.instance, new Runnable() {
-						
-						@Override
-						public void run() {
-							GunGamePlugin.instance.tankManager.respawnTanks(world);
-						}
-					});
-				}
-				Debugger.logInfoWithColoredText(ChatColor.RED + "Loading Turret-Respawn-Data...");
-				for(World world : Bukkit.getWorlds()) {
-					Bukkit.getScheduler().runTask(GunGamePlugin.instance, new Runnable() {
-						
-						@Override
-						public void run() {
-							GunGamePlugin.instance.turretManager.respawnTurrets(world);
-						}
-					});
-				}
+			if(this.getConfig().getBoolean("Config.UseDebuggerWindow")) {
+				Debugger.initializeAdvancedDebugger(instance);
 			}
-		}, 30);
-		
-		Debugger.saveLog();
-		launchMetrics();
+			
+			Debugger.logInfoWithColoredText(ChatColor.RED + "!BOOTING UP GUNGAME!");
+			
+			//checkForPlugins();
+				
+			loadConfigurations();
+
+			FileManager.getBackupFolder();	
+
+			saveConfig();	
+			
+			Debugger.logInfoWithColoredText(ChatColor.RED + "Initializing Game System...");
+			
+			try {
+				Util.getGlobalLobby();
+			} catch(ExceptionInInitializerError e) {
+				e.printStackTrace();
+				Util.setGlobalLobby(Bukkit.getWorlds().get(0).getSpawnLocation());
+			}
+			Util.loadShopBlocks();
+			Util.getAllowedCommands();
+			Util.fillMeltList();
+			
+			//this.vehicleManager.loadFlakNames();
+			
+			this.weaponManager.initialize();
+			this.turretManager.initialize();
+			
+			if(Bukkit.getPluginManager().getPlugin("ProtocolLib") != null && Bukkit.getPluginManager().isPluginEnabled("ProtocolLib")) {
+				Debugger.logInfoWithColoredText(ChatColor.GREEN + "ProtocolLib found!");
+				this.tankManager.loadTankConfigs();
+			} else {
+				Debugger.logInfoWithColoredText(ChatColor.RED + "ProtocolLib not present :(");
+				Debugger.logInfoWithColoredText(ChatColor.RED + "Tank System won't be loaded!");
+			}
+			
+			this.weaponManager.initializeShop();
+			
+			this.weaponManager.setupItemLores();
+			
+			TrackPadItem.initTrackPadItem();
+			
+			this.arenaManager.initializeArenas();
+			
+			this.gunShop.loadPages();
+			
+			this.achUtil = new GunGameAchievementUtil(this);
+			
+			registerCommands();
+			registerEvents();
+			
+			Debugger.logInfoWithColoredText(ChatColor.RED + "Initializing Anti-Griefing System for Weapon Engine...");
+			for(World world : Bukkit.getWorlds()) {
+				this.griefHelper.processWorld(world);
+			}
+
+			
+			this.weaponShop.setupLists();
+			
+			Bukkit.getScheduler().runTaskLater(GunGamePlugin.instance, new Runnable() {
+				
+				@Override
+				public void run() {
+					Debugger.logInfoWithColoredText(ChatColor.RED + "Loading Tank-Respawn-Data...");
+					for(World world : Bukkit.getWorlds()) {
+						Bukkit.getScheduler().runTask(GunGamePlugin.instance, new Runnable() {
+							
+							@Override
+							public void run() {
+								GunGamePlugin.instance.tankManager.respawnTanks(world);
+							}
+						});
+					}
+					Debugger.logInfoWithColoredText(ChatColor.RED + "Loading Turret-Respawn-Data...");
+					for(World world : Bukkit.getWorlds()) {
+						Bukkit.getScheduler().runTask(GunGamePlugin.instance, new Runnable() {
+							
+							@Override
+							public void run() {
+								GunGamePlugin.instance.turretManager.respawnTurrets(world);
+							}
+						});
+					}
+				}
+			}, 30);
+			
+			Debugger.saveLog();
+			launchMetrics();
+		}
 	}
 
 	@Override
@@ -251,11 +251,7 @@ public class GunGamePlugin extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new RadarUtil(this), this);
 		this.getServer().getPluginManager().registerEvents(new C4(), this);
 		//this.getServer().getPluginManager().registerEvents(new VehicleListeners(), this);
-		if(this.serverPre113) {
-			this.getServer().getPluginManager().registerEvents(new Crowbar_pre_1_13(), this);
-		} else {
 			this.getServer().getPluginManager().registerEvents(new Crowbar_v1_13_up(), this);
-		}
 		this.getServer().getPluginManager().registerEvents(new FlareGun(), this);
 		this.getServer().getPluginManager().registerEvents(new SuicideArmor(), this);
 		this.getServer().getPluginManager().registerEvents(new Voter(), this);
@@ -263,11 +259,7 @@ public class GunGamePlugin extends JavaPlugin {
 		this.getServer().getPluginManager().registerEvents(new InfoItem(), this);
 		this.getServer().getPluginManager().registerEvents(new LootChests(), this);
 		this.getServer().getPluginManager().registerEvents(new TrackPadItem(), this);
-		if(this.serverPre113) {
-			this.getServer().getPluginManager().registerEvents(new MediCake_pre_1_13(), this);
-		} else {
 			this.getServer().getPluginManager().registerEvents(new MediCake_v1_13_up(), this);
-		}
 		this.getServer().getPluginManager().registerEvents(new TurretListener(), this);
 		this.getServer().getPluginManager().registerEvents(this.griefHelper, this);
 		this.getServer().getPluginManager().registerEvents(new SpectatorListener(this), this);

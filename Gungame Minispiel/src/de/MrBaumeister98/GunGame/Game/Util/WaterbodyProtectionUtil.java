@@ -29,7 +29,7 @@ public class WaterbodyProtectionUtil {
 			return true;
 		} else {
 			//Water bodies are protected, block may not be broken
-			// DONE: Support einfügen, wenn block oben drauf runter fallen kann und neben oder wasser ist
+			// DONE: Support einfï¿½gen, wenn block oben drauf runter fallen kann und neben oder wasser ist
 			List<Block> blocksToCheck = new ArrayList<Block>();
 			blocksToCheck.add(block);
 			while(block.getRelative(BlockFace.UP).getType().hasGravity()) {
@@ -55,29 +55,6 @@ public class WaterbodyProtectionUtil {
 	}
 	
 	private static boolean isSlabOrStair(Material m) {
-		if(GunGamePlugin.instance.serverPre113) {
-			if(m.equals(Material.valueOf("PURPUR_SLAB")) ||
-					m.equals(Material.valueOf("WOOD_STEP")) ||
-					m.equals(Material.valueOf("STONE_SLAB2")) ||
-					m.equals(Material.valueOf("STEP")) ||
-					m.equals(Material.valueOf("ACACIA_STAIRS")) ||
-					m.equals(Material.valueOf("BIRCH_WOOD_STAIRS")) ||
-					m.equals(Material.valueOf("BRICK_STAIRS")) ||
-					m.equals(Material.valueOf("COBBLESTONE_STAIRS")) ||
-					m.equals(Material.valueOf("DARK_OAK_STAIRS")) ||
-					m.equals(Material.valueOf("JUNGLE_WOOD_STAIRS")) ||
-					m.equals(Material.valueOf("NETHER_BRICK_STAIRS")) ||
-					m.equals(Material.valueOf("PURPUR_STAIRS")) ||
-					m.equals(Material.valueOf("QUARTZ_STAIRS")) ||
-					m.equals(Material.valueOf("RED_SANDSTONE_STAIRS")) ||
-					m.equals(Material.valueOf("SANDSTONE_STAIRS")) ||
-					m.equals(Material.valueOf("SMOOTH_STAIRS")) ||
-					m.equals(Material.valueOf("SPRUCE_WOOD_STAIRS")) ||
-					m.equals(Material.valueOf("WOOD_STAIRS"))
-				) {
-				return true;
-			}
-		} else {
 			if(m.equals(Material.ACACIA_SLAB) ||
 					m.equals(Material.BIRCH_SLAB) ||
 					m.equals(Material.BRICK_SLAB) ||
@@ -119,7 +96,6 @@ public class WaterbodyProtectionUtil {
 				) {
 				return true;
 			}
-		}
 		return false;
 	}
 	
@@ -142,16 +118,6 @@ public class WaterbodyProtectionUtil {
 	}
 	
 	private static boolean isBlockFluid(Block b) {
-		Material m = b.getType();
-		if(GunGamePlugin.instance.serverPre113) {
-			if(m.equals(Material.WATER) ||
-					m.equals(Material.valueOf("STATIONARY_WATER")) ||
-					m.equals(Material.LAVA) ||
-					m.equals(Material.valueOf("STATIONARY_LAVA"))
-				) {
-				return true;
-			}
-		} else {
 			if(b.isLiquid() || 
 					(
 						b.getBlockData() instanceof Waterlogged &&
@@ -160,7 +126,6 @@ public class WaterbodyProtectionUtil {
 			  ) {
 				return true;
 			}
-		}
 		return false;
 	}
 

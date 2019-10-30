@@ -60,14 +60,14 @@ public class GunMenu implements Listener {
 		
 		this.selectionMenu.setItem(0, blankItem);*/
 		//this.selectionMenu.setItem(4, blankItem);
-		ItemStack selectLandmines = new ItemStack(LangUtil.getGunMenuItemMaterial("Landmine", GunGamePlugin.instance.serverPre113 ? "IRON_PLATE" : "HEAVY_WEIGHTED_PRESSURE_PLATE"));
+		ItemStack selectLandmines = new ItemStack(LangUtil.getGunMenuItemMaterial("Landmine", "HEAVY_WEIGHTED_PRESSURE_PLATE"));
 		ItemMeta meta1 = selectLandmines.getItemMeta();
 		meta1.setDisplayName(LangUtil.getGunMenuString("ItemsMenu.Landmine.Name"));
 		selectLandmines.setItemMeta(meta1);
 		
 		selectLandmines = ItemUtil.setWeaponMenuItem(selectLandmines);
 		
-		ItemStack selectGrenades = new ItemStack(LangUtil.getGunMenuItemMaterial("Grenade", GunGamePlugin.instance.serverPre113 ? "FIREWORK_CHARGE" : "FIREWORK_STAR"));
+		ItemStack selectGrenades = new ItemStack(LangUtil.getGunMenuItemMaterial("Grenade", "FIREWORK_STAR"));
 		ItemMeta meta2 = selectGrenades.getItemMeta();
 		meta2.setDisplayName(LangUtil.getGunMenuString("ItemsMenu.Grenade.Name"));
 		selectGrenades.setItemMeta(meta2);
@@ -75,7 +75,7 @@ public class GunMenu implements Listener {
 		selectGrenades = ItemUtil.setWeaponMenuItem(selectGrenades);
 		
 		
-		ItemStack selectGuns = new ItemStack(LangUtil.getGunMenuItemMaterial("Gun", GunGamePlugin.instance.serverPre113 ? "BOW" : "BOW"));
+		ItemStack selectGuns = new ItemStack(LangUtil.getGunMenuItemMaterial("Gun", "BOW"));
 		ItemMeta meta3 = selectGuns.getItemMeta();
 		meta3.setDisplayName(LangUtil.getGunMenuString("ItemsMenu.Gun.Name"));
 		selectGuns.setItemMeta(meta3);
@@ -83,14 +83,14 @@ public class GunMenu implements Listener {
 		selectGuns = ItemUtil.setWeaponMenuItem(selectGuns);
 		
 		
-		ItemStack selectAmmo = new ItemStack(LangUtil.getGunMenuItemMaterial("Ammo", GunGamePlugin.instance.serverPre113 ? "SEEDS" : "WHEAT_SEEDS"));
+		ItemStack selectAmmo = new ItemStack(LangUtil.getGunMenuItemMaterial("Ammo", "WHEAT_SEEDS"));
 		ItemMeta meta4 = selectAmmo.getItemMeta();
 		meta4.setDisplayName(LangUtil.getGunMenuString("ItemsMenu.Ammo.Name"));
 		selectAmmo.setItemMeta(meta4);
 		
 		selectAmmo = ItemUtil.setWeaponMenuItem(selectAmmo);
 		
-		ItemStack selectAirstrike = new ItemStack(LangUtil.getGunMenuItemMaterial("Airstrikes", GunGamePlugin.instance.serverPre113 ? "REDSTONE_TORCH_ON" : "REDSTONE_TORCH"));
+		ItemStack selectAirstrike = new ItemStack(LangUtil.getGunMenuItemMaterial("Airstrikes", "REDSTONE_TORCH"));
 		ItemMeta meta5 = selectAirstrike.getItemMeta();
 		meta5.setDisplayName(LangUtil.getGunMenuString("ItemsMenu.Airstrikes.Name"));
 		selectAirstrike.setItemMeta(meta5);

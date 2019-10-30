@@ -291,18 +291,12 @@ public class TDMMode implements Listener {
 			generateIcon();
 			this.manager.menu.setItem(this.manager.slotTeamMap.get(this), this.icon);
 		}
-		@SuppressWarnings("deprecation")
 		private void generateIcon() {
 			ItemStack item = new ItemStack(Material.STONE);
 			
-			if(GunGamePlugin.instance.serverPre113) {
-				//item = new ItemStack(Material.valueOf("WOOL"), 1, this.color.shortValue(this.color));
-				item.setType(Material.valueOf("WOOL"));
-				item.setDurability(this.color.shortValue(this.color));
-			} else {
+			
 				//item = new ItemStack(Material.valueOf(this.color.toString() + "_WOOL"), 1);
 				item.setType(Material.valueOf(this.color.toString() + "_WOOL"));
-			}
 			ItemMeta meta = item.getItemMeta();
 			meta.setDisplayName(this.nameColor + "Team " + LangUtil.buildGUIString("TeamSelector.Colors." + this.color.toString().toUpperCase()));
 			List<String> lore = new ArrayList<String>();

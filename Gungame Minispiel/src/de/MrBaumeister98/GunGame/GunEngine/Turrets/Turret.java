@@ -100,11 +100,7 @@ public class Turret {
 		this.hitbox.setCustomName(ChatColor.GRAY + "[" + ChatColor.YELLOW + "HP: " + ChatColor.RED + df.format(this.health) + ChatColor.GREEN + "/" + this.config.getMaxHealth().toString() + ChatColor.GRAY + "]");
 		this.hitbox.setCustomNameVisible(false);
 		
-		if(GunGamePlugin.instance.serverPre113) {
-			position.getBlock().setType(Material.valueOf("IRON_FENCE"));
-		} else {
 			position.getBlock().setType(Material.valueOf("IRON_BARS"));
-		}
 		this.entityCheckerTaskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(GunGamePlugin.instance, new Runnable() {
 			
 			@Override

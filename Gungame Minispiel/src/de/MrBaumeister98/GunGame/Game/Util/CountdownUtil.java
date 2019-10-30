@@ -77,11 +77,7 @@ public class CountdownUtil {
 	
 	private void announceToPlayers(Arena arena, Integer remainingTime) {
 		for(Player p : arena.getPlayers()) {
-			if(GunGamePlugin.instance.serverPre113) {
-				p.playSound(p.getLocation(), Sound.valueOf("BLOCK_NOTE_PLING"), 1, 1);
-			} else {
 				p.playSound(p.getLocation(), Sound.valueOf("BLOCK_NOTE_BLOCK_PLING"), 1, 1);
-			}
 			p.sendMessage(LangUtil.createString("lang.Info.countingDown",
 					arena,
 					(arena.getArenaWorld() == null ? null : arena.getArenaWorld().getName()),

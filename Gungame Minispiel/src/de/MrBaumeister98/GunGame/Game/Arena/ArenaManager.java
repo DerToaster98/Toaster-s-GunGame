@@ -358,7 +358,6 @@ public class ArenaManager {
 		ArenaLeaveEvent leaveEvent = new ArenaLeaveEvent(a, Bukkit.getPlayer(id), ELeaveReason.QUIT_GAME);
 		Bukkit.getServer().getPluginManager().callEvent(leaveEvent);
 	}
-	@SuppressWarnings("deprecation")
 	public void leaveGame(Player p, Arena a) {
 		//p.teleport(Util.GlobalLobby);
 		Debugger.logInfoWithColoredText(ChatColor.YELLOW + "Player: " + ChatColor.GREEN + p.getName() + ChatColor.YELLOW + " has left the Arena: " + ChatColor.RED + a.getName());
@@ -376,11 +375,7 @@ public class ArenaManager {
 		for(Player pOnline : Bukkit.getOnlinePlayers()) {
 			if(!p.getUniqueId().equals(pOnline.getUniqueId())) {
 				try {
-					if(GunGamePlugin.instance.serverPre113) {
-						p.showPlayer(pOnline);
-					} else {
 						p.showPlayer(GunGamePlugin.instance, pOnline);
-					}
 				} catch(Exception ex) {
 					ex.printStackTrace();
 				}

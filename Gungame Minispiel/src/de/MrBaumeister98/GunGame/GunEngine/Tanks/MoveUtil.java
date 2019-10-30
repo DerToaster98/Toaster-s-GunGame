@@ -4,40 +4,10 @@ package de.MrBaumeister98.GunGame.GunEngine.Tanks;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 
-import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
-
 public abstract class MoveUtil {
 	
 	public static Boolean isFence(Block block) {
 		Material m = block.getType();
-		if(GunGamePlugin.instance.serverPre113) {
-			if(m.equals(Material.valueOf("FENCE")) ||
-					m.equals(Material.valueOf("FENCE_GATE")) ||
-					m.equals(Material.valueOf("ACACIA_FENCE")) ||
-					m.equals(Material.valueOf("ACACIA_FENCE_GATE")) ||
-					m.equals(Material.valueOf("BIRCH_FENCE")) ||
-					m.equals(Material.valueOf("BIRCH_FENCE_GATE")) ||
-					m.equals(Material.valueOf("DARK_OAK_FENCE")) ||
-					m.equals(Material.valueOf("DARK_OAK_FENCE_GATE")) ||
-					m.equals(Material.valueOf("IRON_FENCE")) ||
-					m.equals(Material.valueOf("JUNGLE_FENCE")) ||
-					m.equals(Material.valueOf("JUNGLE_FENCE_GATE")) ||
-					m.equals(Material.valueOf("NETHER_FENCE")) ||
-					m.equals(Material.valueOf("SPRUCE_FENCE")) ||
-					m.equals(Material.valueOf("SPRUCE_FENCE_GATE")) ||
-					m.equals(Material.valueOf("WOODEN_DOOR")) ||
-					m.equals(Material.valueOf("WOOD_DOOR")) ||
-					m.equals(Material.valueOf("ACACIA_DOOR")) ||
-					m.equals(Material.valueOf("BIRCH_DOOR")) ||
-					m.equals(Material.valueOf("DARK_OAK_DOOR")) ||
-					m.equals(Material.valueOf("IRON_DOOR")) ||
-					m.equals(Material.valueOf("IRON_DOOR_BLOCK")) ||
-					m.equals(Material.valueOf("JUNGLE_DOOR")) ||
-					m.equals(Material.valueOf("SPRUCE_DOOR"))
-				) {
-				return true;
-			}
-		} else {
 			org.bukkit.block.data.BlockData data = block.getBlockData();
 			if(m.equals(Material.ACACIA_FENCE) ||
 					m.equals(Material.ACACIA_FENCE_GATE) ||
@@ -66,25 +36,10 @@ public abstract class MoveUtil {
 					m.equals(Material.IRON_BARS)) {
 				return true;
 			}
-		}
 		return false;
 	}
-	@SuppressWarnings("deprecation")
 	private static Boolean isTrapDoorOnFloor(Block block) {
 		Material m = block.getType();
-		if(GunGamePlugin.instance.serverPre113) {
-			if(m.toString().equals("IRON_TRAPDOOR") ||
-					m.toString().equals("TRAP_DOOR")) {
-				byte data = block.getData();
-				org.bukkit.block.BlockState state = block.getState();
-				org.bukkit.material.Openable door = (org.bukkit.material.Openable)state.getData();
-				if(!door.isOpen()) {
-					if(data < (byte)8) {
-						return true;
-					}
-				}
-			}
-		} else {
 			org.bukkit.block.data.BlockData blockdata = block.getBlockData();
 			if(m.equals(Material.ACACIA_TRAPDOOR)
 					|| m.equals(Material.BIRCH_TRAPDOOR)
@@ -101,7 +56,6 @@ public abstract class MoveUtil {
 					}
 				}
 			}
-		}
 		return false;
 	}
 	/*public static Boolean isStair(Block block) {
@@ -115,20 +69,8 @@ public abstract class MoveUtil {
 			}
 		}
 	}*/
-	@SuppressWarnings("deprecation")
 	public static Boolean isSlab(Block block) {
 		Material m = block.getType();
-		if(GunGamePlugin.instance.serverPre113) {
-			if(m.equals(Material.valueOf("PURPUR_SLAB")) ||
-					m.equals(Material.valueOf("WOOD_STEP")) ||
-					m.equals(Material.valueOf("STONE_SLAB2")) ||
-					m.equals(Material.valueOf("STEP")) ||
-					isTrapDoorOnFloor(block)) {
-				if(block.getData() < (byte) 8 ) {
-					return true;
-				}
-			}
-		} else {
 			org.bukkit.block.data.BlockData blockdata = block.getBlockData();
 			if(m.equals(Material.ACACIA_SLAB) ||
 					m.equals(Material.BIRCH_SLAB) ||
@@ -163,30 +105,10 @@ public abstract class MoveUtil {
 					}
 				}
 			}
-		}
 		return false;
 	}
 	public static Boolean isPassable(Block block) {
 		Material m = block.getType();
-		if(GunGamePlugin.instance.serverPre113) {
-			if(!m.isSolid() &&
-					!m.toString().equals("END_ROD") && 
-					!m.toString().equals("CHORUS_PLANT") && 
-					!m.toString().equals("CHORUS_FLOWER") &&
-					!m.toString().equals("SKULL") //&&
-					//!m.toString().equals("LADDER")
-					|| m.toString().equals("WATER")
-					|| m.toString().equals("STATIONARY_WATER")
-					|| m.toString().equals("STONE_PLATE")
-					|| m.toString().equals("WOOD_PLATE")
-					|| m.toString().equals("LIGHT_WEIGHTED_PRESSURE_PLATE")
-					|| m.toString().equals("HEAVY_WEIGHTED_PRESSURE_PLATE")
-					|| m.toString().equals("IRON_PLATE")
-					|| m.toString().equals("GOLD_PLATE")
-				) {
-				return true;
-			}
-		} else {
 			if((!m.isSolid() &&
 					!m.toString().equals("END_ROD") && 
 					!m.toString().equals("CHORUS_PLANT") && 
@@ -206,7 +128,6 @@ public abstract class MoveUtil {
 				) {
 				return true;
 			}
-		}
 		return false;
 	}
 

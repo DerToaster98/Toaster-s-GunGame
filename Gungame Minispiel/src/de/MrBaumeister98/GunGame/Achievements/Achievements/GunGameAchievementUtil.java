@@ -89,11 +89,7 @@ public class GunGameAchievementUtil {
 				world = w2;
 			}
 			String folderLoc;
-			if(GunGamePlugin.instance.serverPre113) {
-				folderLoc = world.getWorldFolder().getAbsolutePath() + "data/advancements/gungame";
-			} else {
-				folderLoc = world.getWorldFolder().getAbsolutePath() + "/datapacks/bukkit/data/gungame/advancements/gungame";
-			}
+			folderLoc = world.getWorldFolder().getAbsolutePath() + "/datapacks/bukkit/data/gungame/advancements/gungame";
 			File folder = new File(folderLoc);
 			
 			if(folder.exists()) {
@@ -176,11 +172,7 @@ public class GunGameAchievementUtil {
 	private void createFolderInAllWords() {
 		World mainWorld = Bukkit.getWorlds().get(0);
 		String advFolder;
-		if(GunGamePlugin.instance.serverPre113) {
-			advFolder = mainWorld.getWorldFolder().getAbsolutePath() + "/data/advancements/gungame";
-		} else {
 			advFolder = mainWorld.getWorldFolder().getAbsolutePath() + "/datapacks/bukkit/data/gungame/advancements/gungame";
-		}
 		File aFolder = new File(advFolder);
 		setAdvFolder(aFolder);
 		Debugger.logInfoWithColoredText(ChatColor.YELLOW + "Copying Advancement Files to ALL Worlds...");
@@ -198,11 +190,7 @@ public class GunGameAchievementUtil {
 	public Boolean areAchievementsUpToDate(File worldFolder, boolean installIfNotFound) {
 		Boolean b;
 		File achFolder;
-		if(GunGamePlugin.instance.serverPre113) {
-			achFolder = new File(worldFolder.getAbsolutePath() + "/data/advancements/gungame");
-		} else {
 			 achFolder = new File(worldFolder.getAbsolutePath() + "/datapacks/bukkit/data/gungame/advancements/gungame");
-		}
 		if(!achFolder.exists()) {
 			b = false;
 		} else {
@@ -230,11 +218,7 @@ public class GunGameAchievementUtil {
 		if(installIfNotFound == true && b== false) {
 			File aFolder = this.getAdvancementFolder();
 			String folderLoc;
-			if(GunGamePlugin.instance.serverPre113) {
-				folderLoc = worldFolder.getAbsolutePath() + "/data/advancements/gungame";
-			} else {
 				 folderLoc = worldFolder.getAbsolutePath() + "/datapacks/bukkit/data/gungame/advancements/gungame";
-			}
 			File folder1 = new File(folderLoc);
 			if(!folder1.exists()) {
 				folder1.mkdirs();
@@ -291,11 +275,7 @@ public class GunGameAchievementUtil {
 			try {			
 				
 				String achFolderLoc;
-				if(GunGamePlugin.instance.serverPre113) {
-					achFolderLoc = world.getWorldFolder().getAbsolutePath() + "/data/advancements/gungame";
-				} else {
 					 achFolderLoc = world.getWorldFolder().getAbsolutePath() + "/datapacks/bukkit/data/gungame/advancements/gungame";
-				}
 				File achFolder = new File(achFolderLoc);
 				if(!achFolder.exists() || achFolder.listFiles().length <= 0) {
 					Debugger.logInfoWithColoredText(ChatColor.AQUA + world.getName() +  ": " + ChatColor.YELLOW + "Achievement files are " + ChatColor.RED + "NOT " + ChatColor.YELLOW + "installed!");
@@ -351,11 +331,7 @@ public class GunGameAchievementUtil {
 		try {
 			Debugger.logInfoWithColoredText(ChatColor.YELLOW + "Processing World: " + ChatColor.AQUA + w.getName() + ChatColor.YELLOW + "...");
 			String folderLoc;
-			if(GunGamePlugin.instance.serverPre113) {
-				 folderLoc = w.getWorldFolder().getAbsolutePath() + "/data/advancements/gungame";
-			} else {
 				 folderLoc = w.getWorldFolder().getAbsolutePath() + "/datapacks/bukkit/data/gungame/advancements/gungame";
-			}
 			File folder = new File(folderLoc);
 			if(!folder.exists()) {
 				folder.mkdirs();

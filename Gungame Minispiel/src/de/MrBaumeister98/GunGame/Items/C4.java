@@ -44,11 +44,7 @@ public class C4 implements Listener {
 	
 	public static ItemStack c4Throwable(Integer stacksize) {
 		ItemStack C4 = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			C4 = new ItemStack(Material.valueOf("SULPHUR"), stacksize);
-		} else {
 			C4 = new ItemStack(Material.GUNPOWDER, stacksize);
-		}
 		
 		ItemMeta meta = C4.getItemMeta();
 		
@@ -165,11 +161,7 @@ public class C4 implements Listener {
 		}
 		//STAT END
 		ItemStack temp = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			temp = new ItemStack(Material.valueOf("SULPHUR"));
-		} else {
 			temp = new ItemStack(Material.GUNPOWDER);
-		}
 		temp.setAmount(1);
 		ArmorStand st = (ArmorStand) loc.getWorld().spawnEntity(loc, EntityType.ARMOR_STAND);
 		
@@ -444,11 +436,7 @@ public class C4 implements Listener {
 							if(amount == 1) {
 								player.getInventory().remove(player.getInventory().getItem(player.getInventory().getHeldItemSlot()));
 							}
-							if(GunGamePlugin.instance.serverPre113) {
-								player.getWorld().playSound(player.getLocation(), Sound.valueOf("ENTITY_ITEMFRAME_PLACE"), 1.0F, 1.0F);
-							} else {
 								player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ITEM_FRAME_PLACE, 1.0F, 1.0F);
-							}
 					} else if(isC4Remote(item)) {
 							if(BombsOfPlayer.get(player.getUniqueId()) != null) {
 								event.setCancelled(true);
@@ -567,11 +555,7 @@ public class C4 implements Listener {
 						}
 					});
 					
-					if(GunGamePlugin.instance.serverPre113) {
-						this.c4.getWorld().playSound(targetLoc, Sound.valueOf("ENTITY_ITEMFRAME_PLACE"), 1.0F, 1.0F);
-					} else {
 						this.c4.getWorld().playSound(targetLoc, Sound.ENTITY_ITEM_FRAME_PLACE, 1.0F, 1.0F);
-					}
 					this.c4.remove();
 					
 					stop();

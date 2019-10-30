@@ -32,17 +32,12 @@ public class JoinGuiHelper implements Listener {
 		createSelMenu();
 	}
 	
-	@SuppressWarnings("deprecation")
 	private void createSelMenu() {
 		this.name = LangUtil.buildGUIString("JoinGUI.Menu.Name");
 		Inventory inv = Bukkit.createInventory(null, InventoryType.HOPPER, this.name);
 		
 		ItemStack blankItem = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			blankItem = new ItemStack(Material.valueOf("STAINED_GLASS_PANE"), 1 , (short) 14);
-		} else {
 			blankItem = new ItemStack(Material.RED_STAINED_GLASS_PANE, 1/* , (short) 14*/);
-		}
 			
 		ItemMeta meta = blankItem.getItemMeta();
 		meta.setDisplayName(" ");
@@ -67,11 +62,7 @@ public class JoinGuiHelper implements Listener {
 		
 		
 		ItemStack randomjoinitem = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			randomjoinitem = new ItemStack(Material.valueOf("COMMAND"), 1);
-		} else {
 			randomjoinitem = new ItemStack(Material.valueOf("COMMAND_BLOCK"), 1);
-		}
 		ItemMeta meta2 = randomjoinitem.getItemMeta();
 		meta2.setDisplayName(LangUtil.getStringByPath("lang.GUI.JoinGUI.Menu.RandomJoin"));
 		meta2.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -83,11 +74,7 @@ public class JoinGuiHelper implements Listener {
 		
 		
 		ItemStack searchjoinitem = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			searchjoinitem = new ItemStack(Material.valueOf("WORKBENCH"), 1);
-		} else {
 			searchjoinitem = new ItemStack(Material.valueOf("CRAFTING_TABLE"), 1);
-		}
 		ItemMeta meta3 = searchjoinitem.getItemMeta();
 		meta3.setDisplayName(LangUtil.getStringByPath("lang.GUI.JoinGUI.Menu.All"));
 		meta3.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -102,12 +89,8 @@ public class JoinGuiHelper implements Listener {
 	
 	private ItemStack createArenaIcon(Arena arena) {
 		ItemStack stack = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			stack = new ItemStack(Material.valueOf("WORKBENCH"), 1);
-		} else {
 			stack = new ItemStack(Material.valueOf("CRAFTING_TABLE"), 1);
-		}
-		
+			
 		String name = LangUtil.getStringByPath("lang.GUI.JoinGUI.ArenaIcon.Name");
 		name = name.replaceAll("%name%", arena.getName());
 		

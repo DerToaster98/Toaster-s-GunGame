@@ -22,11 +22,7 @@ public class GameConfigurator implements Listener {
 	
 	public static ItemStack configurator() {
 		ItemStack itm = null;
-		if(GunGamePlugin.instance.serverPre113) {
-			itm = new ItemStack(Material.valueOf("COMMAND"), 1);
-		} else {
 			itm = new ItemStack(Material.COMMAND_BLOCK, 1);
-		}
 		ItemMeta meta = itm.getItemMeta();
 		
 		meta.setDisplayName(LangUtil.buildItemName("GameConfigurator"));

@@ -109,19 +109,11 @@ public class Voter implements Listener {
 					ItemStack clicked = event.getCurrentItem();
 					if(clicked != null ) {
 						event.setCancelled(true);
-						if(GunGamePlugin.instance.serverPre113) {
-							if(clicked.getType().equals(Material.MAP) || clicked.getType().equals(Material.valueOf("EMPTY_MAP"))) {
-								String map = ChatColor.stripColor(clicked.getItemMeta().getDisplayName());
-								VoteUtil.castVote(p, map);
-								p.closeInventory();
-							}
-						} else {
 							if(clicked.getType().equals(Material.MAP) || clicked.getType().equals(Material.FILLED_MAP)) {
 								String map = ChatColor.stripColor(clicked.getItemMeta().getDisplayName());
 								VoteUtil.castVote(p, map);
 								p.closeInventory();
 							}
-						}
 					}
 				}
 			}
