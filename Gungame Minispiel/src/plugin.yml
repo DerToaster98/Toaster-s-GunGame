@@ -1,8 +1,8 @@
 name: Gun-Game
 author: MrBaumeister98
 authors: [Game - MrBaumeister98, AdvancementAPI - Chazmondo, WorldRestoreAPI - Arceus02]
-version: 1.8.4
-api-version: 1.13
+version: 1.9.5
+api-version: 1.14
 main: de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin
 depend: [NBTAPI]
 softdepend: [BKCommonLib, ProtocolLib, TTA]
