@@ -158,8 +158,7 @@ public class TrackPadCreator {
 		return false;
 	}
 	
-	@SuppressWarnings("deprecation")
-	protected short getMapID() {
+	protected int getMapID() {
 		return this.mapView.getId();
 	}
 

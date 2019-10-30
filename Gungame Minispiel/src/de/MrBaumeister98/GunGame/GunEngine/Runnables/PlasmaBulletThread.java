@@ -337,46 +337,6 @@ public class PlasmaBulletThread extends BukkitRunnable {
 		this.z = this.z + this.vector.getZ();
 	}
 	private Boolean canPass(Material m) {
-		if(GunGamePlugin.instance.serverPre113) {
-			if(m.equals(Material.AIR) ||
-					m.equals(Material.STRING) ||
-					m.equals(Material.TRIPWIRE) ||
-					m.equals(Material.STONE_BUTTON) ||
-					m.equals(Material.valueOf("WOOD_BUTTON")) ||
-					m.equals(Material.LEVER) ||
-					m.equals(Material.LADDER) ||
-					m.equals(Material.TORCH) ||
-					m.equals(Material.valueOf("REDSTONE_TORCH_OFF")) ||
-					m.equals(Material.valueOf("REDSTONE_TORCH_ON")) ||
-					m.equals(Material.GLASS) ||
-					m.equals(Material.valueOf("THIN_GLASS")) ||
-					m.equals(Material.valueOf("STAINED_GLASS")) ||
-					m.equals(Material.valueOf("STAINED_GLASS_PANE")) ||
-					m.equals(Material.valueOf("IRON_BARDING")) ||
-					m.equals(Material.valueOf("IRON_FENCE")) ||
-					m.equals(Material.WATER) ||
-					m.equals(Material.valueOf("STATIONARY_WATER")) ||
-					m.equals(Material.TRIPWIRE_HOOK)||
-					m.equals(Material.VINE) ||
-					m.equals(Material.FIRE) ||
-					m.equals(Material.valueOf("DOUBLE_PLANT")) ||
-					m.equals(Material.valueOf("LONG_GRASS")) ||
-					m.equals(Material.valueOf("RED_ROSE")) ||
-					m.equals(Material.valueOf("YELLOW_FLOWER")) ||
-					m.equals(Material.DEAD_BUSH) ||
-					m.equals(Material.BROWN_MUSHROOM) ||
-					m.equals(Material.RED_MUSHROOM) ||
-					m.equals(Material.valueOf("SUGAR_CANE_BLOCK")) ||
-					m.equals(Material.FIRE) ||
-					m.equals(Material.ICE) ||
-					m.equals(Material.FROSTED_ICE) ||
-					m.equals(Material.WALL_SIGN) ||
-					m.equals(Material.valueOf("WALL_BANNER")) ||
-					m.equals(Material.valueOf("WEB")) ||
-					m.equals(Material.valueOf("CARPET"))) {
-				return true;
-			}
-		} else {
 			if(m.equals(Material.AIR) ||
 					Util.isGlass(m) ||
 					m.equals(Material.WATER) ||
@@ -454,8 +414,7 @@ public class PlasmaBulletThread extends BukkitRunnable {
 					m.equals(Material.YELLOW_BANNER) ||
 					m.equals(Material.YELLOW_WALL_BANNER) ||
 					
-					m.equals(Material.SIGN) ||
-					m.equals(Material.WALL_SIGN) ||
+					Util.isSignOrWallSign(m) ||
 
 					m.equals(Material.SUNFLOWER) ||
 					m.equals(Material.LILAC) ||
@@ -464,10 +423,8 @@ public class PlasmaBulletThread extends BukkitRunnable {
 					m.equals(Material.LARGE_FERN)||
 					m.equals(Material.TALL_GRASS) ||
 					m.equals(Material.GRASS) ||
-					m.equals(Material.ROSE_RED) ||
 					//m.equals(Material.LEGACY_YELLOW_FLOWER) ||
 					m.equals(Material.DANDELION) ||
-					m.equals(Material.DANDELION_YELLOW) ||
 					m.equals(Material.POPPY) ||
 					m.equals(Material.BLUE_ORCHID) ||
 					m.equals(Material.ALLIUM) ||
@@ -486,7 +443,6 @@ public class PlasmaBulletThread extends BukkitRunnable {
 					m.equals(Material.RED_MUSHROOM)) {
 				return true;
 			}
-		}
 		return false;
 	}
 	

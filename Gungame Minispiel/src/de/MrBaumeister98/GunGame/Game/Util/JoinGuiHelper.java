@@ -26,6 +26,7 @@ public class JoinGuiHelper implements Listener {
 
 	private ArenaManager manager = GunGamePlugin.instance.arenaManager;
 	private Inventory selectionMenu;
+	private String name = "missingNo";
 	
 	public JoinGuiHelper() {
 		createSelMenu();
@@ -33,7 +34,8 @@ public class JoinGuiHelper implements Listener {
 	
 	@SuppressWarnings("deprecation")
 	private void createSelMenu() {
-		Inventory inv = Bukkit.createInventory(null, InventoryType.HOPPER, LangUtil.buildGUIString("JoinGUI.Menu.Name"));
+		this.name = LangUtil.buildGUIString("JoinGUI.Menu.Name");
+		Inventory inv = Bukkit.createInventory(null, InventoryType.HOPPER, this.name);
 		
 		ItemStack blankItem = null;
 		if(GunGamePlugin.instance.serverPre113) {
@@ -157,7 +159,7 @@ public class JoinGuiHelper implements Listener {
 	
 	@EventHandler
 	public void onClick(InventoryClickEvent event) {
-		if(event.getClickedInventory() != null && event.getClickedInventory().getTitle().equals(this.selectionMenu.getTitle()) && ItemUtil.hasKey(event.getCurrentItem(), "GG_JoinGUI_Arena") && !this.manager.isIngame((Player)event.getWhoClicked())) {
+		if(event.getClickedInventory() != null && event./*getClickedInventory()*/getView().getTitle().equals(this.name) && ItemUtil.hasKey(event.getCurrentItem(), "GG_JoinGUI_Arena") && !this.manager.isIngame((Player)event.getWhoClicked())) {
 			event.setCancelled(true);
 			String aID = ItemUtil.getString(event.getCurrentItem(), "GG_JoinGUI_Arena");
 			try {
@@ -206,7 +208,7 @@ public class JoinGuiHelper implements Listener {
 					this.manager.tryJoin(p, arenasWithPlayers.get(i));
 					break;
 				case 4:
-					Inventory inv = Bukkit.createInventory(null, InventoryType.CHEST, this.selectionMenu.getTitle());
+					Inventory inv = Bukkit.createInventory(null, InventoryType.CHEST, /*this.selectionMenu.getTitle()*/ this.name);
 					for(Arena a : arenasWithPlayers) {
 						ItemStack tmp = createArenaIcon(a);
 						inv.addItem(tmp);
@@ -225,7 +227,7 @@ public class JoinGuiHelper implements Listener {
 					randomJoin(p);
 					break;
 				case 4:
-					Inventory inv = Bukkit.createInventory(null, InventoryType.CHEST, this.selectionMenu.getTitle());
+					Inventory inv = Bukkit.createInventory(null, InventoryType.CHEST, /*this.selectionMenu.getTitle()*/ this.name);
 					for(Arena a : this.manager.arenas) {
 						ItemStack tmp = createArenaIcon(a);
 						inv.addItem(tmp);

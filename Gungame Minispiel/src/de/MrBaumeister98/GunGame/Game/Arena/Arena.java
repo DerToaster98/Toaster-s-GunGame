@@ -912,8 +912,7 @@ public class Arena {
 	}
 
 	public void updateSign(Location signL) {
-		if (signL != null && (signL.getBlock().getType().equals(Material.WALL_SIGN)
-				|| signL.getBlock().getType().equals(Material.SIGN))) {
+		if (signL != null && (Util.isSignOrWallSign(signL.getBlock().getType()))) {
 			Block signB = signL.getBlock();
 			Sign sign = (Sign) signB.getState();
 

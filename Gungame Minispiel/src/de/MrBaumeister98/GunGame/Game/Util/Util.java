@@ -187,7 +187,7 @@ public abstract class Util {
 	public static Double getRandomDouble() {
 		return randomGenerator.nextDouble();
 	}
-	//Füllt die shopblock liste
+	//Fï¿½llt die shopblock liste
 	public static void loadShopBlocks() {
 		List<String> shopBlockStrings = GunGamePlugin.instance.getConfig().getStringList("Config.ShopBlocks");
 		for(String s : shopBlockStrings) {
@@ -195,7 +195,7 @@ public abstract class Util {
 			shopBlocks.add(temp);
 		}
 	}
-	//Zum prüfen für onInteract methoden
+	//Zum prï¿½fen fï¿½r onInteract methoden
 	public static boolean isShopBlock(Material m) {
 		int temp = 0;
 		for(Material mat : shopBlocks) {
@@ -431,69 +431,6 @@ public abstract class Util {
 	}
 	public static Boolean isFullBlock(Material m) {
 		//Material m = block.getType();
-		if(GunGamePlugin.instance.serverPre113) {
-			if(m.equals(Material.AIR) ||
-					m.equals(Material.valueOf("STATIONARY_WATER")) ||
-					m.equals(Material.WATER) ||
-					m.equals(Material.valueOf("WATER_LILY")) ||
-					m.equals(Material.valueOf("SUGAR_CANE_BLOCK")) ||
-					m.equals(Material.valueOf("CROPS")) ||
-					m.equals(Material.IRON_TRAPDOOR) ||
-					m.equals(Material.TORCH) ||
-					m.equals(Material.REDSTONE) ||
-					m.equals(Material.valueOf("REDSTONE_COMPARATOR_OFF")) ||
-					m.equals(Material.valueOf("REDSTONE_COMPARATOR_ON")) ||
-					m.equals(Material.REDSTONE_WIRE) ||
-					m.equals(Material.valueOf("REDSTONE_TORCH_ON")) ||
-					m.equals(Material.valueOf("REDSTONE_TORCH_OFF")) ||
-					m.equals(Material.TRIPWIRE) ||
-					m.equals(Material.STONE_BUTTON) ||
-					m.equals(Material.valueOf("WOOD_BUTTON")) ||
-					m.equals(Material.LEVER) ||
-					m.equals(Material.TRIPWIRE_HOOK)||
-					m.equals(Material.FLOWER_POT) ||
-					m.equals(Material.valueOf("RAILS")) ||
-					m.equals(Material.ACTIVATOR_RAIL) ||
-					m.equals(Material.DETECTOR_RAIL) ||
-					m.equals(Material.POWERED_RAIL) ||
-					m.equals(Material.END_ROD) ||
-					m.equals(Material.valueOf("BED_BLOCK")) ||
-					m.equals(Material.valueOf("STAINED_GLASS_PANE")) ||
-					m.equals(Material.valueOf("THIN_GLASS")) ||
-					m.equals(Material.valueOf("FENCE")) ||
-					m.equals(Material.valueOf("FENCE_GATE")) ||
-					m.equals(Material.VINE) ||
-					m.equals(Material.valueOf("BANNER")) ||
-					m.equals(Material.valueOf("WALL_BANNER")) ||
-					m.equals(Material.valueOf("SIGN_POST")) ||
-					m.equals(Material.WALL_SIGN) ||
-					m.equals(Material.valueOf("COBBLE_WALL")) ||
-					m.equals(Material.valueOf("TRAP_DOOR")) ||
-					m.equals(Material.ACACIA_DOOR) ||
-					m.equals(Material.BIRCH_DOOR) ||
-					m.equals(Material.DARK_OAK_DOOR) ||
-					m.equals(Material.IRON_DOOR) ||
-					m.equals(Material.JUNGLE_DOOR) ||
-					m.equals(Material.SPRUCE_DOOR) ||
-					m.equals(Material.valueOf("WOOD_DOOR")) ||
-					m.equals(Material.valueOf("DOUBLE_PLANT")) ||
-					m.equals(Material.valueOf("LONG_GRASS")) ||
-					m.equals(Material.valueOf("RED_ROSE")) ||
-					m.equals(Material.valueOf("YELLOW_FLOWER")) ||
-					m.equals(Material.valueOf("LADDER")) ||
-					m.equals(Material.valueOf("IRON_FENCE")) ||
-					m.equals(Material.DEAD_BUSH) ||
-					m.equals(Material.BROWN_MUSHROOM) ||
-					m.equals(Material.RED_MUSHROOM)
-					|| m.toString().equals("STONE_PLATE")
-					|| m.toString().equals("WOOD_PLATE")
-					|| m.toString().equals("LIGHT_WEIGHTED_PRESSURE_PLATE")
-					|| m.toString().equals("HEAVY_WEIGHTED_PRESSURE_PLATE")
-					|| m.toString().equals("IRON_PLATE")
-					|| m.toString().equals("GOLD_PLATE")) {
-				return false;
-			}
-		} else {
 			if(m.equals(Material.AIR) ||
 					m.equals(Material.WATER) ||
 					m.equals(Material.WATER) ||
@@ -621,8 +558,7 @@ public abstract class Util {
 					m.equals(Material.YELLOW_BANNER) ||
 					m.equals(Material.YELLOW_WALL_BANNER) ||
 					
-					m.equals(Material.SIGN) ||
-					m.equals(Material.WALL_SIGN) ||
+					isSignOrWallSign(m) ||
 					m.equals(Material.COBBLESTONE_WALL) ||
 					m.equals(Material.BIRCH_TRAPDOOR) ||
 					m.equals(Material.DARK_OAK_TRAPDOOR) ||
@@ -645,10 +581,9 @@ public abstract class Util {
 					m.equals(Material.LARGE_FERN)||
 					m.equals(Material.TALL_GRASS) ||
 					m.equals(Material.GRASS) ||
-					m.equals(Material.ROSE_RED) ||
+					m.equals(Material.WITHER_ROSE) ||
 					//m.equals(Material.LEGACY_YELLOW_FLOWER) ||
 					m.equals(Material.DANDELION) ||
-					m.equals(Material.DANDELION_YELLOW) ||
 					m.equals(Material.POPPY) ||
 					m.equals(Material.BLUE_ORCHID) ||
 					m.equals(Material.ALLIUM) ||
@@ -676,7 +611,6 @@ public abstract class Util {
 					|| m.equals(Material.STONE_PRESSURE_PLATE)) {
 				return false;
 			}
-		}
 		return true;
 		
 	}
@@ -1396,6 +1330,31 @@ public abstract class Util {
 		String[] a = v.split("\\|");
 		Vector vec = new Vector(Double.valueOf(a[0]), Double.valueOf(a[1]), Double.valueOf(a[2]));
 		return vec;
+	}
+	
+	public static boolean isSignOrWallSign(Material m) {
+		return isWallSign(m) || isSignPost(m);
+	}
+	
+	public static boolean isWallSign(Material m) {
+		return (m.equals(Material.ACACIA_WALL_SIGN) ||
+				m.equals(Material.BIRCH_WALL_SIGN) ||
+				m.equals(Material.DARK_OAK_WALL_SIGN) ||
+				m.equals(Material.JUNGLE_WALL_SIGN) ||
+				m.equals(Material.LEGACY_WALL_SIGN) ||
+				m.equals(Material.OAK_WALL_SIGN) ||
+				m.equals(Material.SPRUCE_WALL_SIGN));
+	}
+	
+	public static boolean isSignPost(Material m) {
+		return (m.equals(Material.ACACIA_SIGN) ||
+				m.equals(Material.BIRCH_SIGN) ||
+				m.equals(Material.DARK_OAK_SIGN) ||
+				m.equals(Material.JUNGLE_SIGN) ||
+				m.equals(Material.LEGACY_SIGN) ||
+				m.equals(Material.LEGACY_SIGN_POST) ||
+				m.equals(Material.OAK_SIGN) ||
+				m.equals(Material.SPRUCE_SIGN));
 	}
 
 }

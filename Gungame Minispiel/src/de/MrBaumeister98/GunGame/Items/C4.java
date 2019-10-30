@@ -180,7 +180,7 @@ public class C4 implements Listener {
 		st.setHelmet(temp);
 		st.setVisible(false);
 		st.setHeadPose(angle);	
-		//NBT Tags für entschärfen und späterer Zuordnung
+		//NBT Tags fï¿½r entschï¿½rfen und spï¿½terer Zuordnung
 		st.setMetadata("GG_C4_Entity", new FixedMetadataValue(GunGamePlugin.instance, true));
 		st.setMetadata("GG_C4_Placer", new FixedMetadataValue(GunGamePlugin.instance, p.getUniqueId().toString()));
 		
@@ -305,65 +305,6 @@ public class C4 implements Listener {
 		}
 	}
 	private Boolean canPass(Material m) {
-		if(GunGamePlugin.instance.serverPre113) {
-			if(m != Material.AIR &&
-					m != Material.valueOf("CARPET") &&
-					m != Material.valueOf("IRON_PLATE") &&
-					m != Material.valueOf("GOLD_PLATE") &&
-					m != Material.valueOf("STRING") &&
-					m != Material.TRIPWIRE_HOOK &&
-					m != Material.valueOf("STONE_PLATE") &&
-					m != Material.STONE_BUTTON &&
-					m != Material.valueOf("WOOD_PLATE") &&
-					m != Material.valueOf("WOOD_BUTTON") &&
-					m != Material.valueOf("REDSTONE_COMPARATOR_OFF") &&
-					m != Material.valueOf("REDSTONE_COMPARATOR_ON") &&
-					m != Material.valueOf("REDSTONE_TORCH_OFF") &&
-					m != Material.valueOf("REDSTONE_TORCH_ON") &&
-					m != Material.valueOf("DIODE_BLOCK_OFF") &&
-					m != Material.valueOf("DIODE_BLOCK_ON") &&
-					m != Material.REDSTONE_WIRE &&
-					m != Material.TORCH &&
-					m != Material.END_ROD &&
-					m != Material.BREWING_STAND &&
-					m != Material.valueOf("STAINED_GLASS_PANE") && 
-					m != Material.valueOf("THIN_GLASS") &&
-					m != Material.valueOf("LONG_GRASS") &&
-					m != Material.valueOf("DOUBLE_PLANT") &&
-					m != Material.FLOWER_POT &&
-					m != Material.valueOf("YELLOW_FLOWER") &&
-					m != Material.valueOf("FENCE") &&
-					m != Material.ACACIA_FENCE &&
-					m != Material.BIRCH_FENCE &&
-					m != Material.DARK_OAK_FENCE &&
-					m != Material.valueOf("IRON_FENCE") &&
-					m != Material.JUNGLE_FENCE &&
-					m != Material.valueOf("NETHER_FENCE") &&
-					m != Material.SPRUCE_FENCE &&
-					m != Material.valueOf("FENCE_GATE") &&
-					m != Material.ACACIA_FENCE_GATE &&
-					m != Material.BIRCH_FENCE_GATE &&
-					m != Material.DARK_OAK_FENCE_GATE &&
-					m != Material.JUNGLE_FENCE_GATE &&
-					m != Material.SPRUCE_FENCE_GATE &&
-					m != Material.valueOf("WALL_BANNER") &&
-					m != Material.valueOf("STANDING_BANNER") &&
-					m != Material.valueOf("SIGN_POST") &&
-					m != Material.WALL_SIGN &&
-					m != Material.valueOf("COBBLE_WALL") &&
-					m != Material.valueOf("RAILS") &&
-					m != Material.ACTIVATOR_RAIL &&
-					m != Material.DETECTOR_RAIL &&
-					m != Material.POWERED_RAIL &&
-					m != Material.LADDER &&
-					m != Material.VINE &&
-					m != Material.valueOf("WATER_LILY") &&
-					m != Material.valueOf("RED_ROSE") &&
-					m != Material.valueOf("SAPLING") ) 
-			{
-				return true;
-			}
-		} else {
 			if(m.equals(Material.AIR) ||
 					m.equals(Material.WATER) ||
 					m.equals(Material.SUGAR_CANE) ||
@@ -422,7 +363,7 @@ public class C4 implements Listener {
 					m.equals(Material.WHITE_WALL_BANNER) ||
 					m.equals(Material.YELLOW_BANNER) ||
 					m.equals(Material.YELLOW_WALL_BANNER) ||
-					m.equals(Material.WALL_SIGN) ||
+					Util.isWallSign(m) ||
 					m.equals(Material.TALL_GRASS) ||
 					m.equals(Material.GRASS) ||
 					m.equals(Material.SUNFLOWER) ||
@@ -432,9 +373,8 @@ public class C4 implements Listener {
 					m.equals(Material.LARGE_FERN)||
 					m.equals(Material.TALL_GRASS) ||
 					m.equals(Material.GRASS) ||
-					m.equals(Material.ROSE_RED) ||
+					m.equals(Material.WITHER_ROSE) ||
 					m.equals(Material.DANDELION) ||
-					m.equals(Material.DANDELION_YELLOW) ||
 					m.equals(Material.POPPY) ||
 					m.equals(Material.BLUE_ORCHID) ||
 					m.equals(Material.ALLIUM) ||
@@ -451,7 +391,6 @@ public class C4 implements Listener {
 					m.equals(Material.RED_MUSHROOM)) {
 				return true;
 			}
-		}
 		return false;
 	}
 	@EventHandler

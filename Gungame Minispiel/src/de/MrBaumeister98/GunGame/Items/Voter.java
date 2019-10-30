@@ -104,7 +104,7 @@ public class Voter implements Listener {
 	public void onClick(InventoryClickEvent event) {
 		Player p = (Player) event.getWhoClicked();
 		if(GunGamePlugin.instance.arenaManager.isIngame(p)) {
-			if(event.getInventory().getName().equalsIgnoreCase(LangUtil.buildGUIString("VoteMenu"))) {
+			if(event./*getInventory().getName()*/getView().getTitle().equalsIgnoreCase(LangUtil.buildGUIString("VoteMenu"))) {
 				if(event.getInventory().getType().equals(InventoryType.HOPPER)) {				
 					ItemStack clicked = event.getCurrentItem();
 					if(clicked != null ) {

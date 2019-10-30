@@ -305,39 +305,6 @@ public class Grenade {
 		}
 	}
 	private Boolean canPass(Material m) {
-		if(GunGamePlugin.instance.serverPre113) {
-			if(m.equals(Material.AIR) |
-					m.equals(Material.valueOf("STATIONARY_WATER")) |
-					m.equals(Material.WATER) |
-					m.equals(Material.valueOf("SUGAR_CANE_BLOCK")) |
-					m.equals(Material.valueOf("CROPS")) |
-					m.equals(Material.TORCH) |
-					m.equals(Material.REDSTONE) |
-					m.equals(Material.valueOf("REDSTONE_COMPARATOR_ON")) |
-					m.equals(Material.REDSTONE_WIRE) |
-					m.equals(Material.valueOf("REDSTONE_TORCH_ON")) |
-					m.equals(Material.valueOf("REDSTONE_TORCH_OFF")) |
-					m.equals(Material.TRIPWIRE) |
-					m.equals(Material.STONE_BUTTON) |
-					m.equals(Material.valueOf("WOOD_BUTTON")) |
-					m.equals(Material.LEVER) |
-					m.equals(Material.TRIPWIRE_HOOK)|
-					m.equals(Material.VINE) |
-					m.equals(Material.FIRE) |
-					m.equals(Material.valueOf("WALL_BANNER")) |
-					m.equals(Material.WALL_SIGN) |
-					m.equals(Material.valueOf("DOUBLE_PLANT")) |
-					m.equals(Material.valueOf("LONG_GRASS")) |
-					m.equals(Material.GRASS) |
-					m.equals(Material.valueOf("DOUBLE_PLANT")) |
-					m.equals(Material.valueOf("RED_ROSE")) |
-					m.equals(Material.valueOf("YELLOW_FLOWER")) |
-					m.equals(Material.DEAD_BUSH) |
-					m.equals(Material.BROWN_MUSHROOM) |
-					m.equals(Material.RED_MUSHROOM)) {
-				return true;
-			}
-		} else {
 			if(m.equals(Material.AIR) ||
 					m.equals(Material.WATER) ||
 					m.equals(Material.WATER) ||
@@ -428,8 +395,7 @@ public class Grenade {
 					m.equals(Material.YELLOW_BANNER) ||
 					m.equals(Material.YELLOW_WALL_BANNER) ||
 					
-					m.equals(Material.SIGN) ||
-					m.equals(Material.WALL_SIGN) ||
+					Util.isSignOrWallSign(m) ||
 					m.equals(Material.SUNFLOWER) ||
 					m.equals(Material.LILAC) ||
 					m.equals(Material.ROSE_BUSH) ||
@@ -437,9 +403,8 @@ public class Grenade {
 					m.equals(Material.LARGE_FERN)||
 					m.equals(Material.TALL_GRASS) ||
 					m.equals(Material.GRASS) ||
-					m.equals(Material.ROSE_RED) ||
+					m.equals(Material.WITHER_ROSE) ||
 					m.equals(Material.DANDELION) ||
-					m.equals(Material.DANDELION_YELLOW) ||
 					m.equals(Material.POPPY) ||
 					m.equals(Material.BLUE_ORCHID) ||
 					m.equals(Material.ALLIUM) ||
@@ -458,7 +423,6 @@ public class Grenade {
 					m.equals(Material.RED_MUSHROOM)) {
 				return true;
 			}
-		}
 		return false;
 		
 	}
@@ -778,7 +742,7 @@ public class Grenade {
 							breakIt(bNxtLoc.getRelative(BlockFace.SOUTH_WEST));
 							grenade.setVelocity(vel);
 							//BASIS GECHECKT
-							//JETZT EBENE ÜBER LOCATION CHECKEN
+							//JETZT EBENE ï¿½BER LOCATION CHECKEN
 						} else if(isGlass(bNxtLocUpper.getRelative(BlockFace.NORTH).getType(), w)) {
 							breakIt(bNxtLocUpper.getRelative(BlockFace.NORTH));
 							grenade.setVelocity(vel);

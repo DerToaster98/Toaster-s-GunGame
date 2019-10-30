@@ -167,7 +167,7 @@ public class RadarUtil implements Listener {
 		Player p = (Player) event.getWhoClicked();
 		if(this.owner != null) {
 			if(this.owner.manager.isIngame(p) && this.owner.manager.getArena(p).equals(this.owner)) {
-				if(event.getInventory().getName().equals(LangUtil.buildGUIString("RadarMenu"))) {
+				if(event.getView()/*getInventory()*/.getTitle().equals(LangUtil.buildGUIString("RadarMenu"))) {
 					if(
 							GunGamePlugin.instance.serverPre113 && event.getCurrentItem().getType().equals(Material.valueOf("SKULL_ITEM"))
 							|| 

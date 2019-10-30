@@ -248,42 +248,6 @@ public class RocketThread extends BukkitRunnable {
 	
 	private Boolean canPass(Block b) {
 		Material type = b.getType();
-		if(GunGamePlugin.instance.serverPre113) {
-			if(type.equals(Material.AIR) ||
-					type.equals(Material.STRING) ||
-					type.equals(Material.TRIPWIRE) ||
-					type.equals(Material.STONE_BUTTON) ||
-					type.equals(Material.valueOf("WOOD_BUTTON")) ||
-					type.equals(Material.REDSTONE_WIRE) ||
-					type.equals(Material.WATER) ||
-					type.equals(Material.valueOf("STATIONARY_WATER")) ||
-					type.equals(Material.LAVA) ||
-					type.equals(Material.valueOf("STATIONARY_LAVA")) ||
-					type.equals(Material.GLASS) ||
-					type.equals(Material.valueOf("STAINED_GLASS_PANE")) ||
-					type.equals(Material.valueOf("THIN_GLASS")) ||
-					type.equals(Material.valueOf("STAINED_GLASS")) ||
-					type.equals(Material.valueOf("YELLOW_FLOWER")) ||
-					type.equals(Material.valueOf("RED_ROSE")) ||
-					type.equals(Material.RED_MUSHROOM) ||
-					type.equals(Material.BROWN_MUSHROOM) ||
-					type.equals(Material.valueOf("LONG_GRASS")) ||
-					type.equals(Material.valueOf("DOUBLE_PLANT")) ||
-					type.equals(Material.valueOf("CROPS")) ||
-					type.equals(Material.VINE) ||
-					type.equals(Material.DEAD_BUSH) ||
-					type.equals(Material.valueOf("SUGAR_CANE_BLOCK")) ||
-					type.equals(Material.valueOf("SAPLING")) ||
-					type.equals(Material.TORCH) ||
-					type.equals(Material.valueOf("WEB")) ||
-					type.equals(Material.valueOf("REDSTONE_TORCH_OFF")) ||
-					type.equals(Material.valueOf("REDSTONE_TORCH_ON")) ||
-					type.equals(Material.FIRE) ||
-					type.equals(Material.ICE) ||
-					type.equals(Material.FROSTED_ICE)) {
-				return true;
-			}
-		} else {
 			if(type.equals(Material.AIR) ||
 					type.equals(Material.STRING) ||
 					type.equals(Material.TRIPWIRE) ||
@@ -314,10 +278,9 @@ public class RocketThread extends BukkitRunnable {
 					type.equals(Material.LARGE_FERN)||
 					type.equals(Material.TALL_GRASS) ||
 					type.equals(Material.GRASS) ||
-					type.equals(Material.ROSE_RED) ||
+					type.equals(Material.WITHER_ROSE) ||
 					//m.equals(Material.LEGACY_YELLOW_FLOWER) ||
 					type.equals(Material.DANDELION) ||
-					type.equals(Material.DANDELION_YELLOW) ||
 					type.equals(Material.POPPY) ||
 					type.equals(Material.BLUE_ORCHID) ||
 					type.equals(Material.ALLIUM) ||
@@ -348,7 +311,6 @@ public class RocketThread extends BukkitRunnable {
 					) {
 				return true;
 			}
-		}
 		return false;
 	}
 }

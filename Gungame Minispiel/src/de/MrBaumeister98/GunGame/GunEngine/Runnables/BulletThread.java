@@ -2,8 +2,8 @@ package de.MrBaumeister98.GunGame.GunEngine.Runnables;
 
 import java.util.UUID;
 
+import org.bukkit.entity.AbstractArrow.PickupStatus;
 import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Arrow.PickupStatus;
 import org.bukkit.entity.DragonFireball;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.EnderPearl;

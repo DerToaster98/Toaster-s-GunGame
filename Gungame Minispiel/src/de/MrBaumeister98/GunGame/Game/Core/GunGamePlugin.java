@@ -30,9 +30,7 @@ import de.MrBaumeister98.GunGame.GunEngine.Shop.ShopGUI;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.PlayerInteractAtTankListener;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankListener;
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankManager;
-import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankMoveListener.TankMovementListener_1_12_R1;
-import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankMoveListener.TankMovementListener_1_13_R1;
-import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankMoveListener.TankMovementListener_1_13_R2;
+import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankMoveListener.TankMovementListener_1_14;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretListener;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretManager;
 import de.MrBaumeister98.GunGame.Items.C4;
@@ -288,49 +286,14 @@ public class GunGamePlugin extends JavaPlugin {
 			default:
 				Debugger.logInfoWithColoredText(ChatColor.RED + "Server version not supported! Disabling tanks...");
 				break;
-			case "1.12.0":
+			
+			case "1.14":
+			case "1.14.1":
+			case "1.14.2":
+			case "1.14.3":
+			case "1.14.4":
 				com.comphenix.protocol.ProtocolLibrary.getProtocolManager()
-				.addPacketListener(new TankMovementListener_1_12_R1(
-						instance, 
-						com.comphenix.protocol.events.ListenerPriority.NORMAL, 
-						new com.comphenix.protocol.PacketType[] {com.comphenix.protocol.PacketType.Play.Client.STEER_VEHICLE} )
-				);
-				break;
-			case "1.12.1":
-				com.comphenix.protocol.ProtocolLibrary.getProtocolManager()
-				.addPacketListener(new TankMovementListener_1_12_R1(
-						instance, 
-						com.comphenix.protocol.events.ListenerPriority.NORMAL, 
-						new com.comphenix.protocol.PacketType[] {com.comphenix.protocol.PacketType.Play.Client.STEER_VEHICLE} )
-				);
-				break;
-			case "1.12.2":
-				com.comphenix.protocol.ProtocolLibrary.getProtocolManager()
-				.addPacketListener(new TankMovementListener_1_12_R1(
-						instance, 
-						com.comphenix.protocol.events.ListenerPriority.NORMAL, 
-						new com.comphenix.protocol.PacketType[] {com.comphenix.protocol.PacketType.Play.Client.STEER_VEHICLE} )
-				);
-				break;
-			case "1.13.0":
-				com.comphenix.protocol.ProtocolLibrary.getProtocolManager()
-				.addPacketListener(new TankMovementListener_1_13_R1(
-						instance, 
-						com.comphenix.protocol.events.ListenerPriority.NORMAL, 
-						new com.comphenix.protocol.PacketType[] {com.comphenix.protocol.PacketType.Play.Client.STEER_VEHICLE} )
-				);
-				break;
-			case "1.13.1":
-				com.comphenix.protocol.ProtocolLibrary.getProtocolManager()
-				.addPacketListener(new TankMovementListener_1_13_R2(
-						instance, 
-						com.comphenix.protocol.events.ListenerPriority.NORMAL, 
-						new com.comphenix.protocol.PacketType[] {com.comphenix.protocol.PacketType.Play.Client.STEER_VEHICLE} )
-				);
-				break;
-			case "1.13.2":
-				com.comphenix.protocol.ProtocolLibrary.getProtocolManager()
-				.addPacketListener(new TankMovementListener_1_13_R2(
+				.addPacketListener(new TankMovementListener_1_14(
 						instance, 
 						com.comphenix.protocol.events.ListenerPriority.NORMAL, 
 						new com.comphenix.protocol.PacketType[] {com.comphenix.protocol.PacketType.Play.Client.STEER_VEHICLE} )

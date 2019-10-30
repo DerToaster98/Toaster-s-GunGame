@@ -110,7 +110,7 @@ public class SignListener implements Listener {
 		if(event.getPlayer().hasPermission("gungame.admin")) {
 			if(event.getAction() == Action.LEFT_CLICK_BLOCK && event.getPlayer().isSneaking()) {
 				Material blockType = event.getClickedBlock().getType();
-				if(blockType == Material.WALL_SIGN || blockType == Material.SIGN) {
+				if(Util.isSignOrWallSign(blockType)) {
 					Sign sign = (Sign) event.getClickedBlock().getState();
 					String[] lines = sign.getLines();
 					if(lines[0].equalsIgnoreCase(ChatColor.translateAlternateColorCodes('&', LangUtil.prefix))) {
@@ -128,7 +128,7 @@ public class SignListener implements Listener {
 			/*} else */if(event.getPlayer().hasPermission("gungame.user") || event.getPlayer().hasPermission("gungame.admin")) {
 				if((event.getAction().equals(Action.LEFT_CLICK_BLOCK) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) && event.getPlayer().isSneaking() == false) {
 					Material blockType = event.getClickedBlock().getType();
-					if(blockType == Material.WALL_SIGN || blockType == Material.SIGN) {
+					if(Util.isSignOrWallSign(blockType)) {
 						Sign sign = (Sign) event.getClickedBlock().getState();
 						String[] lines = sign.getLines();
 						if(lines[0].equalsIgnoreCase(ChatColor.translateAlternateColorCodes('&', LangUtil.prefix))) {
