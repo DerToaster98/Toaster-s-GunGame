@@ -87,10 +87,10 @@ public class Arena {
 	// private static int refreshRadarTaskID;
 	private static int taskID;
 
-	public HashMap<String, Integer> voteMap = new HashMap<String, Integer>();
-	public HashMap<Player, String> kills = new HashMap<Player, String>();
+	public HashMap<String, Integer> mapVoteMapping = new HashMap<String, Integer>();
+	public HashMap<Player, String> voteMap = new HashMap<Player, String>();
 	public HashMap<UUID, Boolean> canVote = new HashMap<UUID, Boolean>();
-	private HashMap<Player, Integer> playerKills = new HashMap<Player, Integer>();
+	private HashMap<UUID, Integer> playerKills = new HashMap<UUID, Integer>();
 
 	// GAMEMODES
 	private EArenaGameMode arenaMode;
@@ -163,6 +163,7 @@ public class Arena {
 		if (!this.canVote.containsKey(p.getUniqueId())) {
 			this.canVote.put(p.getUniqueId(), true);
 		}
+		this.playerKills.put(p.getUniqueId(), 0);
 		this.playerCount++;
 		p.setInvulnerable(true);
 		this.getScoreboardutil().updateScoreBoard();
@@ -791,8 +792,8 @@ public class Arena {
 		this.radUtil.killRefreshTask();
 		countdownHelper.cancelTask();
 		Bukkit.getScheduler().cancelTask(taskID);
+		this.mapVoteMapping.clear();
 		this.voteMap.clear();
-		this.kills.clear();
 		this.canVote.clear();
 		this.playerKills.clear();
 		if (GunGamePlugin.instance.serverPre113) {
@@ -928,18 +929,18 @@ public class Arena {
 	}
 
 	public Integer getKills(Player p) {
-		return this.playerKills.get(p);
+		return this.playerKills.getOrDefault(p.getUniqueId(), 0);
 	}
 
 	public void addKill(Player p, Boolean killedPlayer) {
 		if (killedPlayer) {
-			this.playerKills.put(p, getKills(p) + 1);
+			this.playerKills.put(p.getUniqueId(), getKills(p) + 1);
 
 			// STAT
 			this.statManager.getStatPlayer.get(p.getUniqueId()).incrementKillStreak();
 		}
 		Util.calcCoins(p);
-		if (this.playerKills.get(p) >= this.killsToWin && !this.arenaMode.equals(EArenaGameMode.TEAM_DEATHMATCH)) {
+		if (getKills(p) >= this.killsToWin && !this.arenaMode.equals(EArenaGameMode.TEAM_DEATHMATCH)) {
 			preEndArena();
 		}
 	}
@@ -970,7 +971,7 @@ public class Arena {
 
 	private void fillKillMap() {
 		for (Player p : this.players) {
-			this.playerKills.put(p, 0);
+			this.playerKills.put(p.getUniqueId(), 0);
 		}
 	}
 

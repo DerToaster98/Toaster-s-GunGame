@@ -45,19 +45,19 @@ public class Voter implements Listener {
 	private void fillVoteMenu(Player p) {
 		Inventory GUI = Bukkit.createInventory(null, InventoryType.HOPPER, LangUtil.buildGUIString("VoteMenu"));
 		Arena arena = GunGamePlugin.instance.arenaManager.getArena(p);
-		Set<String> worlds = arena.voteMap.keySet();
+		Set<String> worlds = arena.mapVoteMapping.keySet();
 		for(String map : worlds) {
 			if(map != ChatColor.stripColor("???")) {
 				ItemStack mapItem = new ItemStack(Material.MAP);
 				ItemMeta meta = mapItem.getItemMeta();
 				meta.setDisplayName(ChatColor.RED + map);
-				if(arena.kills.get(p) != null && arena.kills.containsKey(p) == true) {
-					if(arena.kills.get(p).equalsIgnoreCase(map)) {
+				if(arena.voteMap.get(p) != null && arena.voteMap.containsKey(p) == true) {
+					if(arena.voteMap.get(p).equalsIgnoreCase(map)) {
 						mapItem.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
 						meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					}
 				}
-				Integer count = arena.voteMap.get(map);
+				Integer count = arena.mapVoteMapping.get(map);
 				if(count != null && count != 0) {
 					mapItem.setAmount(count);
 				}
@@ -68,13 +68,13 @@ public class Voter implements Listener {
 		ItemStack rndmMap = new ItemStack(Material.MAP);
 		ItemMeta meta = rndmMap.getItemMeta();
 		meta.setDisplayName(ChatColor.RED + "???");
-		if(arena.kills.get(p) != null && arena.kills.containsKey(p) == true) {
-			if(arena.kills.get(p).equalsIgnoreCase("???")) {
+		if(arena.voteMap.get(p) != null && arena.voteMap.containsKey(p) == true) {
+			if(arena.voteMap.get(p).equalsIgnoreCase("???")) {
 				rndmMap.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
 				meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			}
 		}
-		Integer count = arena.voteMap.get("???");
+		Integer count = arena.mapVoteMapping.get("???");
 		if(count != null && count != 0) {
 			rndmMap.setAmount(count);
 		}
