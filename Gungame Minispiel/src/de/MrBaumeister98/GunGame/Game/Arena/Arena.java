@@ -943,6 +943,7 @@ public class Arena {
 		if (getKills(p) >= this.killsToWin && !this.arenaMode.equals(EArenaGameMode.TEAM_DEATHMATCH)) {
 			preEndArena();
 		}
+		this.scoreboardutil.updateScoreBoard();
 	}
 
 	public void confirmGameMode() {
