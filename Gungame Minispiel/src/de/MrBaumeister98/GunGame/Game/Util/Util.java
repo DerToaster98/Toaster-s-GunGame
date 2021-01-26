@@ -42,7 +42,6 @@ import de.MrBaumeister98.GunGame.GunEngine.Ammo;
 import de.MrBaumeister98.GunGame.GunEngine.Grenade;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
 import de.MrBaumeister98.GunGame.GunEngine.Griefing.EGriefType;
-import de.MrBaumeister98.GunGame.Items.C4;
 import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
 import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
 import de.MrBaumeister98.GunGame.Items.InfoItem;
@@ -187,7 +186,7 @@ public abstract class Util {
 	public static Double getRandomDouble() {
 		return randomGenerator.nextDouble();
 	}
-	//Füllt die shopblock liste
+	//Fï¿½llt die shopblock liste
 	public static void loadShopBlocks() {
 		List<String> shopBlockStrings = GunGamePlugin.instance.getConfig().getStringList("Config.ShopBlocks");
 		for(String s : shopBlockStrings) {
@@ -195,7 +194,7 @@ public abstract class Util {
 			shopBlocks.add(temp);
 		}
 	}
-	//Zum prüfen für onInteract methoden
+	//Zum prï¿½fen fï¿½r onInteract methoden
 	public static boolean isShopBlock(Material m) {
 		int temp = 0;
 		for(Material mat : shopBlocks) {
@@ -1086,7 +1085,7 @@ public abstract class Util {
 		p.getInventory().setItem(10, ammo2);
 		
 		p.getInventory().setItem(5, SuicideArmor.remote());
-		p.getInventory().setItem(6, C4.c4Remote());
+		//p.getInventory().setItem(6, C4.c4Remote());
 		if(GunGamePlugin.instance.serverPre113) {
 			p.getInventory().setItem(8, Crowbar_pre_1_13.CrowBar());
 		} else {

@@ -20,7 +20,6 @@ import de.MrBaumeister98.GunGame.Game.Core.GunGamePlugin;
 import de.MrBaumeister98.GunGame.Game.Util.ItemUtil;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
 import de.MrBaumeister98.GunGame.GunEngine.Gun;
-import de.MrBaumeister98.GunGame.Items.C4;
 import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
 import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
 import de.MrBaumeister98.GunGame.Items.FlareGun;
@@ -220,7 +219,7 @@ public class ShopGUI implements Listener {
 		
 		String price = LangUtil.buildGUIString("GunEngine.Shop.MiscItemsPrice");
 		
-		ItemStack c4 = C4.c4Throwable(1);
+		/*ItemStack c4 = C4.c4Throwable(1);
 		c4 = ItemUtil.addTags(c4, "GG_Shop_Buyable_Item", true);
 		c4 = ItemUtil.addTags(c4, "GG_Shop_Buyable_Item_Misc", "C4");
 		ItemMeta c4Meta = c4.getItemMeta();
@@ -236,7 +235,7 @@ public class ShopGUI implements Listener {
 		List<String> lore1 = c4RemoteMeta.getLore();
 		lore1.add(price.replaceAll("%worth%", this.shophelper.getPrice(c4Remote).toString()));
 		c4RemoteMeta.setLore(lore1);
-		c4Remote.setItemMeta(c4RemoteMeta);
+		c4Remote.setItemMeta(c4RemoteMeta);*/
 		
 		ItemStack crowbar = null;
 		if(GunGamePlugin.instance.serverPre113) {
@@ -297,8 +296,8 @@ public class ShopGUI implements Listener {
 		flareMeta.setLore(lore6);
 		flaregun.setItemMeta(flareMeta);
 		
-		tempMisc.setItem(0, c4);
-		tempMisc.setItem(1, c4Remote);
+		/*tempMisc.setItem(0, c4);
+		tempMisc.setItem(1, c4Remote);*/
 		tempMisc.setItem(9, bombWest);
 		tempMisc.setItem(10, bombWestRemote);
 		tempMisc.setItem(18, crowbar);

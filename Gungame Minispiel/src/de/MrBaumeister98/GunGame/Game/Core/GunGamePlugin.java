@@ -35,7 +35,6 @@ import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankMoveListener.TankMovementLi
 import de.MrBaumeister98.GunGame.GunEngine.Tanks.TankMoveListener.TankMovementListener_1_13_R2;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretListener;
 import de.MrBaumeister98.GunGame.GunEngine.Turrets.TurretManager;
-import de.MrBaumeister98.GunGame.Items.C4;
 import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
 import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
 import de.MrBaumeister98.GunGame.Items.FlareGun;
@@ -251,7 +250,7 @@ public class GunGamePlugin extends JavaPlugin {
 		
 		this.getServer().getPluginManager().registerEvents(new LeaveLobbyItem(), this);
 		this.getServer().getPluginManager().registerEvents(new RadarUtil(this), this);
-		this.getServer().getPluginManager().registerEvents(new C4(), this);
+		//this.getServer().getPluginManager().registerEvents(new C4(), this);
 		//this.getServer().getPluginManager().registerEvents(new VehicleListeners(), this);
 		if(this.serverPre113) {
 			this.getServer().getPluginManager().registerEvents(new Crowbar_pre_1_13(), this);

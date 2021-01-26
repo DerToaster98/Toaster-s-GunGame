@@ -228,9 +228,9 @@ public class StatFile {
 		case THROWGRENADE:
 			tempI = this.config.getInt("Statistics.Weapons.ThrownGrenades");
 			break;
-		case USE_C4:
+		/*case USE_C4:
 			tempI = this.config.getInt("Statistics.C4Planted");
-			break;
+			break;*/
 		case WIN:
 			tempI = this.config.getInt("Statistics.Games.Won.Total");
 			break;

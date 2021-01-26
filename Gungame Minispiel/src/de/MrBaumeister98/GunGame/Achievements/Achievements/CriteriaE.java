@@ -21,7 +21,7 @@ public enum CriteriaE {
 	LOSE_SERIES,
 	DIE,
 	LOCKPICK,
-	USE_C4,
+	/*USE_C4,*/
 	RELOAD,
 	SHOOT,
 	SUICIDEBOMB,

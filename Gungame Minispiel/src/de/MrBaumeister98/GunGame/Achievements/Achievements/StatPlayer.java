@@ -28,7 +28,7 @@ public class StatPlayer {
 	private Integer kills = 0;
 	private Integer currentKillStreakNoDamage = 0;
 	private Integer locksPicked = 0;
-	private Integer c4Planted = 0;
+	//private Integer c4Planted = 0;
 	private Integer grenadesThrown = 0;
 	private Integer weaponsShot = 0;
 	private Integer suicideBombed = 0;
@@ -89,7 +89,7 @@ public class StatPlayer {
 	}
 	//DONE
 	public void incrementC4Planted() {
-		this.c4Planted++;
+		/*this.c4Planted++;
 		this.file.updatePlantedC4();
 		
 		countUpAdvancementsOfCriteria(CriteriaE.USE_C4);
@@ -98,7 +98,7 @@ public class StatPlayer {
 			checkForUnlockedAdvancements();
 		} else {
 			refreshList();
-		}
+		}*/
 	}
 	//DONE
 	public void incrementSuicideBombings() {

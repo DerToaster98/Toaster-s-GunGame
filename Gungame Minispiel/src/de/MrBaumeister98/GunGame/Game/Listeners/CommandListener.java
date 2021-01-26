@@ -20,7 +20,6 @@ import de.MrBaumeister98.GunGame.Game.Core.Debugger.Debugger;
 import de.MrBaumeister98.GunGame.Game.Util.EGameState;
 import de.MrBaumeister98.GunGame.Game.Util.LangUtil;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
-import de.MrBaumeister98.GunGame.Items.C4;
 import de.MrBaumeister98.GunGame.Items.Crowbar_pre_1_13;
 import de.MrBaumeister98.GunGame.Items.Crowbar_v1_13_up;
 import de.MrBaumeister98.GunGame.Items.FlareGun;
@@ -1998,10 +1997,10 @@ public class CommandListener implements CommandExecutor, TabCompleter {
 														true));
 											}
 											return true;
-										case "c4":
+										/*case "c4":
 											p.getInventory().addItem(C4.c4Remote());
 											p.getInventory().addItem(C4.c4Throwable(16));
-											return true;
+											return true;*/
 										case "suicide_jacket":
 											p.getInventory().addItem(SuicideArmor.suicideWest());
 											p.getInventory().addItem(SuicideArmor.remote());
@@ -2296,7 +2295,7 @@ public class CommandListener implements CommandExecutor, TabCompleter {
 									commandList.clear();
 									
 									commandList.add("radar");
-									commandList.add("c4");
+									//commandList.add("c4");
 									commandList.add("crowbar");
 									commandList.add("suicide_jacket");
 									commandList.add("flaregun");

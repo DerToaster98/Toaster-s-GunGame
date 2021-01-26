@@ -24,8 +24,6 @@ import de.MrBaumeister98.GunGame.Game.Util.EGameState;
 import de.MrBaumeister98.GunGame.Game.Util.Util;
 import de.MrBaumeister98.GunGame.GunEngine.Ammo;
 import de.MrBaumeister98.GunGame.GunEngine.Grenade;
-import de.MrBaumeister98.GunGame.GunEngine.Gun;
-import de.MrBaumeister98.GunGame.Items.C4;
 import de.tr7zw.itemnbtapi.NBTTileEntity;
 import net.md_5.bungee.api.ChatColor;
 
@@ -65,12 +63,12 @@ public class LootChests implements Listener {
 							
 							inv.setItem(slot, g.getItem().clone());
 						}*/
-						if(Util.getRandomBoolean()) {
+						/*if(Util.getRandomBoolean()) {
 							Integer slot = freeSlots.get(Util.getRandomNumber(freeSlots.size()));
 							freeSlots.remove(slot);
 							ItemStack item = C4.c4Throwable(Util.getRandomNumber(8) +1);
 							inv.setItem(slot, item);
-						}
+						}*/
 						Integer grenades = Util.getRandomNumber(4);
 						if(grenades > 0) {
 							for(int i = 0; i < grenades; i++) {
