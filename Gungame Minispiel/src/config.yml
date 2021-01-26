@@ -97,10 +97,6 @@ Config:
   Items:
     TrackPad:
       Uses: 3
-    C4:
-      Power: 3
-      Fire: false
-      Fuse: 1
     SuicideVest:
       Power: 10
       Fire: false
