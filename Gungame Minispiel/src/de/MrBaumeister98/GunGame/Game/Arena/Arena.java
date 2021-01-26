@@ -483,7 +483,7 @@ public class Arena {
 				p.setInvulnerable(false);
 				p.setCollidable(true);
 				p.setHealthScale(20.0);
-				p.setHealth(20.0);
+				p.setHealth(GunGamePlugin.instance.getConfig().getDouble("Config.MaxPlayerHP", 40.0D));
 				p.setSaturation(20);
 
 				this.statManager.getStatPlayer.get(p.getUniqueId()).incrementJoinedGames();
@@ -836,7 +836,7 @@ public class Arena {
 			this.manager.addSpectator(p);
 			p.setAllowFlight(true);
 			p.setFlying(true);
-			p.setHealth(20);
+			p.setHealth(GunGamePlugin.instance.getConfig().getDouble("Config.MaxPlayerHP", 40.0D));
 			p.setFireTicks(0);
 			p.setFallDistance(0.0F);
 			p.getInventory().clear();

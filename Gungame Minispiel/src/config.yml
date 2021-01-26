@@ -17,6 +17,7 @@ Config:
       ChanceToExplodeOnBreak: 40
       MinWiresToDefuse: 1
       MaxWiresToDefuse: 4
+  MaxPlayerHP: 40.0
   StartCountDown: 30
   LobbyCountDown: 30
   PreparingPhaseDuration: 30
