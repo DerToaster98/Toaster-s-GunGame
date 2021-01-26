@@ -184,7 +184,7 @@ public class GameConfiguratorUtil implements Listener {
 					itm1.setItemMeta(m1);
 					itm1 = ItemUtil.addTags(itm1, "GunGame_Item", "Configurator-ProtectWater");
 					itm1 = ItemUtil.setGunGameItem(itm1);
-					this.menu.setItem(1, itm1);
+					this.menu.setItem(2, itm1);
 				} else {
 					this.protectBodiesOfWater = true;
 					
