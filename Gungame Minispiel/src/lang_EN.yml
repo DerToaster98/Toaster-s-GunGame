@@ -160,6 +160,7 @@ lang:
         Turrets: "&c > Turrets"
         Tanks: "&c > Tanks"
       Visuals:
+        Overheat: "&cTurret reached critical heat!"
         OutOfAmmo: "&cOut Of Ammo!"
         MissingAmmo: "&cAmmo %ammo% is missing!"
         MissingGrenades: "&cGrenades are missing!"

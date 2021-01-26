@@ -28,6 +28,10 @@ public class VisualsHelper {
 		String text = buildGEString("Visuals.OutOfAmmo", null, null, null, null, null, null);
 		sendActionbar(p, text);
 	}
+	public void sendOverheated(Player p) {
+		String text = buildGEString("Visuals.Overheat", null, null, null, null, null, null);
+		sendActionbar(p, text);
+	}
 	public void sendReloadingWeapon(Player p) {
 		String text = buildGEString("Visuals.Reloading", null, null, null, null, null, null);
 		sendActionbar(p, text);
@@ -85,7 +89,7 @@ public class VisualsHelper {
 			}
 			
 		}
-		heatS = heatS + "°C/&2" + maxHeat + "°C&8-]";
+		heatS = heatS + "ï¿½C/&2" + maxHeat + "ï¿½C&8-]";
 		
 		String text = buildGEString("Visuals.TurretStatus", null, null, ammo, heatS, null, null);
 		sendActionbar(p, text);

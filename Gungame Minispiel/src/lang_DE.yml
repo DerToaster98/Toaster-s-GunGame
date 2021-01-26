@@ -160,6 +160,7 @@ lang:
         Turrets: "&c > Gesch\u00fctze"
         Tanks: "&c > Panzer"
       Visuals:
+        Overheat: "&Geschützt überhitzt!"
         OutOfAmmo: "&cOut Of Ammo!"
         MissingAmmo: "&cMunition %ammo% ist nicht vorhanden!"
         MissingGrenades: "&cGranaten sind nicht vorhanden!"

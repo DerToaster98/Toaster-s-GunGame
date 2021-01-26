@@ -48,7 +48,9 @@ public class TurretShootController extends BukkitRunnable {
 		} else if(this.turret.getTemperature() >= this.criticalHeat) {
 			this.running = false;
 			this.turret.setShooting(this.running);
-			this.turret.die();
+			//this.turret.die();
+			this.config.getSoundSet().outOfAmmoSound.play(this.turret.position.getWorld(), this.turret.position);
+			GunGamePlugin.instance.weaponManager.visualHelper.sendOutOfAmmo(this.turret.getGunner());
 		}
 		this.turret.setShooting(this.running);
 		
