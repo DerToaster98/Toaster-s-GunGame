@@ -54,7 +54,7 @@ public class LootChests implements Listener {
 							freeSlots.add(i);
 						}
 						//Random rdm = new Random();
-						if(Util.getRandomBoolean()) {
+						/*if(Util.getRandomBoolean()) {
 							Integer slot = freeSlots.get(Util.getRandomNumber(freeSlots.size()));
 							freeSlots.remove(slot);
 							Gun g = GunGamePlugin.instance.weaponManager.guns.get(Util.getRandomNumber(GunGamePlugin.instance.weaponManager.guns.size()));
@@ -64,7 +64,7 @@ public class LootChests implements Listener {
 							}
 							
 							inv.setItem(slot, g.getItem().clone());
-						}
+						}*/
 						if(Util.getRandomBoolean()) {
 							Integer slot = freeSlots.get(Util.getRandomNumber(freeSlots.size()));
 							freeSlots.remove(slot);
